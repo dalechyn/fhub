@@ -1,0 +1,32 @@
+{
+  "name": "hubbie",
+  "description": "TypeScript Interface for Hubs",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./_cjs/index.js",
+  "module": "./_esm/index.js",
+  "types": "./_types/index.d.ts",
+  "typings": "./_types/index.d.ts",
+  "sideEffects": false,
+  "files": ["*", "!**/*.tsbuildinfo", "!tsconfig.build.json", "!jsr.json"],
+  "exports": {
+    ".": {
+      "types": "./_types/index.d.ts",
+      "import": "./_esm/index.js",
+      "default": "./_cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.4"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "dependencies": {},
+  "license": "WTFPL",
+  "repository": "dalechyn/hubbie",
+  "authors": ["dalechyn.eth"]
+}
