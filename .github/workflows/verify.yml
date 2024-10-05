@@ -1,0 +1,216 @@
+# Taken from `viem`: https://github.com/wevm/viem/blob/main/.github/workflows/verify.yml
+name: Verify
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with: 
+          submodules: 'recursive'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Lint repo
+        run: pnpm lint:repo
+
+      - name: Lint code
+        run: pnpm lint
+      
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commit_message: 'chore: format'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  build:
+    name: Build
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with: 
+          submodules: 'recursive'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publint
+        run: pnpm test:build
+
+      - name: Check for unused files, dependencies, and exports
+        run: pnpm knip --production
+        
+      - name: Check size
+        run: pnpm size
+
+  types:
+    name: Types
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: ['5.6.2']
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with: 
+          submodules: 'recursive'
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+
+      - run: pnpm i -d -w typescript@${{ matrix.version }}
+
+      - name: Check types
+        run: pnpm typecheck
+
+#  test:
+#    name: Test
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 10
+#    strategy:
+#      max-parallel: 3
+#      matrix:
+#        multicall: ['true', 'false']
+#        transport-mode: ['http', 'webSocket']
+#        shard: [1, 2, 3]
+#        total-shards: [3]
+#    steps:
+#      - name: Clone repository
+#        uses: actions/checkout@v4
+#        with: 
+#          submodules: 'recursive'
+# 
+#      - name: Install dependencies
+#        uses: ./.github/actions/install-dependencies
+# 
+#      - name: Build contracts
+#        shell: bash
+#        run: pnpm contracts:build
+# 
+#      - name: Run tests
+#        uses: nick-fields/retry@v3
+#        with:
+#          timeout_minutes: 10
+#          max_attempts: 3
+#          command: pnpm test:ci --shard=${{ matrix.shard }}/${{ matrix.total-shards }}
+#        env:
+#          VITE_ANVIL_FORK_URL: ${{ secrets.VITE_ANVIL_FORK_URL }}
+#          VITE_ANVIL_FORK_URL_OPTIMISM: ${{ secrets.VITE_ANVIL_FORK_URL_OPTIMISM }}
+#          VITE_ANVIL_FORK_URL_OPTIMISM_SEPOLIA: ${{ secrets.VITE_ANVIL_FORK_URL_OPTIMISM_SEPOLIA }}
+#          VITE_ANVIL_FORK_URL_SEPOLIA: ${{ secrets.VITE_ANVIL_FORK_URL_SEPOLIA }}
+#          VITE_ANVIL_FORK_URL_ZKSYNC: ${{ secrets.VITE_ANVIL_FORK_URL_ZKSYNC }}
+#          VITE_BATCH_MULTICALL: ${{ matrix.multicall }}
+#          VITE_NETWORK_TRANSPORT_MODE: ${{ matrix.transport-mode }}
+#          VITE_SHARD_ID: ${{ matrix.shard }}
+# 
+#      - name: Upload coverage reports to Codecov
+#        uses: codecov/codecov-action@v4
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
+# 
+#  test-envs:
+#    name: Test Environments
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        type: ['bun', 'node-18', 'node-20', 'node-latest', 'next', 'tsc', 'vite']
+#        include:
+#          - type: bun
+#            runtime: bun
+#          - type: node-18
+#            node-version: 18
+#            runtime: node
+#          - type: node-20
+#            node-version: 20
+#            runtime: node
+#          - type: node-latest
+#            node-version: latest
+#            runtime: node
+#          - type: next
+#            runtime: next
+#          - type: tsc
+#            node-version: 20
+#            runtime: tsc
+#          - type: vite
+#            runtime: vite
+# 
+#    steps:
+#      - name: Clone repository
+#        uses: actions/checkout@v4
+#        with: 
+#          submodules: 'recursive'
+# 
+#      - name: Set up pnpm
+#        uses: wevm/actions/.github/actions/pnpm@main
+# 
+#      - name: Set up Bun
+#        if: ${{ matrix.runtime == 'bun' }}
+#        uses: oven-sh/setup-bun@v2
+#        with:
+#          bun-version: 1.0.30
+# 
+#      - name: Set up Node
+#        if: ${{ matrix.node-version }}
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: ${{ matrix.node-version }}
+# 
+#      - name: Build
+#        run: pnpm build
+# 
+#      - name: Link
+#        run: pnpm install
+# 
+#  wagmi:
+#    name: Wagmi
+#    needs: [build, types]
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 10
+#    strategy:
+#      matrix:
+#        typescript-version: ['5.4.5', '5.5.2']
+# 
+#    steps:
+#      - name: Clone repository
+#        uses: actions/checkout@v4
+#        with: 
+#          submodules: 'recursive'
+# 
+#      - name: Install dependencies
+#        uses: ./.github/actions/install-dependencies
+# 
+#      - name: Setup wagmi
+#        uses: ./.github/actions/setup-wagmi
+#        env:
+#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# 
+#      - run: pnpm add -D -w typescript@${{ matrix.typescript-version }}
+#        working-directory: ./wagmi
+# 
+#      - name: Check types
+#        run: pnpm check:types
+#        working-directory: ./wagmi
+# 
+#      - name: Check build
+#        run: pnpm build
+#        working-directory: ./wagmi
