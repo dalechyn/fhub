@@ -50,6 +50,9 @@
       },
       "src": {
         "entry": ["index.ts!", "{}/index.ts!"]
+      },
+      "accounts": {
+        "entry": ["index.ts!", "{accounts}/index.ts!", "{}/index.ts!"]
       }
     }
   },
