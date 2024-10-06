@@ -34,7 +34,8 @@
     "@noble/curves": "^1.6.0",
     "@scure/bip32": "^1.5.0",
     "@scure/bip39": "^1.4.0",
-    "abitype": "^1.0.6"
+    "abitype": "^1.0.6",
+    "ox": "0.0.0-canary-20241006052626"
   },
   "license": "WTFPL",
   "repository": "dalechyn/hubbie",

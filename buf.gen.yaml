@@ -1,0 +1,14 @@
+version: v2
+clean: true
+inputs:
+  # Git repository
+  - git_repo: https://github.com/farcasterxyz/hub-monorepo
+    branch: main
+    subdir: protobufs/schemas
+    depth: 30
+plugins:
+   - local: protoc-gen-es
+     opt:
+     - target=ts
+     - import_extension=js
+     out: src/protobufs/generated

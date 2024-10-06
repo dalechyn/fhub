@@ -1,0 +1,3 @@
+[submodule "submodules/hub-monorepo"]
+	path = submodules/hub-monorepo
+	url = https://github.com/farcasterxyz/hub-monorepo
