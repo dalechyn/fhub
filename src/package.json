@@ -20,6 +20,16 @@
       "import": "./_esm/accounts/index.js",
       "default": "./_cjs/accounts/index.js"
     },
+    "./clients": {
+      "types": "./_types/clients/index.d.ts",
+      "import": "./_esm/clients/index.js",
+      "default": "./_cjs/clients/index.js"
+    },
+    "./clients/transports": {
+      "types": "./_types/clients/transports/index.d.ts",
+      "import": "./_esm/clients/transports/index.js",
+      "default": "./_cjs/clients/transports/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -31,10 +41,10 @@
     }
   },
   "dependencies": {
-    "@noble/curves": "^1.6.0",
-    "@scure/bip32": "^1.5.0",
-    "@scure/bip39": "^1.4.0",
-    "abitype": "^1.0.6",
+    "@bufbuild/protobuf": "^2.1.0",
+    "@connectrpc/connect": "beta",
+    "@connectrpc/connect-node": "beta",
+    "@connectrpc/connect-web": "beta",
     "ox": "0.0.0-canary-20241006052626"
   },
   "license": "WTFPL",

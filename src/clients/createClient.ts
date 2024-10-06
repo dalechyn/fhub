@@ -1,30 +1,21 @@
+import {
+  type Transport,
+  type Client as connectRpc_Client,
+  createClient as connectRpc_createClient,
+} from '@connectrpc/connect'
 import type { ErrorType } from '../errors/utils.js'
-import type {
-  EIP1193RequestFn,
-  EIP1474Methods,
-  RpcSchema,
-} from '../types/eip1193.js'
+import { HubService } from '../protobufs/rpc_pb.js'
 import type { ExactPartial, Prettify } from '../types/utils.js'
 import { uid } from '../utils/uid.js'
 import type { PublicActions } from './decorators/public.js'
 
 export type ClientConfig = {
-  /**
-   * Time (in ms) that cached data will remain in memory.
-   * @default 4_000
-   */
-  cacheTime?: number | undefined
   /** A key for the client. */
   key?: string | undefined
   /** A name for the client. */
   name?: string | undefined
-  /**
-   * Frequency (in ms) for polling enabled actions & events.
-   * @default 4_000
-   */
-  pollingInterval?: number | undefined
-  /** The RPC transport */
-  transport: null
+  /** The gRPC transport */
+  transport: Transport
   /** The type of client. */
   type?: string | undefined
 }
@@ -33,7 +24,7 @@ export type ClientConfig = {
 // They are allowed to be extended, but must conform to their parameter & return type interfaces.
 // Example: an extended `call` action must accept `CallParameters` as parameters,
 // and conform to the `CallReturnType` return type.
-type ExtendableProtectedActions = Pick<PublicActions, ''>
+type ExtendableProtectedActions = Pick<PublicActions, 'getCast'>
 
 export type Client<
   extended extends Extended | undefined = Extended | undefined,
@@ -49,20 +40,13 @@ export type Client<
   }
 
 type Client_Base = {
-  /** Time (in ms) that cached data will remain in memory. */
-  cacheTime: number
   /** A key for the client. */
   key: string
   /** A name for the client. */
   name: string
-  /** Frequency (in ms) for polling enabled actions & events. Defaults to 4_000 milliseconds. */
-  pollingInterval: number
-  /** Request function wrapped with friendly error handling */
-  request: EIP1193RequestFn<
-    rpcSchema extends undefined ? EIP1474Methods : rpcSchema
-  >
-  /** The RPC transport */
-  transport: null
+  connectRpcClient: connectRpc_Client<typeof HubService>
+  /** The gRPC transport */
+  transport: Transport
   /** The type of client. */
   type: string
   /** A unique ID for the client. */
@@ -89,24 +73,17 @@ export function createClient(parameters: ClientConfig): Prettify<Client>
 
 export function createClient(parameters: ClientConfig): Client {
   const {
-    cacheTime = parameters.pollingInterval ?? 4_000,
     key = 'base',
     name = 'Base Client',
-    pollingInterval = 4_000,
     type = 'base',
+    transport,
   } = parameters
 
-  const { config, request, value } = parameters.transport({
-    pollingInterval,
-  })
-  const transport = { ...config, ...value }
-
+  const connectRpcClient = connectRpc_createClient(HubService, transport)
   const client = {
-    cacheTime,
     key,
     name,
-    pollingInterval,
-    request,
+    connectRpcClient,
     transport,
     type,
     uid: uid(),

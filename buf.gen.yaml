@@ -11,4 +11,5 @@ plugins:
      opt:
      - target=ts
      - import_extension=js
-     out: src/protobufs/generated
+     - json_types=true
+     out: src/protobufs

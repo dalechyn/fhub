@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node --import tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hubbie": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1"
+  }
+}
