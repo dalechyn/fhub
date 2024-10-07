@@ -57,6 +57,12 @@
       },
       "accounts": {
         "entry": ["index.ts!", "{accounts}/index.ts!", "{}/index.ts!"]
+      },
+      "actions": {
+        "entry": ["index.ts!", "{accounts}/index.ts!", "{}/index.ts!"]
+      },
+      "clients": {
+        "entry": ["index.ts!", "{clients}/index.ts!", "{}/index.ts!"]
       }
     }
   },

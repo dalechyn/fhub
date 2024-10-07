@@ -1,14 +1,16 @@
-import { createPublicClient } from 'hubbie/clients'
-import { grpcNode } from 'hubbie/clients/transports'
+import { Actions, Client, Transport } from 'hubbie'
 
-const publicClient = createPublicClient({
-  transport: grpcNode({
+const client = Client.create(
+  Transport.grpcNode({
     baseUrl: 'https://nemes.farcaster.xyz:2283',
     httpVersion: '2',
   }),
-})
+)
 
-publicClient
-  // the params are weird
-  .getCastsByFid({ fid: '3', pageSize: 4, reverse: true, pageToken: '' })
-  .then((res) => console.log(res.messages?.map((message) => message.data)))
+// the params are weird
+Actions.Cast.getCastsByFid(client, {
+  fid: '3',
+  pageSize: 4,
+  reverse: true,
+  pageToken: '',
+}).then((res) => console.log(res.messages?.map((message) => message.data)))

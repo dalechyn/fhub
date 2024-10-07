@@ -1,6 +1,0 @@
-{
-  "type": "module",
-  "types": "../../_types/clients/transports/index.d.ts",
-  "module": "../../_esm/clients/transports/index.js",
-  "main": "../../_cjs/clients/transports/index.js"
-}

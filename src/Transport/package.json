@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "types": "../../_types/Transport.d.ts",
+  "module": "../../_esm/Transport.js",
+  "main": "../../_cjs/Transport.js"
+}
