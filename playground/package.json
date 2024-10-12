@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "hubbie": "workspace:*"
+    "fhub": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.7.1"

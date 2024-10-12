@@ -41,7 +41,7 @@ importers:
 
   playground:
     dependencies:
-      hubbie:
+      fhub:
         specifier: workspace:*
         version: link:../src
     devDependencies:

@@ -1,4 +1,4 @@
-import { Actions, Client, Transport } from 'hubbie'
+import { Actions, Client, Transport } from 'fhub'
 
 const client = Client.create(
   Transport.grpcNode({
@@ -7,10 +7,12 @@ const client = Client.create(
   }),
 )
 
-// the params are weird
+// Actions.Cast.getCast(client, {
+//   fid: 3621n,
+//   hash: '880700eca6c454facaa9bd05ef15fa0b6996a0d2' as any,
+// }).then((res) => console.log(res))
+
 Actions.Cast.getCastsByFid(client, {
-  fid: '3',
-  pageSize: 4,
-  reverse: true,
-  pageToken: '',
-}).then((res) => console.log(res.messages?.map((message) => message.data)))
+  fid: 3n,
+  pageSize: 2,
+}).then((res) => console.dir(res, { depth: null }))
