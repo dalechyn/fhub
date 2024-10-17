@@ -1,12 +1,9 @@
 import { Hex } from 'ox'
+import { Embed_fromMessage } from '../Embed/fromMessage.js'
 import type { GlobalErrorType } from '../Errors/error.js'
+import { Parent_fromMessage } from '../Parent/fromMessage.js'
 import { CastType, type Message, MessageType } from '../Protobufs/message_pb.js'
-import {
-  Cast_InvalidEmbedTypeError,
-  Cast_InvalidMessageError,
-  Cast_InvalidMessageTypeError,
-  Cast_InvalidParentTypeError,
-} from './errors.js'
+import { Cast_InvalidMessageTypeError } from './errors.js'
 import type { Cast } from './types.js'
 
 export function Cast_fromMessage(
@@ -28,10 +25,7 @@ export function Cast_fromMessage(
     message.data.type !== MessageType.CAST_ADD ||
     message.data.body.case !== 'castAddBody'
   )
-    throw new Cast_InvalidMessageError({
-      hash,
-      cause: new Cast_InvalidMessageTypeError({ hash }),
-    })
+    throw new Cast_InvalidMessageTypeError({ hash })
 
   const isLong = message.data.body.value.type === CastType.LONG_CAST
   const mentions = (() => {
@@ -48,38 +42,9 @@ export function Cast_fromMessage(
 
   const embeds = (() => {
     if (message.data.body.value.embeds.length === 0) return undefined
-    message.data.body.value.embeds.map(({ embed }) => {
-      if (embed.case === 'url')
-        return { type: 'url', url: embed.value } as const
-      if (embed.case === 'castId')
-        return {
-          type: 'cast',
-          fid: embed.value.fid,
-          hash: Hex.fromBytes(embed.value.hash),
-        } as const
-      throw new Cast_InvalidMessageError({
-        hash,
-        cause: new Cast_InvalidEmbedTypeError({ hash }),
-      })
-    })
+    message.data.body.value.embeds.map(({ embed }) => Embed_fromMessage(embed))
   })()
-  const parent = (() => {
-    if (typeof message.data.body.value.parent.case === 'undefined')
-      return undefined
-    if (message.data.body.value.parent.case === 'parentUrl')
-      return { type: 'url', url: message.data.body.value.parent.value } as const
-    if (message.data.body.value.parent.case === 'parentCastId')
-      return {
-        type: 'cast',
-        fid: message.data.body.value.parent.value.fid,
-        hash: Hex.fromBytes(message.data.body.value.parent.value.hash),
-      } as const
-
-    throw new Cast_InvalidMessageError({
-      hash,
-      cause: new Cast_InvalidParentTypeError({ hash }),
-    })
-  })()
+  const parent = Parent_fromMessage(message.data.body.value.parent)
 
   return {
     hash,
@@ -107,10 +72,11 @@ export declare namespace Cast_fromMessage {
   type ReturnType = Cast
 
   type ErrorType =
-    | Cast_InvalidMessageError<
-        | Cast_InvalidMessageTypeError
-        | Cast_InvalidEmbedTypeError
-        | Cast_InvalidParentTypeError
-      >
+    | Cast_InvalidMessageTypeError
+    | Embed_fromMessage.ErrorType
+    | Parent_fromMessage.ErrorType
     | GlobalErrorType
 }
+
+Cast_fromMessage.parseError = (error: unknown) =>
+  error as Cast_fromMessage.ErrorType

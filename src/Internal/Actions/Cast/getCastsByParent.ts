@@ -4,6 +4,7 @@ import { Cast_fromMessage } from '../../Cast/fromMessage.js'
 import type { Cast, Parent } from '../../Cast/types.js'
 import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
+import { Parent_toMessage } from '../../Parent/toMessage.js'
 
 export declare namespace Actions_Cast_GetCastsByParent {
   type ReturnType = {
@@ -11,7 +12,10 @@ export declare namespace Actions_Cast_GetCastsByParent {
     nextPageToken: Types.Hex | undefined
   }
   // @TODO: proper error handling
-  type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
+  type ErrorType =
+    | Cast_fromMessage.ErrorType
+    | Parent_toMessage.ErrorType
+    | GlobalErrorType
 }
 export async function Actions_Cast_getCastsByParent(
   client: Client,
@@ -25,9 +29,7 @@ export async function Actions_Cast_getCastsByParent(
 ): Promise<Actions_Cast_GetCastsByParent.ReturnType> {
   const message = await client.connectRpcClient.getCastsByParent(
     {
-      // TODO: Parent_from method and to. shit is complex...
-      // This obv won't work now
-      parent: parameters.parent as any,
+      parent: Parent_toMessage(parameters.parent),
       ...(parameters.pageSize ? { pageSize: parameters.pageSize } : {}),
       ...(parameters.pageToken
         ? { pageToken: Hex.toBytes(parameters.pageToken) }
