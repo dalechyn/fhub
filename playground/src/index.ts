@@ -16,3 +16,6 @@ Actions.Cast.getCastsByFid(client, {
   fid: 3n,
   pageSize: 2,
 }).then((res) => console.dir(res, { depth: null }))
+
+const myBio = await Actions.UserData.getUserDataBio(client, { fid: 11517n })
+console.log(myBio)

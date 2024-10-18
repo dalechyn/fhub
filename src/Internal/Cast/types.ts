@@ -1,5 +1,5 @@
 import type { Types } from 'ox'
-import type { HashScheme, SignatureScheme } from '../Protobufs/message_pb.js'
+import type { Common } from '../Common/types.js'
 
 export type CastId = {
   fid: bigint
@@ -22,13 +22,7 @@ export type Parent =
       url: string
     }
 
-export type Cast = {
-  hash: Types.Hex
-  signer: Types.Hex
-  signature: Types.Hex
-  hashScheme: HashScheme
-  signatureScheme: SignatureScheme
-  dataBytes: Types.Hex | undefined
+export type Cast = Common & {
   authorFid: bigint
   timestamp: number
   /** @deprecated Depcrecated by Farcaster. Use `embeds`. */
