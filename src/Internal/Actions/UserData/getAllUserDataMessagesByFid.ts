@@ -1,28 +1,37 @@
-import { type MessageJsonType, fromJson, toJson } from '@bufbuild/protobuf'
 import type { CallOptions } from '@connectrpc/connect'
+import { Hex, type Types } from 'ox'
 import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
-import {
-  type FidTimestampRequestJson,
-  FidTimestampRequestSchema,
-  MessagesResponseSchema,
-} from '../../Protobufs/request_response_pb.js'
+import { UserData_fromMessage } from '../../UserData/fromMessage.js'
+import type { UserData } from '../../UserData/types.js'
 
 export declare namespace Actions_UserData_GetAllUserDataMessagesByFid {
-  type ReturnType = MessageJsonType<typeof MessagesResponseSchema>
+  type ReturnType = UserData[]
   // @TODO: proper error handling
-  type ErrorType = GlobalErrorType
+  type ErrorType = UserData_fromMessage.ErrorType | GlobalErrorType
 }
 export async function Actions_UserData_getAllUserDataMessagesByFid(
   client: Client,
-  parameters: Required<FidTimestampRequestJson>,
+  parameters: {
+    fid: bigint
+    pageSize?: number | undefined
+    pageToken?: Types.Hex | undefined
+    reverse?: boolean | undefined
+  },
   options?: CallOptions,
 ): Promise<Actions_UserData_GetAllUserDataMessagesByFid.ReturnType> {
   const message = await client.connectRpcClient.getAllUserDataMessagesByFid(
-    fromJson(FidTimestampRequestSchema, parameters),
+    {
+      fid: parameters.fid,
+      ...(parameters.pageSize ? { pageSize: parameters.pageSize } : {}),
+      ...(parameters.pageToken
+        ? { pageToken: Hex.toBytes(parameters.pageToken) }
+        : {}),
+      ...(parameters.reverse ? { reverse: parameters.reverse } : {}),
+    },
     options,
   )
-  return toJson(MessagesResponseSchema, message)
+  return message.messages.map(UserData_fromMessage)
 }
 
 Actions_UserData_getAllUserDataMessagesByFid.parseError = (error: unknown) =>

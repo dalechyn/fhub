@@ -10,7 +10,6 @@ export declare namespace Actions_Cast_GetCastsByFid {
     casts: Cast[]
     nextPageToken: Types.Hex | undefined
   }
-  // @TODO: proper error handling
   type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
 }
 export async function Actions_Cast_getCastsByFid(
@@ -20,6 +19,8 @@ export async function Actions_Cast_getCastsByFid(
     pageSize?: number | undefined
     pageToken?: Types.Hex | undefined
     reverse?: boolean | undefined
+    startTimestamp?: bigint
+    stopTimestamp?: bigint
   },
   options?: CallOptions,
 ): Promise<Actions_Cast_GetCastsByFid.ReturnType> {
@@ -31,6 +32,12 @@ export async function Actions_Cast_getCastsByFid(
         ? { pageToken: Hex.toBytes(parameters.pageToken) }
         : {}),
       ...(parameters.reverse ? { reverse: parameters.reverse } : {}),
+      ...(parameters.startTimestamp
+        ? { startTimestamp: parameters.startTimestamp }
+        : {}),
+      ...(parameters.stopTimestamp
+        ? { stopTimestamp: parameters.stopTimestamp }
+        : {}),
     },
     options,
   )

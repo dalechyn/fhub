@@ -12,10 +12,13 @@ const client = Client.create(
 //   hash: '880700eca6c454facaa9bd05ef15fa0b6996a0d2' as any,
 // }).then((res) => console.log(res))
 
-Actions.Cast.getCastsByFid(client, {
+const casts = await Actions.Cast.getCastsByFid(client, {
   fid: 3n,
   pageSize: 2,
-}).then((res) => console.dir(res, { depth: null }))
+})
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+console.log(casts)
 
 const myBio = await Actions.UserData.getUserDataBio(client, { fid: 11517n })
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 console.log(myBio)

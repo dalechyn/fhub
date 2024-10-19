@@ -10,7 +10,6 @@ export declare namespace Actions_Cast_GetCastsByMention {
     casts: Cast[]
     nextPageToken: Types.Hex | undefined
   }
-  // @TODO: proper error handling
   type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
 }
 export async function Actions_Cast_getCastsByMention(

@@ -7,7 +7,6 @@ import type { GlobalErrorType } from '../../Errors/error.js'
 
 export declare namespace Actions_Cast_GetCast {
   type ReturnType = Cast
-  // @TODO: proper error handling
   type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
 }
 export async function Actions_Cast_getCast(

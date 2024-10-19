@@ -8,7 +8,7 @@ import {
 } from './getUserData.js'
 
 export declare namespace Actions_UserData_GetUserDataBio {
-  type ReturnType = Actions_UserData_GetUserData.ReturnType
+  type ReturnType = Actions_UserData_GetUserData.ReturnType['value']
   // @TODO: proper error handling
   type ErrorType = Actions_UserData_GetUserData.ErrorType | GlobalErrorType
 }
@@ -18,7 +18,7 @@ export async function Actions_UserData_getUserDataBio(
   parameters: { fid: bigint },
   options?: CallOptions,
 ): Promise<Actions_UserData_GetUserDataBio.ReturnType> {
-  return Actions_UserData_getUserData(
+  const data = await Actions_UserData_getUserData(
     client,
     {
       ...parameters,
@@ -26,6 +26,7 @@ export async function Actions_UserData_getUserDataBio(
     },
     options,
   )
+  return data.value
 }
 
 Actions_UserData_getUserDataBio.parseError = (error: unknown) =>

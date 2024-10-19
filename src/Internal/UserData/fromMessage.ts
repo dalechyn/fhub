@@ -1,34 +1,41 @@
+import { Hex } from 'ox'
 import type { GlobalErrorType } from '../Errors/error.js'
 import {
   type Message,
   MessageType,
   UserDataType,
 } from '../Protobufs/message_pb.js'
+import { UserData_InvalidMessageTypeError } from './errors.js'
 import type { UserData } from './types.js'
 
 export function UserData_fromMessage(
   message: Message,
 ): UserData_fromMessage.ReturnType {
   // @TODO: error here
-  if (!message.data) throw new Error('')
-  // @TODO: error here
   if (
-    message.data.type !== MessageType.USER_DATA_ADD ||
-    message.data.body.case !== 'userDataBody'
+    message.data?.type !== MessageType.USER_DATA_ADD ||
+    message.data?.body.case !== 'userDataBody'
   )
-    throw new Error('')
+    throw new UserData_InvalidMessageTypeError({
+      hash: Hex.fromBytes(message.hash),
+    })
   const type = (() => {
     if (message.data.body.value.type === UserDataType.PFP) {
       return 'pfp'
-    } else if (message.data.body.value.type === UserDataType.BIO) {
+    }
+    if (message.data.body.value.type === UserDataType.BIO) {
       return 'bio'
-    } else if (message.data.body.value.type === UserDataType.DISPLAY) {
+    }
+    if (message.data.body.value.type === UserDataType.DISPLAY) {
       return 'display'
-    } else if (message.data.body.value.type === UserDataType.URL) {
+    }
+    if (message.data.body.value.type === UserDataType.URL) {
       return 'url'
-    } else if (message.data.body.value.type === UserDataType.USERNAME) {
+    }
+    if (message.data.body.value.type === UserDataType.USERNAME) {
       return 'username'
-    } else if (message.data.body.value.type === UserDataType.LOCATION) {
+    }
+    if (message.data.body.value.type === UserDataType.LOCATION) {
       return 'location'
     }
     return 'none'
@@ -40,7 +47,7 @@ export function UserData_fromMessage(
 export declare namespace UserData_fromMessage {
   type ReturnType = UserData
 
-  type ErrorType = GlobalErrorType
+  type ErrorType = UserData_InvalidMessageTypeError | GlobalErrorType
 }
 
 UserData_fromMessage.parseError = (error: unknown) =>

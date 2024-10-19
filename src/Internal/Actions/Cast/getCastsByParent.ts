@@ -11,7 +11,6 @@ export declare namespace Actions_Cast_GetCastsByParent {
     casts: Cast[]
     nextPageToken: Types.Hex | undefined
   }
-  // @TODO: proper error handling
   type ErrorType =
     | Cast_fromMessage.ErrorType
     | Parent_toMessage.ErrorType
