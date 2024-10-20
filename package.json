@@ -32,6 +32,7 @@
     "@types/bun": "latest",
     "@types/node": "^22.7.4",
     "buf": "^0.1.1",
+    "knip": "^5.33.3",
     "publint": "^0.2.11",
     "sherif": "^1.0.1",
     "simple-git-hooks": "^2.11.1",
@@ -48,24 +49,47 @@
     "pre-commit": "pnpm lint"
   },
   "knip": {
-    "ignore": [".github/**"],
-    "ignoreDependencies": ["bun", "@size-limit/preset-big-lib"],
-    "ignoreWorkspaces": ["examples/**", "test"],
+    "ignore": [
+      ".github/**"
+    ],
+    "ignoreDependencies": [
+      "bun",
+      "@size-limit/preset-big-lib"
+    ],
+    "ignoreWorkspaces": [
+      "examples/**",
+      "test"
+    ],
     "workspaces": {
       ".": {
         "project": "scripts/*.ts"
       },
       "src": {
-        "entry": ["index.ts!", "{}/index.ts!"]
+        "entry": [
+          "index.ts!",
+          "{}/index.ts!"
+        ]
       },
       "accounts": {
-        "entry": ["index.ts!", "{accounts}/index.ts!", "{}/index.ts!"]
+        "entry": [
+          "index.ts!",
+          "{accounts}/index.ts!",
+          "{}/index.ts!"
+        ]
       },
       "actions": {
-        "entry": ["index.ts!", "{accounts}/index.ts!", "{}/index.ts!"]
+        "entry": [
+          "index.ts!",
+          "{accounts}/index.ts!",
+          "{}/index.ts!"
+        ]
       },
       "clients": {
-        "entry": ["index.ts!", "{clients}/index.ts!", "{}/index.ts!"]
+        "entry": [
+          "index.ts!",
+          "{clients}/index.ts!",
+          "{}/index.ts!"
+        ]
       }
     }
   },
