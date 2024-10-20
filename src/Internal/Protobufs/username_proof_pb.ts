@@ -2,50 +2,53 @@
 // @generated from file username_proof.proto (syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Message } from "@bufbuild/protobuf";
+import type { Message } from '@bufbuild/protobuf'
+import type { GenEnum, GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1'
+import { enumDesc, fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1'
 
 /**
  * Describes the file username_proof.proto.
  */
-export const file_username_proof: GenFile = /*@__PURE__*/
-  fileDesc("ChR1c2VybmFtZV9wcm9vZi5wcm90byJ8Cg1Vc2VyTmFtZVByb29mEhEKCXRpbWVzdGFtcBgBIAEoBBIMCgRuYW1lGAIgASgMEg0KBW93bmVyGAMgASgMEhEKCXNpZ25hdHVyZRgEIAEoDBILCgNmaWQYBSABKAQSGwoEdHlwZRgGIAEoDjINLlVzZXJOYW1lVHlwZSpZCgxVc2VyTmFtZVR5cGUSFgoSVVNFUk5BTUVfVFlQRV9OT05FEAASFwoTVVNFUk5BTUVfVFlQRV9GTkFNRRABEhgKFFVTRVJOQU1FX1RZUEVfRU5TX0wxEAJiBnByb3RvMw");
+export const file_username_proof: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    'ChR1c2VybmFtZV9wcm9vZi5wcm90byJ8Cg1Vc2VyTmFtZVByb29mEhEKCXRpbWVzdGFtcBgBIAEoBBIMCgRuYW1lGAIgASgMEg0KBW93bmVyGAMgASgMEhEKCXNpZ25hdHVyZRgEIAEoDBILCgNmaWQYBSABKAQSGwoEdHlwZRgGIAEoDjINLlVzZXJOYW1lVHlwZSpZCgxVc2VyTmFtZVR5cGUSFgoSVVNFUk5BTUVfVFlQRV9OT05FEAASFwoTVVNFUk5BTUVfVFlQRV9GTkFNRRABEhgKFFVTRVJOQU1FX1RZUEVfRU5TX0wxEAJiBnByb3RvMw',
+  )
 
 /**
  * @generated from message UserNameProof
  */
-export type UserNameProof = Message<"UserNameProof"> & {
+export type UserNameProof = Message<'UserNameProof'> & {
   /**
    * @generated from field: uint64 timestamp = 1;
    */
-  timestamp: bigint;
+  timestamp: bigint
 
   /**
    * @generated from field: bytes name = 2;
    */
-  name: Uint8Array;
+  name: Uint8Array
 
   /**
    * @generated from field: bytes owner = 3;
    */
-  owner: Uint8Array;
+  owner: Uint8Array
 
   /**
    * @generated from field: bytes signature = 4;
    */
-  signature: Uint8Array;
+  signature: Uint8Array
 
   /**
    * @generated from field: uint64 fid = 5;
    */
-  fid: bigint;
+  fid: bigint
 
   /**
    * @generated from field: UserNameType type = 6;
    */
-  type: UserNameType;
-};
+  type: UserNameType
+}
 
 /**
  * @generated from message UserNameProof
@@ -54,40 +57,41 @@ export type UserNameProofJson = {
   /**
    * @generated from field: uint64 timestamp = 1;
    */
-  timestamp?: string;
+  timestamp?: string
 
   /**
    * @generated from field: bytes name = 2;
    */
-  name?: string;
+  name?: string
 
   /**
    * @generated from field: bytes owner = 3;
    */
-  owner?: string;
+  owner?: string
 
   /**
    * @generated from field: bytes signature = 4;
    */
-  signature?: string;
+  signature?: string
 
   /**
    * @generated from field: uint64 fid = 5;
    */
-  fid?: string;
+  fid?: string
 
   /**
    * @generated from field: UserNameType type = 6;
    */
-  type?: UserNameTypeJson;
-};
+  type?: UserNameTypeJson
+}
 
 /**
  * Describes the message UserNameProof.
  * Use `create(UserNameProofSchema)` to create a new message.
  */
-export const UserNameProofSchema: GenMessage<UserNameProof, UserNameProofJson> = /*@__PURE__*/
-  messageDesc(file_username_proof, 0);
+export const UserNameProofSchema: GenMessage<UserNameProof, UserNameProofJson> =
+  /*@__PURE__*/
+  messageDesc(file_username_proof, 0)
 
 /**
  * @generated from enum UserNameType
@@ -112,11 +116,14 @@ export enum UserNameType {
 /**
  * @generated from enum UserNameType
  */
-export type UserNameTypeJson = "USERNAME_TYPE_NONE" | "USERNAME_TYPE_FNAME" | "USERNAME_TYPE_ENS_L1";
+export type UserNameTypeJson =
+  | 'USERNAME_TYPE_NONE'
+  | 'USERNAME_TYPE_FNAME'
+  | 'USERNAME_TYPE_ENS_L1'
 
 /**
  * Describes the enum UserNameType.
  */
-export const UserNameTypeSchema: GenEnum<UserNameType, UserNameTypeJson> = /*@__PURE__*/
-  enumDesc(file_username_proof, 0);
-
+export const UserNameTypeSchema: GenEnum<UserNameType, UserNameTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_username_proof, 0)

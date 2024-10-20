@@ -2,40 +2,43 @@
 // @generated from file sync_trie.proto (syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Message } from "@bufbuild/protobuf";
+import type { Message } from '@bufbuild/protobuf'
+import type { GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1'
+import { fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1'
 
 /**
  * Describes the file sync_trie.proto.
  */
-export const file_sync_trie: GenFile = /*@__PURE__*/
-  fileDesc("Cg9zeW5jX3RyaWUucHJvdG8iSgoKRGJUcmllTm9kZRILCgNrZXkYASABKAwSEgoKY2hpbGRDaGFycxgCIAMoDRINCgVpdGVtcxgDIAEoDRIMCgRoYXNoGAQgASgMYgZwcm90bzM");
+export const file_sync_trie: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    'Cg9zeW5jX3RyaWUucHJvdG8iSgoKRGJUcmllTm9kZRILCgNrZXkYASABKAwSEgoKY2hpbGRDaGFycxgCIAMoDRINCgVpdGVtcxgDIAEoDRIMCgRoYXNoGAQgASgMYgZwcm90bzM',
+  )
 
 /**
  * @generated from message DbTrieNode
  */
-export type DbTrieNode = Message<"DbTrieNode"> & {
+export type DbTrieNode = Message<'DbTrieNode'> & {
   /**
    * @generated from field: bytes key = 1;
    */
-  key: Uint8Array;
+  key: Uint8Array
 
   /**
    * @generated from field: repeated uint32 childChars = 2;
    */
-  childChars: number[];
+  childChars: number[]
 
   /**
    * @generated from field: uint32 items = 3;
    */
-  items: number;
+  items: number
 
   /**
    * @generated from field: bytes hash = 4;
    */
-  hash: Uint8Array;
-};
+  hash: Uint8Array
+}
 
 /**
  * @generated from message DbTrieNode
@@ -44,28 +47,28 @@ export type DbTrieNodeJson = {
   /**
    * @generated from field: bytes key = 1;
    */
-  key?: string;
+  key?: string
 
   /**
    * @generated from field: repeated uint32 childChars = 2;
    */
-  childChars?: number[];
+  childChars?: number[]
 
   /**
    * @generated from field: uint32 items = 3;
    */
-  items?: number;
+  items?: number
 
   /**
    * @generated from field: bytes hash = 4;
    */
-  hash?: string;
-};
+  hash?: string
+}
 
 /**
  * Describes the message DbTrieNode.
  * Use `create(DbTrieNodeSchema)` to create a new message.
  */
-export const DbTrieNodeSchema: GenMessage<DbTrieNode, DbTrieNodeJson> = /*@__PURE__*/
-  messageDesc(file_sync_trie, 0);
-
+export const DbTrieNodeSchema: GenMessage<DbTrieNode, DbTrieNodeJson> =
+  /*@__PURE__*/
+  messageDesc(file_sync_trie, 0)

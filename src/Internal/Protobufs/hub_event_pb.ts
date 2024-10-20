@@ -2,36 +2,40 @@
 // @generated from file hub_event.proto (syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Message as Message$1, MessageJson } from "./message_pb.js";
-import { file_message } from "./message_pb.js";
-import type { OnChainEvent, OnChainEventJson } from "./onchain_event_pb.js";
-import { file_onchain_event } from "./onchain_event_pb.js";
-import type { UserNameProof, UserNameProofJson } from "./username_proof_pb.js";
-import { file_username_proof } from "./username_proof_pb.js";
-import type { Message } from "@bufbuild/protobuf";
+import type { Message } from '@bufbuild/protobuf'
+import type { GenEnum, GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1'
+import { enumDesc, fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1'
+import type { Message as Message$1, MessageJson } from './message_pb.js'
+import { file_message } from './message_pb.js'
+import type { OnChainEvent, OnChainEventJson } from './onchain_event_pb.js'
+import { file_onchain_event } from './onchain_event_pb.js'
+import type { UserNameProof, UserNameProofJson } from './username_proof_pb.js'
+import { file_username_proof } from './username_proof_pb.js'
 
 /**
  * Describes the file hub_event.proto.
  */
-export const file_hub_event: GenFile = /*@__PURE__*/
-  fileDesc("Cg9odWJfZXZlbnQucHJvdG8iUQoQTWVyZ2VNZXNzYWdlQm9keRIZCgdtZXNzYWdlGAEgASgLMgguTWVzc2FnZRIiChBkZWxldGVkX21lc3NhZ2VzGAIgAygLMgguTWVzc2FnZSItChBQcnVuZU1lc3NhZ2VCb2R5EhkKB21lc3NhZ2UYASABKAsyCC5NZXNzYWdlIi4KEVJldm9rZU1lc3NhZ2VCb2R5EhkKB21lc3NhZ2UYASABKAsyCC5NZXNzYWdlIj4KFU1lcmdlT25DaGFpbkV2ZW50Qm9keRIlCg5vbl9jaGFpbl9ldmVudBgBIAEoCzINLk9uQ2hhaW5FdmVudCLMAQoWTWVyZ2VVc2VyTmFtZVByb29mQm9keRImCg51c2VybmFtZV9wcm9vZhgBIAEoCzIOLlVzZXJOYW1lUHJvb2YSLgoWZGVsZXRlZF91c2VybmFtZV9wcm9vZhgCIAEoCzIOLlVzZXJOYW1lUHJvb2YSKAoWdXNlcm5hbWVfcHJvb2ZfbWVzc2FnZRgDIAEoCzIILk1lc3NhZ2USMAoeZGVsZXRlZF91c2VybmFtZV9wcm9vZl9tZXNzYWdlGAQgASgLMgguTWVzc2FnZSLLAgoISHViRXZlbnQSGwoEdHlwZRgBIAEoDjINLkh1YkV2ZW50VHlwZRIKCgJpZBgCIAEoBBIvChJtZXJnZV9tZXNzYWdlX2JvZHkYAyABKAsyES5NZXJnZU1lc3NhZ2VCb2R5SAASLwoScHJ1bmVfbWVzc2FnZV9ib2R5GAQgASgLMhEuUHJ1bmVNZXNzYWdlQm9keUgAEjEKE3Jldm9rZV9tZXNzYWdlX2JvZHkYBSABKAsyEi5SZXZva2VNZXNzYWdlQm9keUgAEjwKGW1lcmdlX3VzZXJuYW1lX3Byb29mX2JvZHkYCCABKAsyFy5NZXJnZVVzZXJOYW1lUHJvb2ZCb2R5SAASOwoZbWVyZ2Vfb25fY2hhaW5fZXZlbnRfYm9keRgLIAEoCzIWLk1lcmdlT25DaGFpbkV2ZW50Qm9keUgAQgYKBGJvZHkq4AEKDEh1YkV2ZW50VHlwZRIXChNIVUJfRVZFTlRfVFlQRV9OT05FEAASIAocSFVCX0VWRU5UX1RZUEVfTUVSR0VfTUVTU0FHRRABEiAKHEhVQl9FVkVOVF9UWVBFX1BSVU5FX01FU1NBR0UQAhIhCh1IVUJfRVZFTlRfVFlQRV9SRVZPS0VfTUVTU0FHRRADEicKI0hVQl9FVkVOVF9UWVBFX01FUkdFX1VTRVJOQU1FX1BST09GEAYSJwojSFVCX0VWRU5UX1RZUEVfTUVSR0VfT05fQ0hBSU5fRVZFTlQQCWIGcHJvdG8z", [file_message, file_onchain_event, file_username_proof]);
+export const file_hub_event: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    'Cg9odWJfZXZlbnQucHJvdG8iUQoQTWVyZ2VNZXNzYWdlQm9keRIZCgdtZXNzYWdlGAEgASgLMgguTWVzc2FnZRIiChBkZWxldGVkX21lc3NhZ2VzGAIgAygLMgguTWVzc2FnZSItChBQcnVuZU1lc3NhZ2VCb2R5EhkKB21lc3NhZ2UYASABKAsyCC5NZXNzYWdlIi4KEVJldm9rZU1lc3NhZ2VCb2R5EhkKB21lc3NhZ2UYASABKAsyCC5NZXNzYWdlIj4KFU1lcmdlT25DaGFpbkV2ZW50Qm9keRIlCg5vbl9jaGFpbl9ldmVudBgBIAEoCzINLk9uQ2hhaW5FdmVudCLMAQoWTWVyZ2VVc2VyTmFtZVByb29mQm9keRImCg51c2VybmFtZV9wcm9vZhgBIAEoCzIOLlVzZXJOYW1lUHJvb2YSLgoWZGVsZXRlZF91c2VybmFtZV9wcm9vZhgCIAEoCzIOLlVzZXJOYW1lUHJvb2YSKAoWdXNlcm5hbWVfcHJvb2ZfbWVzc2FnZRgDIAEoCzIILk1lc3NhZ2USMAoeZGVsZXRlZF91c2VybmFtZV9wcm9vZl9tZXNzYWdlGAQgASgLMgguTWVzc2FnZSLLAgoISHViRXZlbnQSGwoEdHlwZRgBIAEoDjINLkh1YkV2ZW50VHlwZRIKCgJpZBgCIAEoBBIvChJtZXJnZV9tZXNzYWdlX2JvZHkYAyABKAsyES5NZXJnZU1lc3NhZ2VCb2R5SAASLwoScHJ1bmVfbWVzc2FnZV9ib2R5GAQgASgLMhEuUHJ1bmVNZXNzYWdlQm9keUgAEjEKE3Jldm9rZV9tZXNzYWdlX2JvZHkYBSABKAsyEi5SZXZva2VNZXNzYWdlQm9keUgAEjwKGW1lcmdlX3VzZXJuYW1lX3Byb29mX2JvZHkYCCABKAsyFy5NZXJnZVVzZXJOYW1lUHJvb2ZCb2R5SAASOwoZbWVyZ2Vfb25fY2hhaW5fZXZlbnRfYm9keRgLIAEoCzIWLk1lcmdlT25DaGFpbkV2ZW50Qm9keUgAQgYKBGJvZHkq4AEKDEh1YkV2ZW50VHlwZRIXChNIVUJfRVZFTlRfVFlQRV9OT05FEAASIAocSFVCX0VWRU5UX1RZUEVfTUVSR0VfTUVTU0FHRRABEiAKHEhVQl9FVkVOVF9UWVBFX1BSVU5FX01FU1NBR0UQAhIhCh1IVUJfRVZFTlRfVFlQRV9SRVZPS0VfTUVTU0FHRRADEicKI0hVQl9FVkVOVF9UWVBFX01FUkdFX1VTRVJOQU1FX1BST09GEAYSJwojSFVCX0VWRU5UX1RZUEVfTUVSR0VfT05fQ0hBSU5fRVZFTlQQCWIGcHJvdG8z',
+    [file_message, file_onchain_event, file_username_proof],
+  )
 
 /**
  * @generated from message MergeMessageBody
  */
-export type MergeMessageBody = Message<"MergeMessageBody"> & {
+export type MergeMessageBody = Message<'MergeMessageBody'> & {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: Message$1;
+  message?: Message$1
 
   /**
    * @generated from field: repeated Message deleted_messages = 2;
    */
-  deletedMessages: Message$1[];
-};
+  deletedMessages: Message$1[]
+}
 
 /**
  * @generated from message MergeMessageBody
@@ -40,30 +44,32 @@ export type MergeMessageBodyJson = {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: MessageJson;
+  message?: MessageJson
 
   /**
    * @generated from field: repeated Message deleted_messages = 2;
    */
-  deletedMessages?: MessageJson[];
-};
+  deletedMessages?: MessageJson[]
+}
 
 /**
  * Describes the message MergeMessageBody.
  * Use `create(MergeMessageBodySchema)` to create a new message.
  */
-export const MergeMessageBodySchema: GenMessage<MergeMessageBody, MergeMessageBodyJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 0);
+export const MergeMessageBodySchema: GenMessage<
+  MergeMessageBody,
+  MergeMessageBodyJson
+> = /*@__PURE__*/ messageDesc(file_hub_event, 0)
 
 /**
  * @generated from message PruneMessageBody
  */
-export type PruneMessageBody = Message<"PruneMessageBody"> & {
+export type PruneMessageBody = Message<'PruneMessageBody'> & {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: Message$1;
-};
+  message?: Message$1
+}
 
 /**
  * @generated from message PruneMessageBody
@@ -72,25 +78,27 @@ export type PruneMessageBodyJson = {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: MessageJson;
-};
+  message?: MessageJson
+}
 
 /**
  * Describes the message PruneMessageBody.
  * Use `create(PruneMessageBodySchema)` to create a new message.
  */
-export const PruneMessageBodySchema: GenMessage<PruneMessageBody, PruneMessageBodyJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 1);
+export const PruneMessageBodySchema: GenMessage<
+  PruneMessageBody,
+  PruneMessageBodyJson
+> = /*@__PURE__*/ messageDesc(file_hub_event, 1)
 
 /**
  * @generated from message RevokeMessageBody
  */
-export type RevokeMessageBody = Message<"RevokeMessageBody"> & {
+export type RevokeMessageBody = Message<'RevokeMessageBody'> & {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: Message$1;
-};
+  message?: Message$1
+}
 
 /**
  * @generated from message RevokeMessageBody
@@ -99,25 +107,27 @@ export type RevokeMessageBodyJson = {
   /**
    * @generated from field: Message message = 1;
    */
-  message?: MessageJson;
-};
+  message?: MessageJson
+}
 
 /**
  * Describes the message RevokeMessageBody.
  * Use `create(RevokeMessageBodySchema)` to create a new message.
  */
-export const RevokeMessageBodySchema: GenMessage<RevokeMessageBody, RevokeMessageBodyJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 2);
+export const RevokeMessageBodySchema: GenMessage<
+  RevokeMessageBody,
+  RevokeMessageBodyJson
+> = /*@__PURE__*/ messageDesc(file_hub_event, 2)
 
 /**
  * @generated from message MergeOnChainEventBody
  */
-export type MergeOnChainEventBody = Message<"MergeOnChainEventBody"> & {
+export type MergeOnChainEventBody = Message<'MergeOnChainEventBody'> & {
   /**
    * @generated from field: OnChainEvent on_chain_event = 1;
    */
-  onChainEvent?: OnChainEvent;
-};
+  onChainEvent?: OnChainEvent
+}
 
 /**
  * @generated from message MergeOnChainEventBody
@@ -126,40 +136,42 @@ export type MergeOnChainEventBodyJson = {
   /**
    * @generated from field: OnChainEvent on_chain_event = 1;
    */
-  onChainEvent?: OnChainEventJson;
-};
+  onChainEvent?: OnChainEventJson
+}
 
 /**
  * Describes the message MergeOnChainEventBody.
  * Use `create(MergeOnChainEventBodySchema)` to create a new message.
  */
-export const MergeOnChainEventBodySchema: GenMessage<MergeOnChainEventBody, MergeOnChainEventBodyJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 3);
+export const MergeOnChainEventBodySchema: GenMessage<
+  MergeOnChainEventBody,
+  MergeOnChainEventBodyJson
+> = /*@__PURE__*/ messageDesc(file_hub_event, 3)
 
 /**
  * @generated from message MergeUserNameProofBody
  */
-export type MergeUserNameProofBody = Message<"MergeUserNameProofBody"> & {
+export type MergeUserNameProofBody = Message<'MergeUserNameProofBody'> & {
   /**
    * @generated from field: UserNameProof username_proof = 1;
    */
-  usernameProof?: UserNameProof;
+  usernameProof?: UserNameProof
 
   /**
    * @generated from field: UserNameProof deleted_username_proof = 2;
    */
-  deletedUsernameProof?: UserNameProof;
+  deletedUsernameProof?: UserNameProof
 
   /**
    * @generated from field: Message username_proof_message = 3;
    */
-  usernameProofMessage?: Message$1;
+  usernameProofMessage?: Message$1
 
   /**
    * @generated from field: Message deleted_username_proof_message = 4;
    */
-  deletedUsernameProofMessage?: Message$1;
-};
+  deletedUsernameProofMessage?: Message$1
+}
 
 /**
  * @generated from message MergeUserNameProofBody
@@ -168,88 +180,96 @@ export type MergeUserNameProofBodyJson = {
   /**
    * @generated from field: UserNameProof username_proof = 1;
    */
-  usernameProof?: UserNameProofJson;
+  usernameProof?: UserNameProofJson
 
   /**
    * @generated from field: UserNameProof deleted_username_proof = 2;
    */
-  deletedUsernameProof?: UserNameProofJson;
+  deletedUsernameProof?: UserNameProofJson
 
   /**
    * @generated from field: Message username_proof_message = 3;
    */
-  usernameProofMessage?: MessageJson;
+  usernameProofMessage?: MessageJson
 
   /**
    * @generated from field: Message deleted_username_proof_message = 4;
    */
-  deletedUsernameProofMessage?: MessageJson;
-};
+  deletedUsernameProofMessage?: MessageJson
+}
 
 /**
  * Describes the message MergeUserNameProofBody.
  * Use `create(MergeUserNameProofBodySchema)` to create a new message.
  */
-export const MergeUserNameProofBodySchema: GenMessage<MergeUserNameProofBody, MergeUserNameProofBodyJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 4);
+export const MergeUserNameProofBodySchema: GenMessage<
+  MergeUserNameProofBody,
+  MergeUserNameProofBodyJson
+> = /*@__PURE__*/ messageDesc(file_hub_event, 4)
 
 /**
  * @generated from message HubEvent
  */
-export type HubEvent = Message<"HubEvent"> & {
+export type HubEvent = Message<'HubEvent'> & {
   /**
    * @generated from field: HubEventType type = 1;
    */
-  type: HubEventType;
+  type: HubEventType
 
   /**
    * @generated from field: uint64 id = 2;
    */
-  id: bigint;
+  id: bigint
 
   /**
    * @generated from oneof HubEvent.body
    */
-  body: {
-    /**
-     * @generated from field: MergeMessageBody merge_message_body = 3;
-     */
-    value: MergeMessageBody;
-    case: "mergeMessageBody";
-  } | {
-    /**
-     * @generated from field: PruneMessageBody prune_message_body = 4;
-     */
-    value: PruneMessageBody;
-    case: "pruneMessageBody";
-  } | {
-    /**
-     * @generated from field: RevokeMessageBody revoke_message_body = 5;
-     */
-    value: RevokeMessageBody;
-    case: "revokeMessageBody";
-  } | {
-    /**
-     *    Deprecated
-     *    MergeIdRegistryEventBody merge_id_registry_event_body = 6;
-     *    MergeNameRegistryEventBody merge_name_registry_event_body = 7;
-     *
-     * @generated from field: MergeUserNameProofBody merge_username_proof_body = 8;
-     */
-    value: MergeUserNameProofBody;
-    case: "mergeUsernameProofBody";
-  } | {
-    /**
-     *    Deprecated
-     *    MergeRentRegistryEventBody merge_rent_registry_event_body = 9;
-     *    MergeStorageAdminRegistryEventBody merge_storage_admin_registry_event_body = 10;
-     *
-     * @generated from field: MergeOnChainEventBody merge_on_chain_event_body = 11;
-     */
-    value: MergeOnChainEventBody;
-    case: "mergeOnChainEventBody";
-  } | { case: undefined; value?: undefined };
-};
+  body:
+    | {
+        /**
+         * @generated from field: MergeMessageBody merge_message_body = 3;
+         */
+        value: MergeMessageBody
+        case: 'mergeMessageBody'
+      }
+    | {
+        /**
+         * @generated from field: PruneMessageBody prune_message_body = 4;
+         */
+        value: PruneMessageBody
+        case: 'pruneMessageBody'
+      }
+    | {
+        /**
+         * @generated from field: RevokeMessageBody revoke_message_body = 5;
+         */
+        value: RevokeMessageBody
+        case: 'revokeMessageBody'
+      }
+    | {
+        /**
+         *    Deprecated
+         *    MergeIdRegistryEventBody merge_id_registry_event_body = 6;
+         *    MergeNameRegistryEventBody merge_name_registry_event_body = 7;
+         *
+         * @generated from field: MergeUserNameProofBody merge_username_proof_body = 8;
+         */
+        value: MergeUserNameProofBody
+        case: 'mergeUsernameProofBody'
+      }
+    | {
+        /**
+         *    Deprecated
+         *    MergeRentRegistryEventBody merge_rent_registry_event_body = 9;
+         *    MergeStorageAdminRegistryEventBody merge_storage_admin_registry_event_body = 10;
+         *
+         * @generated from field: MergeOnChainEventBody merge_on_chain_event_body = 11;
+         */
+        value: MergeOnChainEventBody
+        case: 'mergeOnChainEventBody'
+      }
+    | { case: undefined; value?: undefined }
+}
 
 /**
  * @generated from message HubEvent
@@ -258,27 +278,27 @@ export type HubEventJson = {
   /**
    * @generated from field: HubEventType type = 1;
    */
-  type?: HubEventTypeJson;
+  type?: HubEventTypeJson
 
   /**
    * @generated from field: uint64 id = 2;
    */
-  id?: string;
+  id?: string
 
   /**
    * @generated from field: MergeMessageBody merge_message_body = 3;
    */
-  mergeMessageBody?: MergeMessageBodyJson;
+  mergeMessageBody?: MergeMessageBodyJson
 
   /**
    * @generated from field: PruneMessageBody prune_message_body = 4;
    */
-  pruneMessageBody?: PruneMessageBodyJson;
+  pruneMessageBody?: PruneMessageBodyJson
 
   /**
    * @generated from field: RevokeMessageBody revoke_message_body = 5;
    */
-  revokeMessageBody?: RevokeMessageBodyJson;
+  revokeMessageBody?: RevokeMessageBodyJson
 
   /**
    *    Deprecated
@@ -287,7 +307,7 @@ export type HubEventJson = {
    *
    * @generated from field: MergeUserNameProofBody merge_username_proof_body = 8;
    */
-  mergeUsernameProofBody?: MergeUserNameProofBodyJson;
+  mergeUsernameProofBody?: MergeUserNameProofBodyJson
 
   /**
    *    Deprecated
@@ -296,15 +316,16 @@ export type HubEventJson = {
    *
    * @generated from field: MergeOnChainEventBody merge_on_chain_event_body = 11;
    */
-  mergeOnChainEventBody?: MergeOnChainEventBodyJson;
-};
+  mergeOnChainEventBody?: MergeOnChainEventBodyJson
+}
 
 /**
  * Describes the message HubEvent.
  * Use `create(HubEventSchema)` to create a new message.
  */
-export const HubEventSchema: GenMessage<HubEvent, HubEventJson> = /*@__PURE__*/
-  messageDesc(file_hub_event, 5);
+export const HubEventSchema: GenMessage<HubEvent, HubEventJson> =
+  /*@__PURE__*/
+  messageDesc(file_hub_event, 5)
 
 /**
  * @generated from enum HubEventType
@@ -352,11 +373,17 @@ export enum HubEventType {
 /**
  * @generated from enum HubEventType
  */
-export type HubEventTypeJson = "HUB_EVENT_TYPE_NONE" | "HUB_EVENT_TYPE_MERGE_MESSAGE" | "HUB_EVENT_TYPE_PRUNE_MESSAGE" | "HUB_EVENT_TYPE_REVOKE_MESSAGE" | "HUB_EVENT_TYPE_MERGE_USERNAME_PROOF" | "HUB_EVENT_TYPE_MERGE_ON_CHAIN_EVENT";
+export type HubEventTypeJson =
+  | 'HUB_EVENT_TYPE_NONE'
+  | 'HUB_EVENT_TYPE_MERGE_MESSAGE'
+  | 'HUB_EVENT_TYPE_PRUNE_MESSAGE'
+  | 'HUB_EVENT_TYPE_REVOKE_MESSAGE'
+  | 'HUB_EVENT_TYPE_MERGE_USERNAME_PROOF'
+  | 'HUB_EVENT_TYPE_MERGE_ON_CHAIN_EVENT'
 
 /**
  * Describes the enum HubEventType.
  */
-export const HubEventTypeSchema: GenEnum<HubEventType, HubEventTypeJson> = /*@__PURE__*/
-  enumDesc(file_hub_event, 0);
-
+export const HubEventTypeSchema: GenEnum<HubEventType, HubEventTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_hub_event, 0)

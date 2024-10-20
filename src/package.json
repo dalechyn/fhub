@@ -8,12 +8,7 @@
   "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts",
   "sideEffects": false,
-  "files": [
-    "*",
-    "!**/*.tsbuildinfo",
-    "!tsconfig.build.json",
-    "!jsr.json"
-  ],
+  "files": ["*", "!**/*.tsbuildinfo", "!tsconfig.build.json", "!jsr.json"],
   "exports": {
     ".": {
       "types": "./_types/index.d.ts",
@@ -56,7 +51,5 @@
   },
   "license": "WTFPL",
   "repository": "dalechyn/fhub",
-  "authors": [
-    "dalechyn.eth"
-  ]
+  "authors": ["dalechyn.eth"]
 }

@@ -2,17 +2,21 @@
 // @generated from file message.proto (syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { UserNameProof, UserNameProofJson } from "./username_proof_pb.js";
-import { file_username_proof } from "./username_proof_pb.js";
-import type { Message as Message$1 } from "@bufbuild/protobuf";
+import type { Message as Message$1 } from '@bufbuild/protobuf'
+import type { GenEnum, GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1'
+import { enumDesc, fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1'
+import type { UserNameProof, UserNameProofJson } from './username_proof_pb.js'
+import { file_username_proof } from './username_proof_pb.js'
 
 /**
  * Describes the file message.proto.
  */
-export const file_message: GenFile = /*@__PURE__*/
-  fileDesc("Cg1tZXNzYWdlLnByb3RvIswBCgdNZXNzYWdlEhoKBGRhdGEYASABKAsyDC5NZXNzYWdlRGF0YRIMCgRoYXNoGAIgASgMEiAKC2hhc2hfc2NoZW1lGAMgASgOMgsuSGFzaFNjaGVtZRIRCglzaWduYXR1cmUYBCABKAwSKgoQc2lnbmF0dXJlX3NjaGVtZRgFIAEoDjIQLlNpZ25hdHVyZVNjaGVtZRIOCgZzaWduZXIYBiABKAwSFwoKZGF0YV9ieXRlcxgHIAEoDEgAiAEBQg0KC19kYXRhX2J5dGVzItUECgtNZXNzYWdlRGF0YRIaCgR0eXBlGAEgASgOMgwuTWVzc2FnZVR5cGUSCwoDZmlkGAIgASgEEhEKCXRpbWVzdGFtcBgDIAEoDRIiCgduZXR3b3JrGAQgASgOMhEuRmFyY2FzdGVyTmV0d29yaxIlCg1jYXN0X2FkZF9ib2R5GAUgASgLMgwuQ2FzdEFkZEJvZHlIABIrChBjYXN0X3JlbW92ZV9ib2R5GAYgASgLMg8uQ2FzdFJlbW92ZUJvZHlIABImCg1yZWFjdGlvbl9ib2R5GAcgASgLMg0uUmVhY3Rpb25Cb2R5SAASRAoddmVyaWZpY2F0aW9uX2FkZF9hZGRyZXNzX2JvZHkYCSABKAsyGy5WZXJpZmljYXRpb25BZGRBZGRyZXNzQm9keUgAEjsKGHZlcmlmaWNhdGlvbl9yZW1vdmVfYm9keRgKIAEoCzIXLlZlcmlmaWNhdGlvblJlbW92ZUJvZHlIABInCg51c2VyX2RhdGFfYm9keRgMIAEoCzINLlVzZXJEYXRhQm9keUgAEh4KCWxpbmtfYm9keRgOIAEoCzIJLkxpbmtCb2R5SAASLQoTdXNlcm5hbWVfcHJvb2ZfYm9keRgPIAEoCzIOLlVzZXJOYW1lUHJvb2ZIABItChFmcmFtZV9hY3Rpb25fYm9keRgQIAEoCzIQLkZyYW1lQWN0aW9uQm9keUgAEjgKF2xpbmtfY29tcGFjdF9zdGF0ZV9ib2R5GBEgASgLMhUuTGlua0NvbXBhY3RTdGF0ZUJvZHlIAEIGCgRib2R5IjoKDFVzZXJEYXRhQm9keRIbCgR0eXBlGAEgASgOMg0uVXNlckRhdGFUeXBlEg0KBXZhbHVlGAIgASgJIjsKBUVtYmVkEg0KA3VybBgBIAEoCUgAEhoKB2Nhc3RfaWQYAiABKAsyBy5DYXN0SWRIAEIHCgVlbWJlZCLYAQoLQ2FzdEFkZEJvZHkSGQoRZW1iZWRzX2RlcHJlY2F0ZWQYASADKAkSEAoIbWVudGlvbnMYAiADKAQSIQoOcGFyZW50X2Nhc3RfaWQYAyABKAsyBy5DYXN0SWRIABIUCgpwYXJlbnRfdXJsGAcgASgJSAASDAoEdGV4dBgEIAEoCRIaChJtZW50aW9uc19wb3NpdGlvbnMYBSADKA0SFgoGZW1iZWRzGAYgAygLMgYuRW1iZWQSFwoEdHlwZRgIIAEoDjIJLkNhc3RUeXBlQggKBnBhcmVudCIlCg5DYXN0UmVtb3ZlQm9keRITCgt0YXJnZXRfaGFzaBgBIAEoDCIjCgZDYXN0SWQSCwoDZmlkGAEgASgEEgwKBGhhc2gYAiABKAwibgoMUmVhY3Rpb25Cb2R5EhsKBHR5cGUYASABKA4yDS5SZWFjdGlvblR5cGUSIQoOdGFyZ2V0X2Nhc3RfaWQYAiABKAsyBy5DYXN0SWRIABIUCgp0YXJnZXRfdXJsGAMgASgJSABCCAoGdGFyZ2V0IqQBChpWZXJpZmljYXRpb25BZGRBZGRyZXNzQm9keRIPCgdhZGRyZXNzGAEgASgMEhcKD2NsYWltX3NpZ25hdHVyZRgCIAEoDBISCgpibG9ja19oYXNoGAMgASgMEhkKEXZlcmlmaWNhdGlvbl90eXBlGAQgASgNEhAKCGNoYWluX2lkGAUgASgNEhsKCHByb3RvY29sGAcgASgOMgkuUHJvdG9jb2wiRgoWVmVyaWZpY2F0aW9uUmVtb3ZlQm9keRIPCgdhZGRyZXNzGAEgASgMEhsKCHByb3RvY29sGAIgASgOMgkuUHJvdG9jb2wibAoITGlua0JvZHkSDAoEdHlwZRgBIAEoCRIdChBkaXNwbGF5VGltZXN0YW1wGAIgASgNSAGIAQESFAoKdGFyZ2V0X2ZpZBgDIAEoBEgAQggKBnRhcmdldEITChFfZGlzcGxheVRpbWVzdGFtcCI5ChRMaW5rQ29tcGFjdFN0YXRlQm9keRIMCgR0eXBlGAEgASgJEhMKC3RhcmdldF9maWRzGAIgAygEIpoBCg9GcmFtZUFjdGlvbkJvZHkSCwoDdXJsGAEgASgMEhQKDGJ1dHRvbl9pbmRleBgCIAEoDRIYCgdjYXN0X2lkGAMgASgLMgcuQ2FzdElkEhIKCmlucHV0X3RleHQYBCABKAwSDQoFc3RhdGUYBSABKAwSFgoOdHJhbnNhY3Rpb25faWQYBiABKAwSDwoHYWRkcmVzcxgHIAEoDCo6CgpIYXNoU2NoZW1lEhQKEEhBU0hfU0NIRU1FX05PTkUQABIWChJIQVNIX1NDSEVNRV9CTEFLRTMQASpnCg9TaWduYXR1cmVTY2hlbWUSGQoVU0lHTkFUVVJFX1NDSEVNRV9OT05FEAASHAoYU0lHTkFUVVJFX1NDSEVNRV9FRDI1NTE5EAESGwoXU0lHTkFUVVJFX1NDSEVNRV9FSVA3MTIQAiqxAwoLTWVzc2FnZVR5cGUSFQoRTUVTU0FHRV9UWVBFX05PTkUQABIZChVNRVNTQUdFX1RZUEVfQ0FTVF9BREQQARIcChhNRVNTQUdFX1RZUEVfQ0FTVF9SRU1PVkUQAhIdChlNRVNTQUdFX1RZUEVfUkVBQ1RJT05fQUREEAMSIAocTUVTU0FHRV9UWVBFX1JFQUNUSU9OX1JFTU9WRRAEEhkKFU1FU1NBR0VfVFlQRV9MSU5LX0FERBAFEhwKGE1FU1NBR0VfVFlQRV9MSU5LX1JFTU9WRRAGEi0KKU1FU1NBR0VfVFlQRV9WRVJJRklDQVRJT05fQUREX0VUSF9BRERSRVNTEAcSJAogTUVTU0FHRV9UWVBFX1ZFUklGSUNBVElPTl9SRU1PVkUQCBIeChpNRVNTQUdFX1RZUEVfVVNFUl9EQVRBX0FERBALEh8KG01FU1NBR0VfVFlQRV9VU0VSTkFNRV9QUk9PRhAMEh0KGU1FU1NBR0VfVFlQRV9GUkFNRV9BQ1RJT04QDRIjCh9NRVNTQUdFX1RZUEVfTElOS19DT01QQUNUX1NUQVRFEA4qigEKEEZhcmNhc3Rlck5ldHdvcmsSGgoWRkFSQ0FTVEVSX05FVFdPUktfTk9ORRAAEh0KGUZBUkNBU1RFUl9ORVRXT1JLX01BSU5ORVQQARIdChlGQVJDQVNURVJfTkVUV09SS19URVNUTkVUEAISHAoYRkFSQ0FTVEVSX05FVFdPUktfREVWTkVUEAMqxQEKDFVzZXJEYXRhVHlwZRIXChNVU0VSX0RBVEFfVFlQRV9OT05FEAASFgoSVVNFUl9EQVRBX1RZUEVfUEZQEAESGgoWVVNFUl9EQVRBX1RZUEVfRElTUExBWRACEhYKElVTRVJfREFUQV9UWVBFX0JJTxADEhYKElVTRVJfREFUQV9UWVBFX1VSTBAFEhsKF1VTRVJfREFUQV9UWVBFX1VTRVJOQU1FEAYSGwoXVVNFUl9EQVRBX1RZUEVfTE9DQVRJT04QByojCghDYXN0VHlwZRIICgRDQVNUEAASDQoJTE9OR19DQVNUEAEqWAoMUmVhY3Rpb25UeXBlEhYKElJFQUNUSU9OX1RZUEVfTk9ORRAAEhYKElJFQUNUSU9OX1RZUEVfTElLRRABEhgKFFJFQUNUSU9OX1RZUEVfUkVDQVNUEAIqNgoIUHJvdG9jb2wSFQoRUFJPVE9DT0xfRVRIRVJFVU0QABITCg9QUk9UT0NPTF9TT0xBTkEQAWIGcHJvdG8z", [file_username_proof]);
+export const file_message: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    'Cg1tZXNzYWdlLnByb3RvIswBCgdNZXNzYWdlEhoKBGRhdGEYASABKAsyDC5NZXNzYWdlRGF0YRIMCgRoYXNoGAIgASgMEiAKC2hhc2hfc2NoZW1lGAMgASgOMgsuSGFzaFNjaGVtZRIRCglzaWduYXR1cmUYBCABKAwSKgoQc2lnbmF0dXJlX3NjaGVtZRgFIAEoDjIQLlNpZ25hdHVyZVNjaGVtZRIOCgZzaWduZXIYBiABKAwSFwoKZGF0YV9ieXRlcxgHIAEoDEgAiAEBQg0KC19kYXRhX2J5dGVzItUECgtNZXNzYWdlRGF0YRIaCgR0eXBlGAEgASgOMgwuTWVzc2FnZVR5cGUSCwoDZmlkGAIgASgEEhEKCXRpbWVzdGFtcBgDIAEoDRIiCgduZXR3b3JrGAQgASgOMhEuRmFyY2FzdGVyTmV0d29yaxIlCg1jYXN0X2FkZF9ib2R5GAUgASgLMgwuQ2FzdEFkZEJvZHlIABIrChBjYXN0X3JlbW92ZV9ib2R5GAYgASgLMg8uQ2FzdFJlbW92ZUJvZHlIABImCg1yZWFjdGlvbl9ib2R5GAcgASgLMg0uUmVhY3Rpb25Cb2R5SAASRAoddmVyaWZpY2F0aW9uX2FkZF9hZGRyZXNzX2JvZHkYCSABKAsyGy5WZXJpZmljYXRpb25BZGRBZGRyZXNzQm9keUgAEjsKGHZlcmlmaWNhdGlvbl9yZW1vdmVfYm9keRgKIAEoCzIXLlZlcmlmaWNhdGlvblJlbW92ZUJvZHlIABInCg51c2VyX2RhdGFfYm9keRgMIAEoCzINLlVzZXJEYXRhQm9keUgAEh4KCWxpbmtfYm9keRgOIAEoCzIJLkxpbmtCb2R5SAASLQoTdXNlcm5hbWVfcHJvb2ZfYm9keRgPIAEoCzIOLlVzZXJOYW1lUHJvb2ZIABItChFmcmFtZV9hY3Rpb25fYm9keRgQIAEoCzIQLkZyYW1lQWN0aW9uQm9keUgAEjgKF2xpbmtfY29tcGFjdF9zdGF0ZV9ib2R5GBEgASgLMhUuTGlua0NvbXBhY3RTdGF0ZUJvZHlIAEIGCgRib2R5IjoKDFVzZXJEYXRhQm9keRIbCgR0eXBlGAEgASgOMg0uVXNlckRhdGFUeXBlEg0KBXZhbHVlGAIgASgJIjsKBUVtYmVkEg0KA3VybBgBIAEoCUgAEhoKB2Nhc3RfaWQYAiABKAsyBy5DYXN0SWRIAEIHCgVlbWJlZCLYAQoLQ2FzdEFkZEJvZHkSGQoRZW1iZWRzX2RlcHJlY2F0ZWQYASADKAkSEAoIbWVudGlvbnMYAiADKAQSIQoOcGFyZW50X2Nhc3RfaWQYAyABKAsyBy5DYXN0SWRIABIUCgpwYXJlbnRfdXJsGAcgASgJSAASDAoEdGV4dBgEIAEoCRIaChJtZW50aW9uc19wb3NpdGlvbnMYBSADKA0SFgoGZW1iZWRzGAYgAygLMgYuRW1iZWQSFwoEdHlwZRgIIAEoDjIJLkNhc3RUeXBlQggKBnBhcmVudCIlCg5DYXN0UmVtb3ZlQm9keRITCgt0YXJnZXRfaGFzaBgBIAEoDCIjCgZDYXN0SWQSCwoDZmlkGAEgASgEEgwKBGhhc2gYAiABKAwibgoMUmVhY3Rpb25Cb2R5EhsKBHR5cGUYASABKA4yDS5SZWFjdGlvblR5cGUSIQoOdGFyZ2V0X2Nhc3RfaWQYAiABKAsyBy5DYXN0SWRIABIUCgp0YXJnZXRfdXJsGAMgASgJSABCCAoGdGFyZ2V0IqQBChpWZXJpZmljYXRpb25BZGRBZGRyZXNzQm9keRIPCgdhZGRyZXNzGAEgASgMEhcKD2NsYWltX3NpZ25hdHVyZRgCIAEoDBISCgpibG9ja19oYXNoGAMgASgMEhkKEXZlcmlmaWNhdGlvbl90eXBlGAQgASgNEhAKCGNoYWluX2lkGAUgASgNEhsKCHByb3RvY29sGAcgASgOMgkuUHJvdG9jb2wiRgoWVmVyaWZpY2F0aW9uUmVtb3ZlQm9keRIPCgdhZGRyZXNzGAEgASgMEhsKCHByb3RvY29sGAIgASgOMgkuUHJvdG9jb2wibAoITGlua0JvZHkSDAoEdHlwZRgBIAEoCRIdChBkaXNwbGF5VGltZXN0YW1wGAIgASgNSAGIAQESFAoKdGFyZ2V0X2ZpZBgDIAEoBEgAQggKBnRhcmdldEITChFfZGlzcGxheVRpbWVzdGFtcCI5ChRMaW5rQ29tcGFjdFN0YXRlQm9keRIMCgR0eXBlGAEgASgJEhMKC3RhcmdldF9maWRzGAIgAygEIpoBCg9GcmFtZUFjdGlvbkJvZHkSCwoDdXJsGAEgASgMEhQKDGJ1dHRvbl9pbmRleBgCIAEoDRIYCgdjYXN0X2lkGAMgASgLMgcuQ2FzdElkEhIKCmlucHV0X3RleHQYBCABKAwSDQoFc3RhdGUYBSABKAwSFgoOdHJhbnNhY3Rpb25faWQYBiABKAwSDwoHYWRkcmVzcxgHIAEoDCo6CgpIYXNoU2NoZW1lEhQKEEhBU0hfU0NIRU1FX05PTkUQABIWChJIQVNIX1NDSEVNRV9CTEFLRTMQASpnCg9TaWduYXR1cmVTY2hlbWUSGQoVU0lHTkFUVVJFX1NDSEVNRV9OT05FEAASHAoYU0lHTkFUVVJFX1NDSEVNRV9FRDI1NTE5EAESGwoXU0lHTkFUVVJFX1NDSEVNRV9FSVA3MTIQAiqxAwoLTWVzc2FnZVR5cGUSFQoRTUVTU0FHRV9UWVBFX05PTkUQABIZChVNRVNTQUdFX1RZUEVfQ0FTVF9BREQQARIcChhNRVNTQUdFX1RZUEVfQ0FTVF9SRU1PVkUQAhIdChlNRVNTQUdFX1RZUEVfUkVBQ1RJT05fQUREEAMSIAocTUVTU0FHRV9UWVBFX1JFQUNUSU9OX1JFTU9WRRAEEhkKFU1FU1NBR0VfVFlQRV9MSU5LX0FERBAFEhwKGE1FU1NBR0VfVFlQRV9MSU5LX1JFTU9WRRAGEi0KKU1FU1NBR0VfVFlQRV9WRVJJRklDQVRJT05fQUREX0VUSF9BRERSRVNTEAcSJAogTUVTU0FHRV9UWVBFX1ZFUklGSUNBVElPTl9SRU1PVkUQCBIeChpNRVNTQUdFX1RZUEVfVVNFUl9EQVRBX0FERBALEh8KG01FU1NBR0VfVFlQRV9VU0VSTkFNRV9QUk9PRhAMEh0KGU1FU1NBR0VfVFlQRV9GUkFNRV9BQ1RJT04QDRIjCh9NRVNTQUdFX1RZUEVfTElOS19DT01QQUNUX1NUQVRFEA4qigEKEEZhcmNhc3Rlck5ldHdvcmsSGgoWRkFSQ0FTVEVSX05FVFdPUktfTk9ORRAAEh0KGUZBUkNBU1RFUl9ORVRXT1JLX01BSU5ORVQQARIdChlGQVJDQVNURVJfTkVUV09SS19URVNUTkVUEAISHAoYRkFSQ0FTVEVSX05FVFdPUktfREVWTkVUEAMqxQEKDFVzZXJEYXRhVHlwZRIXChNVU0VSX0RBVEFfVFlQRV9OT05FEAASFgoSVVNFUl9EQVRBX1RZUEVfUEZQEAESGgoWVVNFUl9EQVRBX1RZUEVfRElTUExBWRACEhYKElVTRVJfREFUQV9UWVBFX0JJTxADEhYKElVTRVJfREFUQV9UWVBFX1VSTBAFEhsKF1VTRVJfREFUQV9UWVBFX1VTRVJOQU1FEAYSGwoXVVNFUl9EQVRBX1RZUEVfTE9DQVRJT04QByojCghDYXN0VHlwZRIICgRDQVNUEAASDQoJTE9OR19DQVNUEAEqWAoMUmVhY3Rpb25UeXBlEhYKElJFQUNUSU9OX1RZUEVfTk9ORRAAEhYKElJFQUNUSU9OX1RZUEVfTElLRRABEhgKFFJFQUNUSU9OX1RZUEVfUkVDQVNUEAIqNgoIUHJvdG9jb2wSFQoRUFJPVE9DT0xfRVRIRVJFVU0QABITCg9QUk9UT0NPTF9TT0xBTkEQAWIGcHJvdG8z',
+    [file_username_proof],
+  )
 
 /**
  * *
@@ -21,56 +25,56 @@ export const file_message: GenFile = /*@__PURE__*/
  *
  * @generated from message Message
  */
-export type Message = Message$1<"Message"> & {
+export type Message = Message$1<'Message'> & {
   /**
    * Contents of the message
    *
    * @generated from field: MessageData data = 1;
    */
-  data?: MessageData;
+  data?: MessageData
 
   /**
    * Hash digest of data
    *
    * @generated from field: bytes hash = 2;
    */
-  hash: Uint8Array;
+  hash: Uint8Array
 
   /**
    * Hash scheme that produced the hash digest
    *
    * @generated from field: HashScheme hash_scheme = 3;
    */
-  hashScheme: HashScheme;
+  hashScheme: HashScheme
 
   /**
    * Signature of the hash digest
    *
    * @generated from field: bytes signature = 4;
    */
-  signature: Uint8Array;
+  signature: Uint8Array
 
   /**
    * Signature scheme that produced the signature
    *
    * @generated from field: SignatureScheme signature_scheme = 5;
    */
-  signatureScheme: SignatureScheme;
+  signatureScheme: SignatureScheme
 
   /**
    * Public key or address of the key pair that produced the signature
    *
    * @generated from field: bytes signer = 6;
    */
-  signer: Uint8Array;
+  signer: Uint8Array
 
   /**
    * MessageData serialized to bytes if using protobuf serialization other than ts-proto
    *
    * @generated from field: optional bytes data_bytes = 7;
    */
-  dataBytes?: Uint8Array;
-};
+  dataBytes?: Uint8Array
+}
 
 /**
  * *
@@ -85,57 +89,58 @@ export type MessageJson = {
    *
    * @generated from field: MessageData data = 1;
    */
-  data?: MessageDataJson;
+  data?: MessageDataJson
 
   /**
    * Hash digest of data
    *
    * @generated from field: bytes hash = 2;
    */
-  hash?: string;
+  hash?: string
 
   /**
    * Hash scheme that produced the hash digest
    *
    * @generated from field: HashScheme hash_scheme = 3;
    */
-  hashScheme?: HashSchemeJson;
+  hashScheme?: HashSchemeJson
 
   /**
    * Signature of the hash digest
    *
    * @generated from field: bytes signature = 4;
    */
-  signature?: string;
+  signature?: string
 
   /**
    * Signature scheme that produced the signature
    *
    * @generated from field: SignatureScheme signature_scheme = 5;
    */
-  signatureScheme?: SignatureSchemeJson;
+  signatureScheme?: SignatureSchemeJson
 
   /**
    * Public key or address of the key pair that produced the signature
    *
    * @generated from field: bytes signer = 6;
    */
-  signer?: string;
+  signer?: string
 
   /**
    * MessageData serialized to bytes if using protobuf serialization other than ts-proto
    *
    * @generated from field: optional bytes data_bytes = 7;
    */
-  dataBytes?: string;
-};
+  dataBytes?: string
+}
 
 /**
  * Describes the message Message.
  * Use `create(MessageSchema)` to create a new message.
  */
-export const MessageSchema: GenMessage<Message, MessageJson> = /*@__PURE__*/
-  messageDesc(file_message, 0);
+export const MessageSchema: GenMessage<Message, MessageJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 0)
 
 /**
  * *
@@ -144,106 +149,117 @@ export const MessageSchema: GenMessage<Message, MessageJson> = /*@__PURE__*/
  *
  * @generated from message MessageData
  */
-export type MessageData = Message$1<"MessageData"> & {
+export type MessageData = Message$1<'MessageData'> & {
   /**
    * Type of message contained in the body
    *
    * @generated from field: MessageType type = 1;
    */
-  type: MessageType;
+  type: MessageType
 
   /**
    * Farcaster ID of the user producing the message
    *
    * @generated from field: uint64 fid = 2;
    */
-  fid: bigint;
+  fid: bigint
 
   /**
    * Farcaster epoch timestamp in seconds
    *
    * @generated from field: uint32 timestamp = 3;
    */
-  timestamp: number;
+  timestamp: number
 
   /**
    * Farcaster network the message is intended for
    *
    * @generated from field: FarcasterNetwork network = 4;
    */
-  network: FarcasterNetwork;
+  network: FarcasterNetwork
 
   /**
    * @generated from oneof MessageData.body
    */
-  body: {
-    /**
-     * @generated from field: CastAddBody cast_add_body = 5;
-     */
-    value: CastAddBody;
-    case: "castAddBody";
-  } | {
-    /**
-     * @generated from field: CastRemoveBody cast_remove_body = 6;
-     */
-    value: CastRemoveBody;
-    case: "castRemoveBody";
-  } | {
-    /**
-     * @generated from field: ReactionBody reaction_body = 7;
-     */
-    value: ReactionBody;
-    case: "reactionBody";
-  } | {
-    /**
-     * @generated from field: VerificationAddAddressBody verification_add_address_body = 9;
-     */
-    value: VerificationAddAddressBody;
-    case: "verificationAddAddressBody";
-  } | {
-    /**
-     * @generated from field: VerificationRemoveBody verification_remove_body = 10;
-     */
-    value: VerificationRemoveBody;
-    case: "verificationRemoveBody";
-  } | {
-    /**
-     * SignerAddBody signer_add_body = 11; // Deprecated
-     *
-     * @generated from field: UserDataBody user_data_body = 12;
-     */
-    value: UserDataBody;
-    case: "userDataBody";
-  } | {
-    /**
-     * SignerRemoveBody signer_remove_body = 13; // Deprecated
-     *
-     * @generated from field: LinkBody link_body = 14;
-     */
-    value: LinkBody;
-    case: "linkBody";
-  } | {
-    /**
-     * @generated from field: UserNameProof username_proof_body = 15;
-     */
-    value: UserNameProof;
-    case: "usernameProofBody";
-  } | {
-    /**
-     * @generated from field: FrameActionBody frame_action_body = 16;
-     */
-    value: FrameActionBody;
-    case: "frameActionBody";
-  } | {
-    /**
-     * Compaction messages
-     *
-     * @generated from field: LinkCompactStateBody link_compact_state_body = 17;
-     */
-    value: LinkCompactStateBody;
-    case: "linkCompactStateBody";
-  } | { case: undefined; value?: undefined };
-};
+  body:
+    | {
+        /**
+         * @generated from field: CastAddBody cast_add_body = 5;
+         */
+        value: CastAddBody
+        case: 'castAddBody'
+      }
+    | {
+        /**
+         * @generated from field: CastRemoveBody cast_remove_body = 6;
+         */
+        value: CastRemoveBody
+        case: 'castRemoveBody'
+      }
+    | {
+        /**
+         * @generated from field: ReactionBody reaction_body = 7;
+         */
+        value: ReactionBody
+        case: 'reactionBody'
+      }
+    | {
+        /**
+         * @generated from field: VerificationAddAddressBody verification_add_address_body = 9;
+         */
+        value: VerificationAddAddressBody
+        case: 'verificationAddAddressBody'
+      }
+    | {
+        /**
+         * @generated from field: VerificationRemoveBody verification_remove_body = 10;
+         */
+        value: VerificationRemoveBody
+        case: 'verificationRemoveBody'
+      }
+    | {
+        /**
+         * SignerAddBody signer_add_body = 11; // Deprecated
+         *
+         * @generated from field: UserDataBody user_data_body = 12;
+         */
+        value: UserDataBody
+        case: 'userDataBody'
+      }
+    | {
+        /**
+         * SignerRemoveBody signer_remove_body = 13; // Deprecated
+         *
+         * @generated from field: LinkBody link_body = 14;
+         */
+        value: LinkBody
+        case: 'linkBody'
+      }
+    | {
+        /**
+         * @generated from field: UserNameProof username_proof_body = 15;
+         */
+        value: UserNameProof
+        case: 'usernameProofBody'
+      }
+    | {
+        /**
+         * @generated from field: FrameActionBody frame_action_body = 16;
+         */
+        value: FrameActionBody
+        case: 'frameActionBody'
+      }
+    | {
+        /**
+         * Compaction messages
+         *
+         * @generated from field: LinkCompactStateBody link_compact_state_body = 17;
+         */
+        value: LinkCompactStateBody
+        case: 'linkCompactStateBody'
+      }
+    | { case: undefined; value?: undefined }
+}
 
 /**
  * *
@@ -258,116 +274,117 @@ export type MessageDataJson = {
    *
    * @generated from field: MessageType type = 1;
    */
-  type?: MessageTypeJson;
+  type?: MessageTypeJson
 
   /**
    * Farcaster ID of the user producing the message
    *
    * @generated from field: uint64 fid = 2;
    */
-  fid?: string;
+  fid?: string
 
   /**
    * Farcaster epoch timestamp in seconds
    *
    * @generated from field: uint32 timestamp = 3;
    */
-  timestamp?: number;
+  timestamp?: number
 
   /**
    * Farcaster network the message is intended for
    *
    * @generated from field: FarcasterNetwork network = 4;
    */
-  network?: FarcasterNetworkJson;
+  network?: FarcasterNetworkJson
 
   /**
    * @generated from field: CastAddBody cast_add_body = 5;
    */
-  castAddBody?: CastAddBodyJson;
+  castAddBody?: CastAddBodyJson
 
   /**
    * @generated from field: CastRemoveBody cast_remove_body = 6;
    */
-  castRemoveBody?: CastRemoveBodyJson;
+  castRemoveBody?: CastRemoveBodyJson
 
   /**
    * @generated from field: ReactionBody reaction_body = 7;
    */
-  reactionBody?: ReactionBodyJson;
+  reactionBody?: ReactionBodyJson
 
   /**
    * @generated from field: VerificationAddAddressBody verification_add_address_body = 9;
    */
-  verificationAddAddressBody?: VerificationAddAddressBodyJson;
+  verificationAddAddressBody?: VerificationAddAddressBodyJson
 
   /**
    * @generated from field: VerificationRemoveBody verification_remove_body = 10;
    */
-  verificationRemoveBody?: VerificationRemoveBodyJson;
+  verificationRemoveBody?: VerificationRemoveBodyJson
 
   /**
    * SignerAddBody signer_add_body = 11; // Deprecated
    *
    * @generated from field: UserDataBody user_data_body = 12;
    */
-  userDataBody?: UserDataBodyJson;
+  userDataBody?: UserDataBodyJson
 
   /**
    * SignerRemoveBody signer_remove_body = 13; // Deprecated
    *
    * @generated from field: LinkBody link_body = 14;
    */
-  linkBody?: LinkBodyJson;
+  linkBody?: LinkBodyJson
 
   /**
    * @generated from field: UserNameProof username_proof_body = 15;
    */
-  usernameProofBody?: UserNameProofJson;
+  usernameProofBody?: UserNameProofJson
 
   /**
    * @generated from field: FrameActionBody frame_action_body = 16;
    */
-  frameActionBody?: FrameActionBodyJson;
+  frameActionBody?: FrameActionBodyJson
 
   /**
    * Compaction messages
    *
    * @generated from field: LinkCompactStateBody link_compact_state_body = 17;
    */
-  linkCompactStateBody?: LinkCompactStateBodyJson;
-};
+  linkCompactStateBody?: LinkCompactStateBodyJson
+}
 
 /**
  * Describes the message MessageData.
  * Use `create(MessageDataSchema)` to create a new message.
  */
-export const MessageDataSchema: GenMessage<MessageData, MessageDataJson> = /*@__PURE__*/
-  messageDesc(file_message, 1);
+export const MessageDataSchema: GenMessage<MessageData, MessageDataJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 1)
 
 /**
- * * Adds metadata about a user 
+ * * Adds metadata about a user
  *
  * @generated from message UserDataBody
  */
-export type UserDataBody = Message$1<"UserDataBody"> & {
+export type UserDataBody = Message$1<'UserDataBody'> & {
   /**
    * Type of metadata
    *
    * @generated from field: UserDataType type = 1;
    */
-  type: UserDataType;
+  type: UserDataType
 
   /**
    * Value of the metadata
    *
    * @generated from field: string value = 2;
    */
-  value: string;
-};
+  value: string
+}
 
 /**
- * * Adds metadata about a user 
+ * * Adds metadata about a user
  *
  * @generated from message UserDataBody
  */
@@ -377,44 +394,48 @@ export type UserDataBodyJson = {
    *
    * @generated from field: UserDataType type = 1;
    */
-  type?: UserDataTypeJson;
+  type?: UserDataTypeJson
 
   /**
    * Value of the metadata
    *
    * @generated from field: string value = 2;
    */
-  value?: string;
-};
+  value?: string
+}
 
 /**
  * Describes the message UserDataBody.
  * Use `create(UserDataBodySchema)` to create a new message.
  */
-export const UserDataBodySchema: GenMessage<UserDataBody, UserDataBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 2);
+export const UserDataBodySchema: GenMessage<UserDataBody, UserDataBodyJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 2)
 
 /**
  * @generated from message Embed
  */
-export type Embed = Message$1<"Embed"> & {
+export type Embed = Message$1<'Embed'> & {
   /**
    * @generated from oneof Embed.embed
    */
-  embed: {
-    /**
-     * @generated from field: string url = 1;
-     */
-    value: string;
-    case: "url";
-  } | {
-    /**
-     * @generated from field: CastId cast_id = 2;
-     */
-    value: CastId;
-    case: "castId";
-  } | { case: undefined; value?: undefined };
-};
+  embed:
+    | {
+        /**
+         * @generated from field: string url = 1;
+         */
+        value: string
+        case: 'url'
+      }
+    | {
+        /**
+         * @generated from field: CastId cast_id = 2;
+         */
+        value: CastId
+        case: 'castId'
+      }
+    | { case: undefined; value?: undefined }
+}
 
 /**
  * @generated from message Embed
@@ -423,93 +444,97 @@ export type EmbedJson = {
   /**
    * @generated from field: string url = 1;
    */
-  url?: string;
+  url?: string
 
   /**
    * @generated from field: CastId cast_id = 2;
    */
-  castId?: CastIdJson;
-};
+  castId?: CastIdJson
+}
 
 /**
  * Describes the message Embed.
  * Use `create(EmbedSchema)` to create a new message.
  */
-export const EmbedSchema: GenMessage<Embed, EmbedJson> = /*@__PURE__*/
-  messageDesc(file_message, 3);
+export const EmbedSchema: GenMessage<Embed, EmbedJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 3)
 
 /**
- * * Adds a new Cast 
+ * * Adds a new Cast
  *
  * @generated from message CastAddBody
  */
-export type CastAddBody = Message$1<"CastAddBody"> & {
+export type CastAddBody = Message$1<'CastAddBody'> & {
   /**
    * URLs to be embedded in the cast
    *
    * @generated from field: repeated string embeds_deprecated = 1;
    */
-  embedsDeprecated: string[];
+  embedsDeprecated: string[]
 
   /**
    * Fids mentioned in the cast
    *
    * @generated from field: repeated uint64 mentions = 2;
    */
-  mentions: bigint[];
+  mentions: bigint[]
 
   /**
    * @generated from oneof CastAddBody.parent
    */
-  parent: {
-    /**
-     * Parent cast of the cast
-     *
-     * @generated from field: CastId parent_cast_id = 3;
-     */
-    value: CastId;
-    case: "parentCastId";
-  } | {
-    /**
-     * Parent URL
-     *
-     * @generated from field: string parent_url = 7;
-     */
-    value: string;
-    case: "parentUrl";
-  } | { case: undefined; value?: undefined };
+  parent:
+    | {
+        /**
+         * Parent cast of the cast
+         *
+         * @generated from field: CastId parent_cast_id = 3;
+         */
+        value: CastId
+        case: 'parentCastId'
+      }
+    | {
+        /**
+         * Parent URL
+         *
+         * @generated from field: string parent_url = 7;
+         */
+        value: string
+        case: 'parentUrl'
+      }
+    | { case: undefined; value?: undefined }
 
   /**
    * Text of the cast
    *
    * @generated from field: string text = 4;
    */
-  text: string;
+  text: string
 
   /**
    * Positions of the mentions in the text
    *
    * @generated from field: repeated uint32 mentions_positions = 5;
    */
-  mentionsPositions: number[];
+  mentionsPositions: number[]
 
   /**
    * URLs or cast ids to be embedded in the cast
    *
    * @generated from field: repeated Embed embeds = 6;
    */
-  embeds: Embed[];
+  embeds: Embed[]
 
   /**
    * Type of cast
    *
    * @generated from field: CastType type = 8;
    */
-  type: CastType;
-};
+  type: CastType
+}
 
 /**
- * * Adds a new Cast 
+ * * Adds a new Cast
  *
  * @generated from message CastAddBody
  */
@@ -519,81 +544,82 @@ export type CastAddBodyJson = {
    *
    * @generated from field: repeated string embeds_deprecated = 1;
    */
-  embedsDeprecated?: string[];
+  embedsDeprecated?: string[]
 
   /**
    * Fids mentioned in the cast
    *
    * @generated from field: repeated uint64 mentions = 2;
    */
-  mentions?: string[];
+  mentions?: string[]
 
   /**
    * Parent cast of the cast
    *
    * @generated from field: CastId parent_cast_id = 3;
    */
-  parentCastId?: CastIdJson;
+  parentCastId?: CastIdJson
 
   /**
    * Parent URL
    *
    * @generated from field: string parent_url = 7;
    */
-  parentUrl?: string;
+  parentUrl?: string
 
   /**
    * Text of the cast
    *
    * @generated from field: string text = 4;
    */
-  text?: string;
+  text?: string
 
   /**
    * Positions of the mentions in the text
    *
    * @generated from field: repeated uint32 mentions_positions = 5;
    */
-  mentionsPositions?: number[];
+  mentionsPositions?: number[]
 
   /**
    * URLs or cast ids to be embedded in the cast
    *
    * @generated from field: repeated Embed embeds = 6;
    */
-  embeds?: EmbedJson[];
+  embeds?: EmbedJson[]
 
   /**
    * Type of cast
    *
    * @generated from field: CastType type = 8;
    */
-  type?: CastTypeJson;
-};
+  type?: CastTypeJson
+}
 
 /**
  * Describes the message CastAddBody.
  * Use `create(CastAddBodySchema)` to create a new message.
  */
-export const CastAddBodySchema: GenMessage<CastAddBody, CastAddBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 4);
+export const CastAddBodySchema: GenMessage<CastAddBody, CastAddBodyJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 4)
 
 /**
- * * Removes an existing Cast 
+ * * Removes an existing Cast
  *
  * @generated from message CastRemoveBody
  */
-export type CastRemoveBody = Message$1<"CastRemoveBody"> & {
+export type CastRemoveBody = Message$1<'CastRemoveBody'> & {
   /**
    * Hash of the cast to remove
    *
    * @generated from field: bytes target_hash = 1;
    */
-  targetHash: Uint8Array;
-};
+  targetHash: Uint8Array
+}
 
 /**
- * * Removes an existing Cast 
+ * * Removes an existing Cast
  *
  * @generated from message CastRemoveBody
  */
@@ -603,39 +629,41 @@ export type CastRemoveBodyJson = {
    *
    * @generated from field: bytes target_hash = 1;
    */
-  targetHash?: string;
-};
+  targetHash?: string
+}
 
 /**
  * Describes the message CastRemoveBody.
  * Use `create(CastRemoveBodySchema)` to create a new message.
  */
-export const CastRemoveBodySchema: GenMessage<CastRemoveBody, CastRemoveBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 5);
+export const CastRemoveBodySchema: GenMessage<
+  CastRemoveBody,
+  CastRemoveBodyJson
+> = /*@__PURE__*/ messageDesc(file_message, 5)
 
 /**
- * * Identifier used to look up a Cast 
+ * * Identifier used to look up a Cast
  *
  * @generated from message CastId
  */
-export type CastId = Message$1<"CastId"> & {
+export type CastId = Message$1<'CastId'> & {
   /**
    * Fid of the user who created the cast
    *
    * @generated from field: uint64 fid = 1;
    */
-  fid: bigint;
+  fid: bigint
 
   /**
    * Hash of the cast
    *
    * @generated from field: bytes hash = 2;
    */
-  hash: Uint8Array;
-};
+  hash: Uint8Array
+}
 
 /**
- * * Identifier used to look up a Cast 
+ * * Identifier used to look up a Cast
  *
  * @generated from message CastId
  */
@@ -645,60 +673,64 @@ export type CastIdJson = {
    *
    * @generated from field: uint64 fid = 1;
    */
-  fid?: string;
+  fid?: string
 
   /**
    * Hash of the cast
    *
    * @generated from field: bytes hash = 2;
    */
-  hash?: string;
-};
+  hash?: string
+}
 
 /**
  * Describes the message CastId.
  * Use `create(CastIdSchema)` to create a new message.
  */
-export const CastIdSchema: GenMessage<CastId, CastIdJson> = /*@__PURE__*/
-  messageDesc(file_message, 6);
+export const CastIdSchema: GenMessage<CastId, CastIdJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 6)
 
 /**
- * * Adds or removes a Reaction from a Cast 
+ * * Adds or removes a Reaction from a Cast
  *
  * @generated from message ReactionBody
  */
-export type ReactionBody = Message$1<"ReactionBody"> & {
+export type ReactionBody = Message$1<'ReactionBody'> & {
   /**
    * Type of reaction
    *
    * @generated from field: ReactionType type = 1;
    */
-  type: ReactionType;
+  type: ReactionType
 
   /**
    * @generated from oneof ReactionBody.target
    */
-  target: {
-    /**
-     * CastId of the Cast to react to
-     *
-     * @generated from field: CastId target_cast_id = 2;
-     */
-    value: CastId;
-    case: "targetCastId";
-  } | {
-    /**
-     * URL to react to
-     *
-     * @generated from field: string target_url = 3;
-     */
-    value: string;
-    case: "targetUrl";
-  } | { case: undefined; value?: undefined };
-};
+  target:
+    | {
+        /**
+         * CastId of the Cast to react to
+         *
+         * @generated from field: CastId target_cast_id = 2;
+         */
+        value: CastId
+        case: 'targetCastId'
+      }
+    | {
+        /**
+         * URL to react to
+         *
+         * @generated from field: string target_url = 3;
+         */
+        value: string
+        case: 'targetUrl'
+      }
+    | { case: undefined; value?: undefined }
+}
 
 /**
- * * Adds or removes a Reaction from a Cast 
+ * * Adds or removes a Reaction from a Cast
  *
  * @generated from message ReactionBody
  */
@@ -708,81 +740,83 @@ export type ReactionBodyJson = {
    *
    * @generated from field: ReactionType type = 1;
    */
-  type?: ReactionTypeJson;
+  type?: ReactionTypeJson
 
   /**
    * CastId of the Cast to react to
    *
    * @generated from field: CastId target_cast_id = 2;
    */
-  targetCastId?: CastIdJson;
+  targetCastId?: CastIdJson
 
   /**
    * URL to react to
    *
    * @generated from field: string target_url = 3;
    */
-  targetUrl?: string;
-};
+  targetUrl?: string
+}
 
 /**
  * Describes the message ReactionBody.
  * Use `create(ReactionBodySchema)` to create a new message.
  */
-export const ReactionBodySchema: GenMessage<ReactionBody, ReactionBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 7);
+export const ReactionBodySchema: GenMessage<ReactionBody, ReactionBodyJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 7)
 
 /**
- * * Adds a Verification of ownership of an Address based on Protocol 
+ * * Adds a Verification of ownership of an Address based on Protocol
  *
  * @generated from message VerificationAddAddressBody
  */
-export type VerificationAddAddressBody = Message$1<"VerificationAddAddressBody"> & {
-  /**
-   * Address being verified for a given Protocol
-   *
-   * @generated from field: bytes address = 1;
-   */
-  address: Uint8Array;
+export type VerificationAddAddressBody =
+  Message$1<'VerificationAddAddressBody'> & {
+    /**
+     * Address being verified for a given Protocol
+     *
+     * @generated from field: bytes address = 1;
+     */
+    address: Uint8Array
 
-  /**
-   * Signature produced by the user's address for a given Protocol
-   *
-   * @generated from field: bytes claim_signature = 2;
-   */
-  claimSignature: Uint8Array;
+    /**
+     * Signature produced by the user's address for a given Protocol
+     *
+     * @generated from field: bytes claim_signature = 2;
+     */
+    claimSignature: Uint8Array
 
-  /**
-   * Hash of the latest Ethereum block when the signature was produced
-   *
-   * @generated from field: bytes block_hash = 3;
-   */
-  blockHash: Uint8Array;
+    /**
+     * Hash of the latest Ethereum block when the signature was produced
+     *
+     * @generated from field: bytes block_hash = 3;
+     */
+    blockHash: Uint8Array
 
-  /**
-   * Type of verification. 0 = EOA, 1 = contract
-   *
-   * @generated from field: uint32 verification_type = 4;
-   */
-  verificationType: number;
+    /**
+     * Type of verification. 0 = EOA, 1 = contract
+     *
+     * @generated from field: uint32 verification_type = 4;
+     */
+    verificationType: number
 
-  /**
-   * 0 for EOA verifications, 1 or 10 for contract verifications
-   *
-   * @generated from field: uint32 chain_id = 5;
-   */
-  chainId: number;
+    /**
+     * 0 for EOA verifications, 1 or 10 for contract verifications
+     *
+     * @generated from field: uint32 chain_id = 5;
+     */
+    chainId: number
 
-  /**
-   * Protocol of the Verification
-   *
-   * @generated from field: Protocol protocol = 7;
-   */
-  protocol: Protocol;
-};
+    /**
+     * Protocol of the Verification
+     *
+     * @generated from field: Protocol protocol = 7;
+     */
+    protocol: Protocol
+  }
 
 /**
- * * Adds a Verification of ownership of an Address based on Protocol 
+ * * Adds a Verification of ownership of an Address based on Protocol
  *
  * @generated from message VerificationAddAddressBody
  */
@@ -792,74 +826,76 @@ export type VerificationAddAddressBodyJson = {
    *
    * @generated from field: bytes address = 1;
    */
-  address?: string;
+  address?: string
 
   /**
    * Signature produced by the user's address for a given Protocol
    *
    * @generated from field: bytes claim_signature = 2;
    */
-  claimSignature?: string;
+  claimSignature?: string
 
   /**
    * Hash of the latest Ethereum block when the signature was produced
    *
    * @generated from field: bytes block_hash = 3;
    */
-  blockHash?: string;
+  blockHash?: string
 
   /**
    * Type of verification. 0 = EOA, 1 = contract
    *
    * @generated from field: uint32 verification_type = 4;
    */
-  verificationType?: number;
+  verificationType?: number
 
   /**
    * 0 for EOA verifications, 1 or 10 for contract verifications
    *
    * @generated from field: uint32 chain_id = 5;
    */
-  chainId?: number;
+  chainId?: number
 
   /**
    * Protocol of the Verification
    *
    * @generated from field: Protocol protocol = 7;
    */
-  protocol?: ProtocolJson;
-};
+  protocol?: ProtocolJson
+}
 
 /**
  * Describes the message VerificationAddAddressBody.
  * Use `create(VerificationAddAddressBodySchema)` to create a new message.
  */
-export const VerificationAddAddressBodySchema: GenMessage<VerificationAddAddressBody, VerificationAddAddressBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 8);
+export const VerificationAddAddressBodySchema: GenMessage<
+  VerificationAddAddressBody,
+  VerificationAddAddressBodyJson
+> = /*@__PURE__*/ messageDesc(file_message, 8)
 
 /**
- * * Removes a Verification of a given protocol 
+ * * Removes a Verification of a given protocol
  *
  * @generated from message VerificationRemoveBody
  */
-export type VerificationRemoveBody = Message$1<"VerificationRemoveBody"> & {
+export type VerificationRemoveBody = Message$1<'VerificationRemoveBody'> & {
   /**
    * Address of the Verification to remove
    *
    * @generated from field: bytes address = 1;
    */
-  address: Uint8Array;
+  address: Uint8Array
 
   /**
    * Protocol of the Verification to remove
    *
    * @generated from field: Protocol protocol = 2;
    */
-  protocol: Protocol;
-};
+  protocol: Protocol
+}
 
 /**
- * * Removes a Verification of a given protocol 
+ * * Removes a Verification of a given protocol
  *
  * @generated from message VerificationRemoveBody
  */
@@ -869,59 +905,63 @@ export type VerificationRemoveBodyJson = {
    *
    * @generated from field: bytes address = 1;
    */
-  address?: string;
+  address?: string
 
   /**
    * Protocol of the Verification to remove
    *
    * @generated from field: Protocol protocol = 2;
    */
-  protocol?: ProtocolJson;
-};
+  protocol?: ProtocolJson
+}
 
 /**
  * Describes the message VerificationRemoveBody.
  * Use `create(VerificationRemoveBodySchema)` to create a new message.
  */
-export const VerificationRemoveBodySchema: GenMessage<VerificationRemoveBody, VerificationRemoveBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 9);
+export const VerificationRemoveBodySchema: GenMessage<
+  VerificationRemoveBody,
+  VerificationRemoveBodyJson
+> = /*@__PURE__*/ messageDesc(file_message, 9)
 
 /**
- * * Adds or removes a Link 
+ * * Adds or removes a Link
  *
  * @generated from message LinkBody
  */
-export type LinkBody = Message$1<"LinkBody"> & {
+export type LinkBody = Message$1<'LinkBody'> & {
   /**
    * Type of link, <= 8 characters
    *
    * @generated from field: string type = 1;
    */
-  type: string;
+  type: string
 
   /**
    * User-defined timestamp that preserves original timestamp when message.data.timestamp needs to be updated for compaction
    *
    * @generated from field: optional uint32 displayTimestamp = 2;
    */
-  displayTimestamp?: number;
+  displayTimestamp?: number
 
   /**
    * @generated from oneof LinkBody.target
    */
-  target: {
-    /**
-     * The fid the link relates to
-     *
-     * @generated from field: uint64 target_fid = 3;
-     */
-    value: bigint;
-    case: "targetFid";
-  } | { case: undefined; value?: undefined };
-};
+  target:
+    | {
+        /**
+         * The fid the link relates to
+         *
+         * @generated from field: uint64 target_fid = 3;
+         */
+        value: bigint
+        case: 'targetFid'
+      }
+    | { case: undefined; value?: undefined }
+}
 
 /**
- * * Adds or removes a Link 
+ * * Adds or removes a Link
  *
  * @generated from message LinkBody
  */
@@ -931,51 +971,52 @@ export type LinkBodyJson = {
    *
    * @generated from field: string type = 1;
    */
-  type?: string;
+  type?: string
 
   /**
    * User-defined timestamp that preserves original timestamp when message.data.timestamp needs to be updated for compaction
    *
    * @generated from field: optional uint32 displayTimestamp = 2;
    */
-  displayTimestamp?: number;
+  displayTimestamp?: number
 
   /**
    * The fid the link relates to
    *
    * @generated from field: uint64 target_fid = 3;
    */
-  targetFid?: string;
-};
+  targetFid?: string
+}
 
 /**
  * Describes the message LinkBody.
  * Use `create(LinkBodySchema)` to create a new message.
  */
-export const LinkBodySchema: GenMessage<LinkBody, LinkBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 10);
+export const LinkBodySchema: GenMessage<LinkBody, LinkBodyJson> =
+  /*@__PURE__*/
+  messageDesc(file_message, 10)
 
 /**
- * * A Compaction message for the Link Store 
+ * * A Compaction message for the Link Store
  *
  * @generated from message LinkCompactStateBody
  */
-export type LinkCompactStateBody = Message$1<"LinkCompactStateBody"> & {
+export type LinkCompactStateBody = Message$1<'LinkCompactStateBody'> & {
   /**
    * Type of link, <= 8 characters
    *
    * @generated from field: string type = 1;
    */
-  type: string;
+  type: string
 
   /**
    * @generated from field: repeated uint64 target_fids = 2;
    */
-  targetFids: bigint[];
-};
+  targetFids: bigint[]
+}
 
 /**
- * * A Compaction message for the Link Store 
+ * * A Compaction message for the Link Store
  *
  * @generated from message LinkCompactStateBody
  */
@@ -985,79 +1026,81 @@ export type LinkCompactStateBodyJson = {
    *
    * @generated from field: string type = 1;
    */
-  type?: string;
+  type?: string
 
   /**
    * @generated from field: repeated uint64 target_fids = 2;
    */
-  targetFids?: string[];
-};
+  targetFids?: string[]
+}
 
 /**
  * Describes the message LinkCompactStateBody.
  * Use `create(LinkCompactStateBodySchema)` to create a new message.
  */
-export const LinkCompactStateBodySchema: GenMessage<LinkCompactStateBody, LinkCompactStateBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 11);
+export const LinkCompactStateBodySchema: GenMessage<
+  LinkCompactStateBody,
+  LinkCompactStateBodyJson
+> = /*@__PURE__*/ messageDesc(file_message, 11)
 
 /**
- * * A Farcaster Frame action 
+ * * A Farcaster Frame action
  *
  * @generated from message FrameActionBody
  */
-export type FrameActionBody = Message$1<"FrameActionBody"> & {
+export type FrameActionBody = Message$1<'FrameActionBody'> & {
   /**
    * URL of the Frame triggering the action
    *
    * @generated from field: bytes url = 1;
    */
-  url: Uint8Array;
+  url: Uint8Array
 
   /**
    * The index of the button pressed (1-4)
    *
    * @generated from field: uint32 button_index = 2;
    */
-  buttonIndex: number;
+  buttonIndex: number
 
   /**
    * The cast which contained the frame url
    *
    * @generated from field: CastId cast_id = 3;
    */
-  castId?: CastId;
+  castId?: CastId
 
   /**
    * Text input from the user, if present
    *
    * @generated from field: bytes input_text = 4;
    */
-  inputText: Uint8Array;
+  inputText: Uint8Array
 
   /**
    * Serialized frame state value
    *
    * @generated from field: bytes state = 5;
    */
-  state: Uint8Array;
+  state: Uint8Array
 
   /**
    * Chain-specific transaction ID for tx actions
    *
    * @generated from field: bytes transaction_id = 6;
    */
-  transactionId: Uint8Array;
+  transactionId: Uint8Array
 
   /**
    * Chain-specific address for tx actions
    *
    * @generated from field: bytes address = 7;
    */
-  address: Uint8Array;
-};
+  address: Uint8Array
+}
 
 /**
- * * A Farcaster Frame action 
+ * * A Farcaster Frame action
  *
  * @generated from message FrameActionBody
  */
@@ -1067,60 +1110,62 @@ export type FrameActionBodyJson = {
    *
    * @generated from field: bytes url = 1;
    */
-  url?: string;
+  url?: string
 
   /**
    * The index of the button pressed (1-4)
    *
    * @generated from field: uint32 button_index = 2;
    */
-  buttonIndex?: number;
+  buttonIndex?: number
 
   /**
    * The cast which contained the frame url
    *
    * @generated from field: CastId cast_id = 3;
    */
-  castId?: CastIdJson;
+  castId?: CastIdJson
 
   /**
    * Text input from the user, if present
    *
    * @generated from field: bytes input_text = 4;
    */
-  inputText?: string;
+  inputText?: string
 
   /**
    * Serialized frame state value
    *
    * @generated from field: bytes state = 5;
    */
-  state?: string;
+  state?: string
 
   /**
    * Chain-specific transaction ID for tx actions
    *
    * @generated from field: bytes transaction_id = 6;
    */
-  transactionId?: string;
+  transactionId?: string
 
   /**
    * Chain-specific address for tx actions
    *
    * @generated from field: bytes address = 7;
    */
-  address?: string;
-};
+  address?: string
+}
 
 /**
  * Describes the message FrameActionBody.
  * Use `create(FrameActionBodySchema)` to create a new message.
  */
-export const FrameActionBodySchema: GenMessage<FrameActionBody, FrameActionBodyJson> = /*@__PURE__*/
-  messageDesc(file_message, 12);
+export const FrameActionBodySchema: GenMessage<
+  FrameActionBody,
+  FrameActionBodyJson
+> = /*@__PURE__*/ messageDesc(file_message, 12)
 
 /**
- * * Type of hashing scheme used to produce a digest of MessageData 
+ * * Type of hashing scheme used to produce a digest of MessageData
  *
  * @generated from enum HashScheme
  */
@@ -1139,20 +1184,21 @@ export enum HashScheme {
 }
 
 /**
- * * Type of hashing scheme used to produce a digest of MessageData 
+ * * Type of hashing scheme used to produce a digest of MessageData
  *
  * @generated from enum HashScheme
  */
-export type HashSchemeJson = "HASH_SCHEME_NONE" | "HASH_SCHEME_BLAKE3";
+export type HashSchemeJson = 'HASH_SCHEME_NONE' | 'HASH_SCHEME_BLAKE3'
 
 /**
  * Describes the enum HashScheme.
  */
-export const HashSchemeSchema: GenEnum<HashScheme, HashSchemeJson> = /*@__PURE__*/
-  enumDesc(file_message, 0);
+export const HashSchemeSchema: GenEnum<HashScheme, HashSchemeJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 0)
 
 /**
- * * Type of signature scheme used to sign the Message hash  
+ * * Type of signature scheme used to sign the Message hash
  *
  * @generated from enum SignatureScheme
  */
@@ -1178,20 +1224,25 @@ export enum SignatureScheme {
 }
 
 /**
- * * Type of signature scheme used to sign the Message hash  
+ * * Type of signature scheme used to sign the Message hash
  *
  * @generated from enum SignatureScheme
  */
-export type SignatureSchemeJson = "SIGNATURE_SCHEME_NONE" | "SIGNATURE_SCHEME_ED25519" | "SIGNATURE_SCHEME_EIP712";
+export type SignatureSchemeJson =
+  | 'SIGNATURE_SCHEME_NONE'
+  | 'SIGNATURE_SCHEME_ED25519'
+  | 'SIGNATURE_SCHEME_EIP712'
 
 /**
  * Describes the enum SignatureScheme.
  */
-export const SignatureSchemeSchema: GenEnum<SignatureScheme, SignatureSchemeJson> = /*@__PURE__*/
-  enumDesc(file_message, 1);
+export const SignatureSchemeSchema: GenEnum<
+  SignatureScheme,
+  SignatureSchemeJson
+> = /*@__PURE__*/ enumDesc(file_message, 1)
 
 /**
- * * Type of the MessageBody 
+ * * Type of the MessageBody
  *
  * @generated from enum MessageType
  */
@@ -1291,20 +1342,34 @@ export enum MessageType {
 }
 
 /**
- * * Type of the MessageBody 
+ * * Type of the MessageBody
  *
  * @generated from enum MessageType
  */
-export type MessageTypeJson = "MESSAGE_TYPE_NONE" | "MESSAGE_TYPE_CAST_ADD" | "MESSAGE_TYPE_CAST_REMOVE" | "MESSAGE_TYPE_REACTION_ADD" | "MESSAGE_TYPE_REACTION_REMOVE" | "MESSAGE_TYPE_LINK_ADD" | "MESSAGE_TYPE_LINK_REMOVE" | "MESSAGE_TYPE_VERIFICATION_ADD_ETH_ADDRESS" | "MESSAGE_TYPE_VERIFICATION_REMOVE" | "MESSAGE_TYPE_USER_DATA_ADD" | "MESSAGE_TYPE_USERNAME_PROOF" | "MESSAGE_TYPE_FRAME_ACTION" | "MESSAGE_TYPE_LINK_COMPACT_STATE";
+export type MessageTypeJson =
+  | 'MESSAGE_TYPE_NONE'
+  | 'MESSAGE_TYPE_CAST_ADD'
+  | 'MESSAGE_TYPE_CAST_REMOVE'
+  | 'MESSAGE_TYPE_REACTION_ADD'
+  | 'MESSAGE_TYPE_REACTION_REMOVE'
+  | 'MESSAGE_TYPE_LINK_ADD'
+  | 'MESSAGE_TYPE_LINK_REMOVE'
+  | 'MESSAGE_TYPE_VERIFICATION_ADD_ETH_ADDRESS'
+  | 'MESSAGE_TYPE_VERIFICATION_REMOVE'
+  | 'MESSAGE_TYPE_USER_DATA_ADD'
+  | 'MESSAGE_TYPE_USERNAME_PROOF'
+  | 'MESSAGE_TYPE_FRAME_ACTION'
+  | 'MESSAGE_TYPE_LINK_COMPACT_STATE'
 
 /**
  * Describes the enum MessageType.
  */
-export const MessageTypeSchema: GenEnum<MessageType, MessageTypeJson> = /*@__PURE__*/
-  enumDesc(file_message, 2);
+export const MessageTypeSchema: GenEnum<MessageType, MessageTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 2)
 
 /**
- * * Farcaster network the message is intended for 
+ * * Farcaster network the message is intended for
  *
  * @generated from enum FarcasterNetwork
  */
@@ -1337,20 +1402,26 @@ export enum FarcasterNetwork {
 }
 
 /**
- * * Farcaster network the message is intended for 
+ * * Farcaster network the message is intended for
  *
  * @generated from enum FarcasterNetwork
  */
-export type FarcasterNetworkJson = "FARCASTER_NETWORK_NONE" | "FARCASTER_NETWORK_MAINNET" | "FARCASTER_NETWORK_TESTNET" | "FARCASTER_NETWORK_DEVNET";
+export type FarcasterNetworkJson =
+  | 'FARCASTER_NETWORK_NONE'
+  | 'FARCASTER_NETWORK_MAINNET'
+  | 'FARCASTER_NETWORK_TESTNET'
+  | 'FARCASTER_NETWORK_DEVNET'
 
 /**
  * Describes the enum FarcasterNetwork.
  */
-export const FarcasterNetworkSchema: GenEnum<FarcasterNetwork, FarcasterNetworkJson> = /*@__PURE__*/
-  enumDesc(file_message, 3);
+export const FarcasterNetworkSchema: GenEnum<
+  FarcasterNetwork,
+  FarcasterNetworkJson
+> = /*@__PURE__*/ enumDesc(file_message, 3)
 
 /**
- * * Type of UserData 
+ * * Type of UserData
  *
  * @generated from enum UserDataType
  */
@@ -1404,20 +1475,28 @@ export enum UserDataType {
 }
 
 /**
- * * Type of UserData 
+ * * Type of UserData
  *
  * @generated from enum UserDataType
  */
-export type UserDataTypeJson = "USER_DATA_TYPE_NONE" | "USER_DATA_TYPE_PFP" | "USER_DATA_TYPE_DISPLAY" | "USER_DATA_TYPE_BIO" | "USER_DATA_TYPE_URL" | "USER_DATA_TYPE_USERNAME" | "USER_DATA_TYPE_LOCATION";
+export type UserDataTypeJson =
+  | 'USER_DATA_TYPE_NONE'
+  | 'USER_DATA_TYPE_PFP'
+  | 'USER_DATA_TYPE_DISPLAY'
+  | 'USER_DATA_TYPE_BIO'
+  | 'USER_DATA_TYPE_URL'
+  | 'USER_DATA_TYPE_USERNAME'
+  | 'USER_DATA_TYPE_LOCATION'
 
 /**
  * Describes the enum UserDataType.
  */
-export const UserDataTypeSchema: GenEnum<UserDataType, UserDataTypeJson> = /*@__PURE__*/
-  enumDesc(file_message, 4);
+export const UserDataTypeSchema: GenEnum<UserDataType, UserDataTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 4)
 
 /**
- * * Type of cast 
+ * * Type of cast
  *
  * @generated from enum CastType
  */
@@ -1434,20 +1513,21 @@ export enum CastType {
 }
 
 /**
- * * Type of cast 
+ * * Type of cast
  *
  * @generated from enum CastType
  */
-export type CastTypeJson = "CAST" | "LONG_CAST";
+export type CastTypeJson = 'CAST' | 'LONG_CAST'
 
 /**
  * Describes the enum CastType.
  */
-export const CastTypeSchema: GenEnum<CastType, CastTypeJson> = /*@__PURE__*/
-  enumDesc(file_message, 5);
+export const CastTypeSchema: GenEnum<CastType, CastTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 5)
 
 /**
- * * Type of Reaction 
+ * * Type of Reaction
  *
  * @generated from enum ReactionType
  */
@@ -1473,20 +1553,24 @@ export enum ReactionType {
 }
 
 /**
- * * Type of Reaction 
+ * * Type of Reaction
  *
  * @generated from enum ReactionType
  */
-export type ReactionTypeJson = "REACTION_TYPE_NONE" | "REACTION_TYPE_LIKE" | "REACTION_TYPE_RECAST";
+export type ReactionTypeJson =
+  | 'REACTION_TYPE_NONE'
+  | 'REACTION_TYPE_LIKE'
+  | 'REACTION_TYPE_RECAST'
 
 /**
  * Describes the enum ReactionType.
  */
-export const ReactionTypeSchema: GenEnum<ReactionType, ReactionTypeJson> = /*@__PURE__*/
-  enumDesc(file_message, 6);
+export const ReactionTypeSchema: GenEnum<ReactionType, ReactionTypeJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 6)
 
 /**
- * * Type of Protocol to disambiguate verification addresses 
+ * * Type of Protocol to disambiguate verification addresses
  *
  * @generated from enum Protocol
  */
@@ -1503,15 +1587,15 @@ export enum Protocol {
 }
 
 /**
- * * Type of Protocol to disambiguate verification addresses 
+ * * Type of Protocol to disambiguate verification addresses
  *
  * @generated from enum Protocol
  */
-export type ProtocolJson = "PROTOCOL_ETHEREUM" | "PROTOCOL_SOLANA";
+export type ProtocolJson = 'PROTOCOL_ETHEREUM' | 'PROTOCOL_SOLANA'
 
 /**
  * Describes the enum Protocol.
  */
-export const ProtocolSchema: GenEnum<Protocol, ProtocolJson> = /*@__PURE__*/
-  enumDesc(file_message, 7);
-
+export const ProtocolSchema: GenEnum<Protocol, ProtocolJson> =
+  /*@__PURE__*/
+  enumDesc(file_message, 7)
