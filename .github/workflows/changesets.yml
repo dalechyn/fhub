@@ -83,23 +83,23 @@ jobs:
           pnpm changeset:prepublish
           pnpm changeset publish --no-git-tag --snapshot canary --tag canary
 
-  jsr:
-    name: JSR
-    needs: verify
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: read
-      id-token: write
-
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-        with: 
-          submodules: 'recursive'
-
-      - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
-
-      - name: Publish to JSR
-        run: pnpm version:update && cd src && pnpx jsr publish --allow-slow-types --allow-dirty
+  # jsr:
+  #   name: JSR
+  #   needs: verify
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #
+  #   steps:
+  #     - name: Clone repository
+  #       uses: actions/checkout@v4
+  #       with: 
+  #         submodules: 'recursive'
+  #
+  #     - name: Install dependencies
+  #       uses: ./.github/actions/install-dependencies
+  #
+  #     - name: Publish to JSR
+  #       run: pnpm version:update && cd src && pnpx jsr publish --allow-slow-types --allow-dirty
