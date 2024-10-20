@@ -45,7 +45,9 @@
     "@connectrpc/connect": "beta",
     "@connectrpc/connect-node": "beta",
     "@connectrpc/connect-web": "beta",
-    "ox": "0.0.0-canary-20241006052626"
+    "@noble/ed25519": "^2.1.0",
+    "ox": "0.0.0-canary-20241006052626",
+    "sha512": "link:@noble/hashes/sha512"
   },
   "license": "WTFPL",
   "repository": "dalechyn/fhub",

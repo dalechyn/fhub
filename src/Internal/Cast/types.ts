@@ -1,5 +1,5 @@
 import type { Types } from 'ox'
-import type { Common } from '../Common/types.js'
+import type { Meta } from '../Meta/types.js'
 
 export type CastId = {
   fid: bigint
@@ -22,7 +22,8 @@ export type Parent =
       url: string
     }
 
-export type Cast = Common & {
+export type Cast = {
+  meta: Meta
   authorFid: bigint
   timestamp: number
   /** @deprecated Depcrecated by Farcaster. Use `embeds`. */

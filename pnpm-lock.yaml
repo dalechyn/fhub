@@ -25,7 +25,7 @@ importers:
         version: 2.27.9
       '@types/bun':
         specifier: latest
-        version: 1.1.10
+        version: 1.1.11
       '@types/node':
         specifier: ^22.7.4
         version: 22.7.4
@@ -56,16 +56,22 @@ importers:
         version: 2.1.0
       '@connectrpc/connect':
         specifier: beta
-        version: 2.0.0-beta.1(@bufbuild/protobuf@2.1.0)
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.1.0)
       '@connectrpc/connect-node':
         specifier: beta
-        version: 2.0.0-beta.1(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.1(@bufbuild/protobuf@2.1.0))
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.1.0))
       '@connectrpc/connect-web':
         specifier: beta
-        version: 2.0.0-beta.1(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.1(@bufbuild/protobuf@2.1.0))
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.1.0))
+      '@noble/ed25519':
+        specifier: ^2.1.0
+        version: 2.1.0
       ox:
         specifier: 0.0.0-canary-20241006052626
         version: 0.0.0-canary-20241006052626(typescript@5.6.2)
+      sha512:
+        specifier: link:@noble/hashes/sha512
+        version: link:@noble/hashes/sha512
       typescript:
         specifier: '>=5.0.4'
         version: 5.6.2
@@ -250,23 +256,23 @@ packages:
   '@changesets/write@0.3.2':
     resolution: {integrity: sha512-kDxDrPNpUgsjDbWBvUo27PzKX4gqeKOlhibaOXDJA6kuBisGqNHv/HwGJrAu8U/dSf8ZEFIeHIPtvSlZI1kULw==}
 
-  '@connectrpc/connect-node@2.0.0-beta.1':
-    resolution: {integrity: sha512-cmkuvOr1sAsEptlwSNN7rOjhrdc3vbsuipoEKUmGWQ0CjzF/SgCca86FyVf7dSsfGJme98TBsjYiznaLDJgaaA==}
+  '@connectrpc/connect-node@2.0.0-beta.2':
+    resolution: {integrity: sha512-FYiPjkEA8mHvXW9z+tQjY3Q8KAq612yWWQRU9XJQiIJ5SdJWGpCJyOAe3ygopSxV+0jRJmwIwurJd9YftZ8dOQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
-      '@bufbuild/protobuf': ^2.1.0
-      '@connectrpc/connect': 2.0.0-beta.1
+      '@bufbuild/protobuf': ^2.2.0
+      '@connectrpc/connect': 2.0.0-beta.2
 
-  '@connectrpc/connect-web@2.0.0-beta.1':
-    resolution: {integrity: sha512-+RPl6Hpv9mygjsudIDMep2UCh8QLmNg9d56GYH4GOkGbx+7Q+rAPH8wKKZMkoVHepUh53+WFzPNV13ZNqRKqJw==}
+  '@connectrpc/connect-web@2.0.0-beta.2':
+    resolution: {integrity: sha512-d3xs/u95FRqQ2WsrOpMCiDQ3CbvRsI3kU4armnZ0WLS5k7vcHqVNY7N1pU5HRR4p1c1Hs/oSeM25hw6gGepVWg==}
     peerDependencies:
-      '@bufbuild/protobuf': ^2.1.0
-      '@connectrpc/connect': 2.0.0-beta.1
+      '@bufbuild/protobuf': ^2.2.0
+      '@connectrpc/connect': 2.0.0-beta.2
 
-  '@connectrpc/connect@2.0.0-beta.1':
-    resolution: {integrity: sha512-3zr+mHusBrEqhFGjOpbCF7GrFBLZUQEk2/3Aa8lNEQt5hZhT2uXAOJhyroxs5mNTI5yWhAA/g6ua6RoSnTXoKQ==}
+  '@connectrpc/connect@2.0.0-beta.2':
+    resolution: {integrity: sha512-7Ok40XsVfFqeIXM2++hvDTQNqBJP8dv9mfj9YrAU3Z37vWQONmImImU6suIjy22x+qqyAZ9Y/zjbT+92DcwxYg==}
     peerDependencies:
-      '@bufbuild/protobuf': ^2.1.0
+      '@bufbuild/protobuf': ^2.2.0
 
   '@esbuild/aix-ppc64@0.23.1':
     resolution: {integrity: sha512-6VhYk1diRqrhBAqpJEdjASR/+WVRtfjpqKuNw11cLiaWpAT/Uu+nokB+UJnevzy/P9C/ty6AOe0dwueMrGh/iQ==}
@@ -422,6 +428,9 @@ packages:
     resolution: {integrity: sha512-TlaHRXDehJuRNR9TfZDNQ45mMEd5dwUwmicsafcIX4SsNiqnCHKjE/1alYPd/lDRVhxdhUAlv8uEhMCI5zjIJQ==}
     engines: {node: ^14.21.3 || >=16}
 
+  '@noble/ed25519@2.1.0':
+    resolution: {integrity: sha512-KM4qTyXPinyCgMzeYJH/UudpdL+paJXtY3CHtHYZQtBkS8MZoPr4rOikZllIutJe0d06QDQKisyn02gxZ8TcQA==}
+
   '@noble/hashes@1.5.0':
     resolution: {integrity: sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==}
     engines: {node: ^14.21.3 || >=16}
@@ -447,8 +456,8 @@ packages:
   '@scure/bip39@1.4.0':
     resolution: {integrity: sha512-BEEm6p8IueV/ZTfQLp/0vhw4NPnT9oWf5+28nvmeUICjP99f4vr2d+qc7AVGDDtwRep6ifR43Yed9ERVmiITzw==}
 
-  '@types/bun@1.1.10':
-    resolution: {integrity: sha512-76KYVSwrHwr9zsnk6oLXOGs9KvyBg3U066GLO4rk6JZk1ypEPGCUDZ5yOiESyIHWs9cx9iC8r01utYN32XdmgA==}
+  '@types/bun@1.1.11':
+    resolution: {integrity: sha512-0N7D/H/8sbf9JMkaG5F3+I/cB4TlhKTkO9EskEWP8XDr8aVcDe4EywSnU4cnyZy6tar1dq70NeFNkqMEUigthw==}
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -504,8 +513,8 @@ packages:
   buf@0.1.1:
     resolution: {integrity: sha512-mhZY7GswAAd9ZJpBCsf2WaH2WMZwvxgsXD6rozflWgerE6gz2bCT/FvAfzcBXw55R18Jf8Fjzte7bw5xhwVhFg==}
 
-  bun-types@1.1.29:
-    resolution: {integrity: sha512-En3/TzSPMPyl5UlUB1MHzHpcrZDakTm7mS203eLoX1fBoEa3PW+aSS8GAqVJ7Is/m34Z5ogL+ECniLY0uDaCPw==}
+  bun-types@1.1.30:
+    resolution: {integrity: sha512-mGh7NLisOXskBU62DxLS+/nwmLlCYHYAkCzdo4DZ9+fzrpP41hAdOqaN4DO6tQfenHb4pYb0/shw29k4/6I2yQ==}
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
@@ -1110,17 +1119,17 @@ snapshots:
       human-id: 1.0.2
       prettier: 2.8.8
 
-  '@connectrpc/connect-node@2.0.0-beta.1(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.1(@bufbuild/protobuf@2.1.0))':
+  '@connectrpc/connect-node@2.0.0-beta.2(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.1.0))':
     dependencies:
       '@bufbuild/protobuf': 2.1.0
-      '@connectrpc/connect': 2.0.0-beta.1(@bufbuild/protobuf@2.1.0)
+      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.1.0)
 
-  '@connectrpc/connect-web@2.0.0-beta.1(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.1(@bufbuild/protobuf@2.1.0))':
+  '@connectrpc/connect-web@2.0.0-beta.2(@bufbuild/protobuf@2.1.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.1.0))':
     dependencies:
       '@bufbuild/protobuf': 2.1.0
-      '@connectrpc/connect': 2.0.0-beta.1(@bufbuild/protobuf@2.1.0)
+      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.1.0)
 
-  '@connectrpc/connect@2.0.0-beta.1(@bufbuild/protobuf@2.1.0)':
+  '@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.1.0)':
     dependencies:
       '@bufbuild/protobuf': 2.1.0
 
@@ -1216,6 +1225,8 @@ snapshots:
     dependencies:
       '@noble/hashes': 1.5.0
 
+  '@noble/ed25519@2.1.0': {}
+
   '@noble/hashes@1.5.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -1243,9 +1254,9 @@ snapshots:
       '@noble/hashes': 1.5.0
       '@scure/base': 1.1.9
 
-  '@types/bun@1.1.10':
+  '@types/bun@1.1.11':
     dependencies:
-      bun-types: 1.1.29
+      bun-types: 1.1.30
 
   '@types/node@12.20.55': {}
 
@@ -1292,7 +1303,7 @@ snapshots:
 
   buf@0.1.1: {}
 
-  bun-types@1.1.29:
+  bun-types@1.1.30:
     dependencies:
       '@types/node': 20.12.14
       '@types/ws': 8.5.12
