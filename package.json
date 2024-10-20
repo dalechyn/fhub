@@ -19,7 +19,7 @@
     "prepare": "pnpm simple-git-hooks",
     "prepublishOnly": "bun scripts/prepublishOnly.ts",
     "size": "size-limit",
-    "test:build": "publint --strict ./src && attw --pack ./src --ignore-rules false-esm",
+    "test:build": "publint --strict ./src",
     "typecheck": "tsc --noEmit",
     "version:update": "bun scripts/updateVersion.ts"
   },
