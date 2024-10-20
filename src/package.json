@@ -15,21 +15,6 @@
       "import": "./_esm/index.js",
       "default": "./_cjs/index.js"
     },
-    "./accounts": {
-      "types": "./_types/accounts/index.d.ts",
-      "import": "./_esm/accounts/index.js",
-      "default": "./_cjs/accounts/index.js"
-    },
-    "./clients": {
-      "types": "./_types/clients/index.d.ts",
-      "import": "./_esm/clients/index.js",
-      "default": "./_cjs/clients/index.js"
-    },
-    "./clients/transports": {
-      "types": "./_types/clients/transports/index.d.ts",
-      "import": "./_esm/clients/transports/index.js",
-      "default": "./_cjs/clients/transports/index.js"
-    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {

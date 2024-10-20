@@ -19,6 +19,7 @@
     "prepare": "pnpm simple-git-hooks",
     "prepublishOnly": "bun scripts/prepublishOnly.ts",
     "size": "size-limit",
+    "test:build": "publint --strict ./src && attw --pack ./src --ignore-rules false-esm",
     "typecheck": "tsc --noEmit",
     "version:update": "bun scripts/updateVersion.ts"
   },
@@ -31,6 +32,7 @@
     "@types/bun": "latest",
     "@types/node": "^22.7.4",
     "buf": "^0.1.1",
+    "publint": "^0.2.11",
     "sherif": "^1.0.1",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
