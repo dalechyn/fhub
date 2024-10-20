@@ -12,4 +12,4 @@ plugins:
      - target=ts
      - import_extension=js
      - json_types=true
-     out: src/internal/protobufs
+     out: src/Internal/Protobufs
