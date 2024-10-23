@@ -1,26 +1,6 @@
-import type { Types } from 'ox'
+import type { Embed } from '../Embed/types.js'
 import type { Meta } from '../Meta/types.js'
-
-export type CastId = {
-  fid: bigint
-  hash: Types.Hex
-}
-
-export type Embed =
-  | {
-      type: 'url'
-      url: string
-    }
-  | ({ type: 'cast' } & CastId)
-
-export type Parent =
-  | ({
-      type: 'cast'
-    } & CastId)
-  | {
-      type: 'url'
-      url: string
-    }
+import type { Parent } from '../Parent/types.js'
 
 export type Cast = {
   meta: Meta
