@@ -1,10 +1,11 @@
 import type { CallOptions } from '@connectrpc/connect'
 import { Hex, type Types } from 'ox'
 import { Cast_fromMessage } from '../../Cast/fromMessage.js'
-import type { Cast, Parent } from '../../Cast/types.js'
+import type { Cast } from '../../Cast/types.js'
 import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
 import { Parent_toMessage } from '../../Parent/toMessage.js'
+import type { Parent } from '../../Parent/types.js'
 
 export declare namespace Actions_Cast_GetCastsByParent {
   type ReturnType = {

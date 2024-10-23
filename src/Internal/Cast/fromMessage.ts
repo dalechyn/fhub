@@ -1,4 +1,5 @@
 import { Embed_fromMessage } from '../Embed/fromMessage.js'
+import type { Embed } from '../Embed/types.js'
 import type { GlobalErrorType } from '../Errors/error.js'
 import { Meta_fromMessage } from '../Meta/fromMessage.js'
 import { Parent_fromMessage } from '../Parent/fromMessage.js'
@@ -7,7 +8,7 @@ import {
   Cast_InvalidEmbedsError,
   Cast_InvalidMessageTypeError,
 } from './errors.js'
-import type { Cast, Embed } from './types.js'
+import type { Cast } from './types.js'
 
 export function Cast_fromMessage(
   message: Message,

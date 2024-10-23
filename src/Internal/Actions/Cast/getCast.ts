@@ -1,7 +1,8 @@
 import type { CallOptions } from '@connectrpc/connect'
 import { Hex } from 'ox'
 import { Cast_fromMessage } from '../../Cast/fromMessage.js'
-import type { Cast, CastId } from '../../Cast/types.js'
+import type { Cast } from '../../Cast/types.js'
+import type { CastId } from '../../CastId/types.js'
 import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
 
