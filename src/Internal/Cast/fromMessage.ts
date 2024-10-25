@@ -57,7 +57,7 @@ export function Cast_fromMessage(
         return undefined
       return message.data.body.value.embedsDeprecated
     })(),
-    authorFid: message.data.fid,
+    fid: message.data.fid,
     timestamp: message.data.timestamp,
     text: message.data.body.value.text,
     parent,

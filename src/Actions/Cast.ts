@@ -4,6 +4,11 @@ export {
 } from '../Internal/Actions/Cast/getCast.js'
 
 export {
+  Actions_Cast_getCastWithReactions as getCastWithReactions,
+  type Actions_Cast_GetCastWithReactions as GetCastWithReactions,
+} from '../Internal/Actions/Cast/getCastWithReactions.js'
+
+export {
   Actions_Cast_getCastsByFid as getCastsByFid,
   type Actions_Cast_GetCastsByFid as GetCastsByFid,
 } from '../Internal/Actions/Cast/getCastsByFid.js'

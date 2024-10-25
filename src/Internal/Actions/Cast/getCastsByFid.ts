@@ -8,7 +8,7 @@ import type { GlobalErrorType } from '../../Errors/error.js'
 export declare namespace Actions_Cast_GetCastsByFid {
   type ReturnType = {
     casts: Cast[]
-    nextPageToken: Types.Hex | undefined
+    nextPageToken: Types.Hex | null
   }
   type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
 }
@@ -41,11 +41,15 @@ export async function Actions_Cast_getCastsByFid(
     },
     options,
   )
+  const nextPageToken = (() => {
+    if (!message.nextPageToken) return null
+    const hex = Hex.fromBytes(message.nextPageToken)
+    if (hex === '0x') return null
+    return hex
+  })()
   return {
     casts: message.messages.map(Cast_fromMessage),
-    nextPageToken: message.nextPageToken
-      ? Hex.fromBytes(message.nextPageToken)
-      : undefined,
+    nextPageToken,
   }
 }
 Actions_Cast_getCastsByFid.parseError = (error: unknown) =>

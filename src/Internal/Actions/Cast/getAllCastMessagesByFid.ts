@@ -12,7 +12,7 @@ export declare namespace Actions_Cast_GetAllCastMessagesByFid {
       | { type: 'casted'; cast: Cast }
       | { type: 'removed'; hash: Types.Hex }
     )[]
-    nextPageToken: Types.Hex | undefined
+    nextPageToken: Types.Hex | null
   }
   type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
 }
@@ -38,6 +38,12 @@ export async function Actions_Cast_getAllCastMessagesByFid(
     options,
   )
 
+  const nextPageToken = (() => {
+    if (!message.nextPageToken) return null
+    const hex = Hex.fromBytes(message.nextPageToken)
+    if (hex === '0x') return null
+    return hex
+  })()
   return {
     messages: message.messages.map((message) => {
       if (
@@ -50,9 +56,7 @@ export async function Actions_Cast_getAllCastMessagesByFid(
         }
       return { type: 'casted', cast: Cast_fromMessage(message) }
     }),
-    nextPageToken: message.nextPageToken
-      ? Hex.fromBytes(message.nextPageToken)
-      : undefined,
+    nextPageToken,
   }
 }
 Actions_Cast_getAllCastMessagesByFid.parseError = (error: unknown) =>

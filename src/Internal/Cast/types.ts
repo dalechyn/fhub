@@ -4,7 +4,7 @@ import type { Parent } from '../Parent/types.js'
 
 export type Cast = {
   meta: Meta
-  authorFid: bigint
+  fid: bigint
   timestamp: number
   /** @deprecated Depcrecated by Farcaster. Use `embeds`. */
   embedsDeprecated: string[] | undefined
