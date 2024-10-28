@@ -41,7 +41,9 @@ export async function Actions_Cast_getCastsByMention(
     return hex
   })()
   return {
-    casts: message.messages.map(Cast_fromMessage),
+    casts: await Promise.all(
+      message.messages.map((message) => Cast_fromMessage(client, message)),
+    ),
     nextPageToken,
   }
 }

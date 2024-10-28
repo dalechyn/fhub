@@ -20,7 +20,7 @@ export async function Actions_Cast_getCast(
     options,
   )
 
-  return Cast_fromMessage(message)
+  return Cast_fromMessage(client, message)
 }
 
 Actions_Cast_getCast.parseError = (error: unknown) =>

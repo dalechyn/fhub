@@ -1,1 +1,1 @@
-text with embeds
+message publishing

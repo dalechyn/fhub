@@ -27,8 +27,8 @@ const client = Client.create(
 // console.timeEnd('bio')
 
 const castWithReactions = await Actions.Cast.getCastWithReactions(client, {
-  hash: '0xc87c75ab61c15b38ec72be6d6fd6d08c73d39155',
-  fid: 11517n,
+  hash: '0x62cda93dc3889a6f0c819cd4d9392b3af2cb452a',
+  fid: 862185n,
 })
 console.dir(castWithReactions, { depth: null })
 // biome-ignore lint/suspicious/noConsoleLog: <explanation>

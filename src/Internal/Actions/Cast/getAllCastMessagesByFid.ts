@@ -45,17 +45,19 @@ export async function Actions_Cast_getAllCastMessagesByFid(
     return hex
   })()
   return {
-    messages: message.messages.map((message) => {
-      if (
-        message.data?.type === MessageType.CAST_REMOVE &&
-        message.data.body.case === 'castRemoveBody'
-      )
-        return {
-          type: 'removed' as const,
-          hash: Hex.fromBytes(message.data.body.value.targetHash),
-        }
-      return { type: 'casted', cast: Cast_fromMessage(message) }
-    }),
+    messages: await Promise.all(
+      message.messages.map(async (message) => {
+        if (
+          message.data?.type === MessageType.CAST_REMOVE &&
+          message.data.body.case === 'castRemoveBody'
+        )
+          return {
+            type: 'removed' as const,
+            hash: Hex.fromBytes(message.data.body.value.targetHash),
+          }
+        return { type: 'casted', cast: await Cast_fromMessage(client, message) }
+      }),
+    ),
     nextPageToken,
   }
 }

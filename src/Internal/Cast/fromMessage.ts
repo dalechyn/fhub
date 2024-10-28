@@ -1,3 +1,5 @@
+import { Actions_UserData_getUserDataUsername } from '../Actions/UserData/getUserDataUsername.js'
+import type { Client } from '../Client/types.js'
 import { Embed_fromMessage } from '../Embed/fromMessage.js'
 import type { Embed } from '../Embed/types.js'
 import type { GlobalErrorType } from '../Errors/error.js'
@@ -10,9 +12,10 @@ import {
 } from './errors.js'
 import type { Cast } from './types.js'
 
-export function Cast_fromMessage(
+export async function Cast_fromMessage(
+  client: Client,
   message: Message,
-): Cast_fromMessage.ReturnType {
+): Promise<Cast_fromMessage.ReturnType> {
   const meta = Meta_fromMessage(message)
 
   // @TODO: separate error here
@@ -47,19 +50,39 @@ export function Cast_fromMessage(
   })()
   const parent = Parent_fromMessage(message.data.body.value.parent)
 
+  const rawText = message.data.body.value.text
   return {
     meta,
     isLong,
-    mentions,
-    embeds,
-    embedsDeprecated: (() => {
-      if (message.data.body.value.embedsDeprecated.length === 0)
-        return undefined
-      return message.data.body.value.embedsDeprecated
-    })(),
     fid: message.data.fid,
     timestamp: message.data.timestamp,
-    text: message.data.body.value.text,
+    text: {
+      value: await (async () => {
+        if (!mentions) return ''
+
+        let chars = rawText.split('')
+        const mentionsUsernames = await Promise.all(
+          mentions.map(async (mention) => ({
+            username: await Actions_UserData_getUserDataUsername(client, {
+              fid: mention.fid,
+            }),
+            ...mention,
+          })),
+        )
+        for (const mention of mentionsUsernames.reverse()) {
+          chars = [
+            ...chars.slice(0, mention.position),
+            '@',
+            mention.username,
+            ...chars.slice(mention.position),
+          ]
+        }
+        return chars.join('')
+      })(),
+      mentions,
+      embeds,
+      raw: rawText,
+    },
     parent,
   }
 }

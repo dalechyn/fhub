@@ -6,16 +6,17 @@ export type Cast = {
   meta: Meta
   fid: bigint
   timestamp: number
-  /** @deprecated Depcrecated by Farcaster. Use `embeds`. */
-  embedsDeprecated: string[] | undefined
-  embeds: Embed[] | undefined
-  mentions:
-    | {
-        fid: bigint
-        position: number
-      }[]
-    | undefined
   parent: Parent | undefined
-  text: string
+  text: {
+    value: string
+    embeds: Embed[] | undefined
+    mentions:
+      | {
+          fid: bigint
+          position: number
+        }[]
+      | undefined
+    raw: string
+  }
   isLong: boolean
 }
