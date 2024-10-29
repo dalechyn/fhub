@@ -58,7 +58,7 @@ export async function Cast_fromMessage(
     timestamp: message.data.timestamp,
     text: {
       value: await (async () => {
-        if (!mentions) return ''
+        if (!mentions) return rawText
 
         let chars = rawText.split('')
         const mentionsUsernames = await Promise.all(
