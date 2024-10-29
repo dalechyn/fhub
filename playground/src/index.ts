@@ -26,7 +26,7 @@ const client = Client.create(
 // console.log(myBio)
 // console.timeEnd('bio')
 
-const castWithReactions = await Actions.Cast.getCastWithReactions(client, {
+const castWithReactions = await Actions.Cast.getCast(client, {
   hash: '0x62cda93dc3889a6f0c819cd4d9392b3af2cb452a',
   fid: 862185n,
 })

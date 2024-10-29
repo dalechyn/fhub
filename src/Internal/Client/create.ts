@@ -2,8 +2,8 @@ import {
   type Transport,
   createClient as connectRpc_createClient,
 } from '@connectrpc/connect'
+import { HubService } from '../../Node/Internal/Protobufs/rpc_pb.js'
 import type { GlobalErrorType } from '../Errors/error.js'
-import { HubService } from '../Protobufs/rpc_pb.js'
 import type { Client } from './types.js'
 
 export function Client_create(transport: Transport): Client {

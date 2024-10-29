@@ -15,6 +15,11 @@
       "import": "./_esm/index.js",
       "default": "./_cjs/index.js"
     },
+    "./Node": {
+      "types": "./_types/Node/index.d.ts",
+      "import": "./_esm/Node/index.js",
+      "default": "./_cjs/Node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -34,7 +39,7 @@
     "@noble/hashes": "^1.5.0",
     "ox": "0.0.0-canary-20241006052626"
   },
-  "license": "WTFPL",
+  "license": "MIT",
   "repository": "dalechyn/fhub",
   "authors": ["dalechyn.eth"]
 }
