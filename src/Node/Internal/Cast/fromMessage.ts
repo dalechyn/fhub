@@ -1,29 +1,23 @@
-import type { Client } from '../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../Internal/Errors/error.js'
-import { Actions_UserData_getUserDataUsername } from '../Actions/UserData/getUserDataUsername.js'
 import { Embed_fromMessage } from '../Embed/fromMessage.js'
 import type { Embed } from '../Embed/types.js'
 import { Meta_fromMessage } from '../Meta/fromMessage.js'
 import { Parent_fromMessage } from '../Parent/fromMessage.js'
-import { CastType, type Message, MessageType } from '../Protobufs/message_pb.js'
+import { CastType, type Message } from '../Protobufs/message_pb.js'
 import {
   Cast_InvalidEmbedsError,
   Cast_InvalidMessageTypeError,
 } from './errors.js'
 import type { Cast } from './types.js'
 
-export async function Cast_fromMessage(
-  client: Client,
+export function Cast_fromMessage(
   message: Message,
-): Promise<Cast_fromMessage.ReturnType> {
+): Cast_fromMessage.ReturnType {
   const meta = Meta_fromMessage(message)
 
   // @TODO: separate error here
   if (!message.data) throw new Error('`data` must be defined in Cast message.')
-  if (
-    message.data.type !== MessageType.CAST_ADD ||
-    message.data.body.case !== 'castAddBody'
-  )
+  if (message.data.body.case !== 'castAddBody')
     throw new Cast_InvalidMessageTypeError({ hash: meta.hash })
 
   const isLong = message.data.body.value.type === CastType.LONG_CAST
@@ -50,38 +44,15 @@ export async function Cast_fromMessage(
   })()
   const parent = Parent_fromMessage(message.data.body.value.parent)
 
-  const rawText = message.data.body.value.text
   return {
     meta,
     isLong,
     fid: message.data.fid,
     timestamp: message.data.timestamp,
     text: {
-      value: await (async () => {
-        if (!mentions) return rawText
-
-        let chars = rawText.split('')
-        const mentionsUsernames = await Promise.all(
-          mentions.map(async (mention) => ({
-            username: await Actions_UserData_getUserDataUsername(client, {
-              fid: mention.fid,
-            }),
-            ...mention,
-          })),
-        )
-        for (const mention of mentionsUsernames.reverse()) {
-          chars = [
-            ...chars.slice(0, mention.position),
-            '@',
-            mention.username,
-            ...chars.slice(mention.position),
-          ]
-        }
-        return chars.join('')
-      })(),
       mentions,
       embeds,
-      raw: rawText,
+      value: message.data.body.value.text,
     },
     parent,
   }

@@ -1,18 +1,17 @@
-import { type MessageJsonType, fromJson, toJson } from '@bufbuild/protobuf'
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { MessageSchema } from '../../Protobufs/message_pb.js'
-import {
-  type LinkRequestJson,
-  LinkRequestSchema,
-} from '../../Protobufs/request_response_pb.js'
+import { Link_fromMessage } from '../../Link/fromMessage.js'
+import type { Link } from '../../Link/types.js'
 
 export declare namespace Actions_Link_getLink {
-  type ParametersType = Required<LinkRequestJson>
-  type ReturnType = MessageJsonType<typeof MessageSchema>
-  // @TODO: proper error handling
-  type ErrorType = GlobalErrorType
+  type ParametersType = {
+    sourceFid: bigint
+    targetFid: bigint
+    type: string
+  }
+  type ReturnType = Link
+  type ErrorType = Link_fromMessage.ErrorType | GlobalErrorType
 }
 export async function Actions_Link_getLink(
   client: Client,
@@ -20,10 +19,17 @@ export async function Actions_Link_getLink(
   options?: CallOptions,
 ): Promise<Actions_Link_getLink.ReturnType> {
   const message = await client.connectRpcClient.getLink(
-    fromJson(LinkRequestSchema, parameters),
+    {
+      linkType: parameters.type,
+      fid: parameters.sourceFid,
+      target: {
+        case: 'targetFid',
+        value: parameters.targetFid,
+      },
+    },
     options,
   )
-  return toJson(MessageSchema, message)
+  return Link_fromMessage(message)
 }
 
 Actions_Link_getLink.parseError = (error: unknown) =>

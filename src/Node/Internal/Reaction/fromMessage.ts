@@ -3,7 +3,6 @@ import { CastId_fromMessage } from '../CastId/fromMessage.js'
 import { Meta_fromMessage } from '../Meta/fromMessage.js'
 import {
   type Message,
-  MessageType,
   type ReactionBody as Protobufs_Reaction,
   ReactionType as Protobufs_ReactionType,
 } from '../Protobufs/message_pb.js'
@@ -57,10 +56,7 @@ export function Reaction_fromMessage(
   // @TODO: separate error here
   if (!message.data)
     throw new Error('`data` must be defined in Reaction message.')
-  if (
-    message.data.type !== MessageType.REACTION_ADD ||
-    message.data.body.case !== 'reactionBody'
-  )
+  if (message.data.body.case !== 'reactionBody')
     // @TODO: error
     throw new Error('invalid')
 

@@ -1,16 +1,18 @@
-import { type MessageJsonType, fromJson, toJson } from '@bufbuild/protobuf'
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import {
-  type FidTimestampRequestJson,
-  FidTimestampRequestSchema,
-  MessagesResponseSchema,
-} from '../../Protobufs/request_response_pb.js'
+import { Link_fromMessage } from '../../Link/fromMessage.js'
+import type { Link } from '../../Link/types.js'
+import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
+import type {
+  NextPageToken,
+  PaginationWithTimestamps,
+} from '../../Pagination/types.js'
+import { Pagination_unwrap } from '../../Pagination/unwrap.js'
 
 export declare namespace Actions_Link_getAllLinkMessagesByFid {
-  type ParametersType = Required<FidTimestampRequestJson>
-  type ReturnType = MessageJsonType<typeof MessagesResponseSchema>
+  type ParametersType = { sourceFid: bigint } & PaginationWithTimestamps
+  type ReturnType = { links: Link[]; nextPageToken: NextPageToken }
   // @TODO: proper error handling
   type ErrorType = GlobalErrorType
 }
@@ -20,10 +22,13 @@ export async function Actions_Link_getAllLinkMessagesByFid(
   options?: CallOptions,
 ): Promise<Actions_Link_getAllLinkMessagesByFid.ReturnType> {
   const message = await client.connectRpcClient.getAllLinkMessagesByFid(
-    fromJson(FidTimestampRequestSchema, parameters),
+    { fid: parameters.sourceFid, ...Pagination_unwrap(parameters) },
     options,
   )
-  return toJson(MessagesResponseSchema, message)
+  return {
+    links: message.messages.map(Link_fromMessage),
+    nextPageToken: Pagination_getPageToken(message.nextPageToken),
+  }
 }
 
 Actions_Link_getAllLinkMessagesByFid.parseError = (error: unknown) =>

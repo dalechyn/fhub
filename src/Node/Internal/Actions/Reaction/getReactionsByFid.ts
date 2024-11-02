@@ -1,22 +1,20 @@
 import type { CallOptions } from '@connectrpc/connect'
-import { Hex, type Types } from 'ox'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
+import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
+import type { NextPageToken, Pagination } from '../../Pagination/types.js'
+import { Pagination_unwrap } from '../../Pagination/unwrap.js'
 import { Reaction_fromMessage } from '../../Reaction/fromMessage.js'
-import { ReactionType_toMessage } from '../../Reaction/toMessage.js'
 import type { Reaction, ReactionType } from '../../Reaction/types.js'
 
 export declare namespace Actions_Reaction_getReactionsByFid {
   type ParametersType = {
     fid: bigint
     type?: ReactionType
-    pageSize?: number | undefined
-    pageToken?: Types.Hex | undefined
-    reverse?: boolean | undefined
-  }
+  } & Pagination
   type ReturnType = {
     messages: Reaction[]
-    nextPageToken: Types.Hex | null
+    nextPageToken: NextPageToken
   }
   // @TODO: proper error handling
   type ErrorType = GlobalErrorType
@@ -29,27 +27,14 @@ export async function Actions_Reaction_getReactionsByFid(
   const message = await client.connectRpcClient.getReactionsByFid(
     {
       fid: parameters.fid,
-      ...(parameters.type
-        ? { reactionType: ReactionType_toMessage(parameters.type) }
-        : {}),
-      ...(parameters.pageSize ? { pageSize: parameters.pageSize } : {}),
-      ...(parameters.pageToken
-        ? { pageToken: Hex.toBytes(parameters.pageToken) }
-        : {}),
-      ...(parameters.reverse ? { reverse: parameters.reverse } : {}),
+      ...Pagination_unwrap(parameters),
     },
     options,
   )
 
-  const nextPageToken = (() => {
-    if (!message.nextPageToken) return null
-    const hex = Hex.fromBytes(message.nextPageToken)
-    if (hex === '0x') return null
-    return hex
-  })()
   return {
     messages: message.messages.map(Reaction_fromMessage),
-    nextPageToken,
+    nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }
 

@@ -1,4 +1,9 @@
 import { Actions, Client, Transport } from 'fhub'
+// import { Actions as NodeActions } from 'fhub/Node'
+// import {
+//   file_hub_event,
+//   HubEventType,
+// } from '../../src/Node/Internal/Protobufs/hub_event_pb'
 
 const client = Client.create(
   Transport.grpcNode({
@@ -26,12 +31,18 @@ const client = Client.create(
 // console.log(myBio)
 // console.timeEnd('bio')
 
-const castWithReactions = await Actions.Cast.getCast(client, {
-  hash: '0x62cda93dc3889a6f0c819cd4d9392b3af2cb452a',
-  fid: 862185n,
-})
-console.dir(castWithReactions, { depth: null })
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-console.log('likes', castWithReactions.likes.length)
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-console.log('recasts', castWithReactions.recasts.length)
+// const castWithReactions = await Actions.Cast.getCast(client, {
+//   hash: '0x62cda93dc3889a6f0c819cd4d9392b3af2cb452a',
+//   fid: 862185n,
+// })
+// console.dir(castWithReactions, { depth: null })
+// // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+// console.log('likes', castWithReactions.likes.length)
+// // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+// console.log('recasts', castWithReactions.recasts.length)
+
+// events subscriptions
+for await (const cast of Actions.Watch.watchCasts(client)) {
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  console.log(`${cast.fid} casted at ${cast.timestamp}: ${cast.text.value}`)
+}

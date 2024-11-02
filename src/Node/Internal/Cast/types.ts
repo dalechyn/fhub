@@ -16,7 +16,6 @@ export type Cast = {
           position: number
         }[]
       | undefined
-    raw: string
   }
   isLong: boolean
 }

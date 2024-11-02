@@ -1,10 +1,7 @@
 import { Hex } from 'ox'
 import type { GlobalErrorType } from '../../../Internal/Errors/error.js'
-import {
-  type Message,
-  MessageType,
-  UserDataType,
-} from '../Protobufs/message_pb.js'
+import { Meta_fromMessage } from '../Meta/fromMessage.js'
+import { type Message, UserDataType } from '../Protobufs/message_pb.js'
 import { UserData_InvalidMessageTypeError } from './errors.js'
 import type { UserData } from './types.js'
 
@@ -12,10 +9,7 @@ export function UserData_fromMessage(
   message: Message,
 ): UserData_fromMessage.ReturnType {
   // @TODO: error here
-  if (
-    message.data?.type !== MessageType.USER_DATA_ADD ||
-    message.data?.body.case !== 'userDataBody'
-  )
+  if (message.data?.body.case !== 'userDataBody')
     throw new UserData_InvalidMessageTypeError({
       hash: Hex.fromBytes(message.hash),
     })
@@ -41,7 +35,11 @@ export function UserData_fromMessage(
     return 'none'
   })()
   // @TODO: handle unexpeded type here?
-  return { type, value: message.data.body.value.value }
+  return {
+    meta: Meta_fromMessage(message),
+    type,
+    value: message.data.body.value.value,
+  }
 }
 
 export declare namespace UserData_fromMessage {

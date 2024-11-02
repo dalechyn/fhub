@@ -1,19 +1,17 @@
-import { fromJson, toJson } from '@bufbuild/protobuf'
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import {
-  type HubEventJson,
-  HubEventSchema,
-} from '../../Protobufs/hub_event_pb.js'
-import {
-  type EventRequestJson,
-  SubscribeRequestSchema,
-} from '../../Protobufs/request_response_pb.js'
+import { HubEvent_fromMessage } from '../../HubEvent/fromMessage.js'
+import type { HubEvent } from '../../HubEvent/types.js'
 
 export declare namespace Actions_Event_subscribe {
-  type ParametersType = Required<EventRequestJson>
-  type ReturnType = AsyncGenerator<HubEventJson, void, HubEventJson>
+  type ParametersType = {
+    eventTypes: ('mergeMessage' | 'pruneMessage' | 'revokeMessage')[]
+    fromId?: bigint | undefined
+    totalShards?: bigint | undefined
+    shardIndex?: bigint | undefined
+  }
+  type ReturnType = AsyncGenerator<HubEvent, void, undefined>
   // @TODO: proper error handling
   type ErrorType = GlobalErrorType
 }
@@ -22,11 +20,27 @@ export async function* Actions_Event_subscribe(
   parameters: Actions_Event_subscribe.ParametersType,
   options?: CallOptions,
 ): Actions_Event_subscribe.ReturnType {
+  const eventTypesNumbers = parameters.eventTypes.map((eventType) => {
+    if (eventType === 'mergeMessage') return 1
+    if (eventType === 'pruneMessage') return 2
+    if (eventType === 'revokeMessage') return 3
+    if (eventType === 'mergeUsernameProof') return 6
+    if (eventType === 'mergeOnChainEvent') return 9
+    return 0
+  })
+
   for await (const message of client.connectRpcClient.subscribe(
-    fromJson(SubscribeRequestSchema, parameters),
+    {
+      eventTypes: eventTypesNumbers,
+      ...(parameters.fromId ? { fromId: parameters.fromId } : {}),
+      ...(parameters.totalShards
+        ? { totalShards: parameters.totalShards }
+        : {}),
+      ...(parameters.shardIndex ? { shardIndex: parameters.shardIndex } : {}),
+    },
     options,
   )) {
-    yield toJson(HubEventSchema, message)
+    yield HubEvent_fromMessage(message)
   }
 }
 
