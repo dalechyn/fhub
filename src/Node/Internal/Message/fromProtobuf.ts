@@ -7,7 +7,7 @@ import { LinkCompactState_fromMessageProtobuf } from '../LinkCompactState/fromMe
 import * as MessageProtobuf from '../Protobufs/message_pb.js'
 import { Reaction_fromMessageProtobuf } from '../Reaction/fromMessageProtobuf.js'
 import { UserData_fromProtobuf } from '../UserData/fromProtobuf.js'
-import { UsernameProof_fromProtobuf } from '../UsernameProof/fromProtobuf.js'
+import { UsernameProof_fromMessageProtobuf } from '../UsernameProof/fromMessageProtobuf.js'
 import { VerificationAdd_fromMessageProtobuf } from '../VerificationAdd/fromMessageProtobuf.js'
 import { VerificationRemove_fromMessageProtobuf } from '../VerificationRemoval/fromMessageProtobuf.js'
 import type { Message } from './types.js'
@@ -66,7 +66,10 @@ export function Message_fromProtobuf(
   if (message.data.type === MessageProtobuf.MessageType.USER_DATA_ADD)
     return { type: 'userDataAdd', data: UserData_fromProtobuf(message) }
   if (message.data.type === MessageProtobuf.MessageType.USERNAME_PROOF)
-    return { type: 'usernameProof', data: UsernameProof_fromProtobuf(message) }
+    return {
+      type: 'usernameProof',
+      data: UsernameProof_fromMessageProtobuf(message),
+    }
   if (message.data.type === MessageProtobuf.MessageType.FRAME_ACTION)
     return { type: 'frameAction', data: FrameActionBody_fromProtobuf(message) }
 

@@ -1,16 +1,14 @@
-import { type MessageJsonType, fromJson, toJson } from '@bufbuild/protobuf'
+import { create } from '@bufbuild/protobuf'
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import {
-  type UsernameProofRequestJson,
-  UsernameProofRequestSchema,
-} from '../../Protobufs/request_response_pb.js'
-import { UserNameProofSchema } from '../../Protobufs/username_proof_pb.js'
+import * as RequestResponseProtobuf from '../../Protobufs/request_response_pb.js'
+import { UsernameProof_fromProtobuf } from '../../UsernameProof/fromProtobuf.js'
+import type { UsernameProof } from '../../UsernameProof/types.js'
 
 export declare namespace Actions_UsernameProof_getUsernameProof {
-  type ParametersType = Required<UsernameProofRequestJson>
-  type ReturnType = MessageJsonType<typeof UserNameProofSchema>
+  type ParametersType = { name: string }
+  type ReturnType = Omit<UsernameProof, 'meta'>
   // @TODO: proper error handling
   type ErrorType = GlobalErrorType
 }
@@ -19,11 +17,13 @@ export async function Actions_UsernameProof_getUsernameProof(
   parameters: Actions_UsernameProof_getUsernameProof.ParametersType,
   options?: CallOptions,
 ): Promise<Actions_UsernameProof_getUsernameProof.ReturnType> {
-  const message = await client.connectRpcClient.getUsernameProof(
-    fromJson(UsernameProofRequestSchema, parameters),
+  const proof = await client.connectRpcClient.getUsernameProof(
+    create(RequestResponseProtobuf.UsernameProofRequestSchema, {
+      name: Uint8Array.from(Buffer.from(parameters.name)),
+    }),
     options,
   )
-  return toJson(UserNameProofSchema, message)
+  return UsernameProof_fromProtobuf(proof)
 }
 
 Actions_UsernameProof_getUsernameProof.parseError = (error: unknown) =>

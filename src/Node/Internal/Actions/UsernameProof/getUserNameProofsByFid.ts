@@ -19,11 +19,11 @@ export async function Actions_UsernameProof_getUserNameProofsByFid(
   parameters: Actions_UsernameProof_getUserNameProofsByFid.ParametersType,
   options?: CallOptions,
 ): Promise<Actions_UsernameProof_getUserNameProofsByFid.ReturnType> {
-  const message = await client.connectRpcClient.getUserNameProofsByFid(
+  const proofs = await client.connectRpcClient.getUserNameProofsByFid(
     fromJson(FidRequestSchema, parameters),
     options,
   )
-  return toJson(UsernameProofsResponseSchema, message)
+  return toJson(UsernameProofsResponseSchema, proofs)
 }
 
 Actions_UsernameProof_getUserNameProofsByFid.parseError = (error: unknown) =>
