@@ -1,9 +1,10 @@
 import type { CallOptions } from '@connectrpc/connect'
-import { Hex, type Types } from 'ox'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Cast_fromMessage } from '../../Cast/fromMessage.js'
 import type { Cast } from '../../Cast/types.js'
+import { CastAdd_fromMessageProtobuf } from '../../CastAdd/fromMessageProtobuf.js'
+import { CastRemove_fromMessageProtobuf } from '../../CastRemove/fromMessageProtobuf.js'
+import type { CastRemove } from '../../CastRemove/types.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
@@ -16,11 +17,11 @@ export declare namespace Actions_Cast_getAllCastMessagesByFid {
   type ReturnType = {
     messages: (
       | { type: 'casted'; cast: Cast }
-      | { type: 'removed'; hash: Types.Hex }
+      | { type: 'removed'; cast: CastRemove }
     )[]
     nextPageToken: NextPageToken
   }
-  type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
+  type ErrorType = CastAdd_fromMessageProtobuf.ErrorType | GlobalErrorType
 }
 export async function Actions_Cast_getAllCastMessagesByFid(
   client: Client,
@@ -43,9 +44,9 @@ export async function Actions_Cast_getAllCastMessagesByFid(
       )
         return {
           type: 'removed' as const,
-          hash: Hex.fromBytes(message.data.body.value.targetHash),
+          cast: CastRemove_fromMessageProtobuf(message),
         }
-      return { type: 'casted', cast: Cast_fromMessage(message) }
+      return { type: 'casted', cast: CastAdd_fromMessageProtobuf(message) }
     }),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }

@@ -1,16 +1,12 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Reaction_fromMessage } from '../../Reaction/fromMessage.js'
-import {
-  ReactionTarget_toMessage,
-  ReactionType_toMessage,
-} from '../../Reaction/toMessage.js'
-import type {
-  Reaction,
-  ReactionTarget,
-  ReactionType,
-} from '../../Reaction/types.js'
+import { Reaction_fromMessageProtobuf } from '../../Reaction/fromMessageProtobuf.js'
+import type { Reaction } from '../../Reaction/types.js'
+import { ReactionTarget_toProtobuf } from '../../ReactionTarget/toProtobuf.js'
+import type { ReactionTarget } from '../../ReactionTarget/types.js'
+import { ReactionType_toProtobuf } from '../../ReactionType/toProtobuf.js'
+import type { ReactionType } from '../../ReactionType/types.js'
 
 export declare namespace Actions_Reaction_getReaction {
   type ParametersType = {
@@ -30,12 +26,12 @@ export async function Actions_Reaction_getReaction(
   const message = await client.connectRpcClient.getReaction(
     {
       fid: parameters.fid,
-      reactionType: ReactionType_toMessage(parameters.reactionType),
-      target: ReactionTarget_toMessage(parameters.target),
+      reactionType: ReactionType_toProtobuf(parameters.reactionType),
+      target: ReactionTarget_toProtobuf(parameters.target),
     },
     options,
   )
-  return Reaction_fromMessage(message)
+  return Reaction_fromMessageProtobuf(message)
 }
 
 Actions_Reaction_getReaction.parseError = (error: unknown) =>

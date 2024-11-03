@@ -25,7 +25,7 @@ importers:
         version: 2.27.9
       '@types/bun':
         specifier: latest
-        version: 1.1.11
+        version: 1.1.13
       '@types/node':
         specifier: ^22.7.4
         version: 22.7.4
@@ -61,17 +61,20 @@ importers:
   src:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^2.2.2
+        version: 2.2.2
       '@connectrpc/connect':
         specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.0)
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.2)
       '@connectrpc/connect-node':
         specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.0))
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.2))
       '@connectrpc/connect-web':
         specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.0))
+        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.2))
+      '@farcaster/core':
+        specifier: ^0.15.6
+        version: 0.15.6(typescript@5.6.2)(zod@3.23.8)
       '@noble/ed25519':
         specifier: ^2.1.0
         version: 2.1.0
@@ -190,6 +193,9 @@ packages:
 
   '@bufbuild/protobuf@2.2.0':
     resolution: {integrity: sha512-+imAQkHf7U/Rwvu0wk1XWgsP3WnpCWmK7B48f0XqSNzgk64+grljTKC7pnO/xBiEMUziF7vKRfbBnOQhg126qQ==}
+
+  '@bufbuild/protobuf@2.2.2':
+    resolution: {integrity: sha512-UNtPCbrwrenpmrXuRwn9jYpPoweNXj8X5sMvYgsqYyaH8jQ6LfUJSk3dJLnBK+6sfYPrF4iAIo5sd5HQ+tg75A==}
 
   '@bufbuild/protoc-gen-es@2.2.0':
     resolution: {integrity: sha512-PmUTtbJJfgcabTsoF59W0bsAr7xO5aGcMe69G8vOq0ogYV1aWmvFKhHKHDtn295pOLhTXmfrDSUNi/OTHuDdpw==}
@@ -427,6 +433,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@faker-js/faker@7.6.0':
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+
+  '@farcaster/core@0.15.6':
+    resolution: {integrity: sha512-Vxq2JhqdZYEMjH4PIwPXQkalY46S4Mol2oCSHUafXenDx6WSoQJqF/4an4KyxGQbmA7Cf8+hl6zuNzkkHXEUyQ==}
+
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
 
@@ -470,8 +483,8 @@ packages:
     engines: {node: '>=8.10'}
     hasBin: true
 
-  '@types/bun@1.1.11':
-    resolution: {integrity: sha512-0N7D/H/8sbf9JMkaG5F3+I/cB4TlhKTkO9EskEWP8XDr8aVcDe4EywSnU4cnyZy6tar1dq70NeFNkqMEUigthw==}
+  '@types/bun@1.1.13':
+    resolution: {integrity: sha512-KmQxSBgVWCl6RSuerlLGZlIWfdxkKqat0nxN61+qu4y1KDn0Ll3j7v1Pl8GnaL3a/U6GGWVTJh75ap62kR1E8Q==}
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -526,6 +539,9 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  base-x@4.0.0:
+    resolution: {integrity: sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==}
+
   better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
@@ -537,11 +553,14 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
+  bs58@5.0.0:
+    resolution: {integrity: sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ==}
+
   buf@0.1.1:
     resolution: {integrity: sha512-mhZY7GswAAd9ZJpBCsf2WaH2WMZwvxgsXD6rozflWgerE6gz2bCT/FvAfzcBXw55R18Jf8Fjzte7bw5xhwVhFg==}
 
-  bun-types@1.1.30:
-    resolution: {integrity: sha512-mGh7NLisOXskBU62DxLS+/nwmLlCYHYAkCzdo4DZ9+fzrpP41hAdOqaN4DO6tQfenHb4pYb0/shw29k4/6I2yQ==}
+  bun-types@1.1.34:
+    resolution: {integrity: sha512-br5QygTEL/TwB4uQOb96Ky22j4Gq2WxWH/8Oqv20fk5HagwKXo/akB+LiYgSfzexCt6kkcUaVm+bKiPl71xPvw==}
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
@@ -722,6 +741,11 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
+  isows@1.0.6:
+    resolution: {integrity: sha512-lPHCayd40oW98/I0uvgaHKWCSvkzY27LjWLbtzOm64yQ+G3Q5npjjbdppU65iZXkK1Zt+kH9pfegli0AYfwYYw==}
+    peerDependencies:
+      ws: '*'
+
   jiti@2.3.3:
     resolution: {integrity: sha512-EX4oNDwcXSivPrw2qKH2LB5PoFxEvgtv2JgwW0bU858HoLQ+kutSvjLMUqBd0PeJYEinLWhoI9Ol0eYMqj/wNQ==}
     hasBin: true
@@ -776,6 +800,9 @@ packages:
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+
+  neverthrow@6.2.2:
+    resolution: {integrity: sha512-POR1FACqdK9jH0S2kRPzaZEvzT11wsOxLW520PQV/+vKi9dQe+hXq19EiOvYx7lSRaF5VB9lYGsPInynrnN05w==}
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -1046,8 +1073,19 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
+  viem@2.21.40:
+    resolution: {integrity: sha512-no/mE3l7B0mdUTtvO7z/cTLENttQ/M7+ombqFGXJqsQrxv9wrYsTIGpS3za+FA5a447hY+x9D8Wxny84q1zAaA==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
+
+  webauthn-p256@0.0.10:
+    resolution: {integrity: sha512-EeYD+gmIT80YkSIDb2iWq0lq2zbHo1CxHlQTeJ+KkCILWpVy3zASH3ByD4bopzfk0uCwXxLqKGLqp2W4O28VFA==}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -1061,6 +1099,18 @@ packages:
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   yallist@2.1.2:
     resolution: {integrity: sha512-ncTzHV7NvsQZkYe1DW7cbDLm0YpzHmZF5r/iyP3ZnQtMiJ+pjzisCiMNI+Sj+xQF5pXhSHxSB3uDbsBTzY/c2A==}
@@ -1145,6 +1195,8 @@ snapshots:
       '@bufbuild/buf-win32-x64': 1.44.0
 
   '@bufbuild/protobuf@2.2.0': {}
+
+  '@bufbuild/protobuf@2.2.2': {}
 
   '@bufbuild/protoc-gen-es@2.2.0(@bufbuild/protobuf@2.2.0)':
     dependencies:
@@ -1319,19 +1371,19 @@ snapshots:
       human-id: 1.0.2
       prettier: 2.8.8
 
-  '@connectrpc/connect-node@2.0.0-beta.2(@bufbuild/protobuf@2.2.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.0))':
+  '@connectrpc/connect-node@2.0.0-beta.2(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.2))':
     dependencies:
-      '@bufbuild/protobuf': 2.2.0
-      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.0)
+      '@bufbuild/protobuf': 2.2.2
+      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.2)
 
-  '@connectrpc/connect-web@2.0.0-beta.2(@bufbuild/protobuf@2.2.0)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.0))':
+  '@connectrpc/connect-web@2.0.0-beta.2(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.2))':
     dependencies:
-      '@bufbuild/protobuf': 2.2.0
-      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.0)
+      '@bufbuild/protobuf': 2.2.2
+      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.2)
 
-  '@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.0)':
+  '@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.2)':
     dependencies:
-      '@bufbuild/protobuf': 2.2.0
+      '@bufbuild/protobuf': 2.2.2
 
   '@esbuild/aix-ppc64@0.23.1':
     optional: true
@@ -1405,6 +1457,22 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
+  '@faker-js/faker@7.6.0': {}
+
+  '@farcaster/core@0.15.6(typescript@5.6.2)(zod@3.23.8)':
+    dependencies:
+      '@faker-js/faker': 7.6.0
+      '@noble/curves': 1.6.0
+      '@noble/hashes': 1.5.0
+      bs58: 5.0.0
+      neverthrow: 6.2.2
+      viem: 2.21.40(typescript@5.6.2)(zod@3.23.8)
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
+
   '@manypkg/find-root@1.1.0':
     dependencies:
       '@babel/runtime': 7.25.7
@@ -1460,9 +1528,9 @@ snapshots:
       ignore: 5.3.2
       p-map: 4.0.0
 
-  '@types/bun@1.1.11':
+  '@types/bun@1.1.13':
     dependencies:
-      bun-types: 1.1.30
+      bun-types: 1.1.34
 
   '@types/node@12.20.55': {}
 
@@ -1509,6 +1577,8 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
+  base-x@4.0.0: {}
+
   better-path-resolve@1.0.0:
     dependencies:
       is-windows: 1.0.2
@@ -1521,9 +1591,13 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
+  bs58@5.0.0:
+    dependencies:
+      base-x: 4.0.0
+
   buf@0.1.1: {}
 
-  bun-types@1.1.30:
+  bun-types@1.1.34:
     dependencies:
       '@types/node': 20.12.14
       '@types/ws': 8.5.12
@@ -1721,6 +1795,10 @@ snapshots:
 
   isexe@2.0.0: {}
 
+  isows@1.0.6(ws@8.18.0):
+    dependencies:
+      ws: 8.18.0
+
   jiti@2.3.3: {}
 
   js-yaml@3.14.1:
@@ -1784,6 +1862,8 @@ snapshots:
   mri@1.2.0: {}
 
   ms@2.1.3: {}
+
+  neverthrow@6.2.2: {}
 
   node-fetch@2.7.0:
     dependencies:
@@ -1992,10 +2072,33 @@ snapshots:
 
   universalify@0.1.2: {}
 
+  viem@2.21.40(typescript@5.6.2)(zod@3.23.8):
+    dependencies:
+      '@adraffy/ens-normalize': 1.11.0
+      '@noble/curves': 1.6.0
+      '@noble/hashes': 1.5.0
+      '@scure/bip32': 1.5.0
+      '@scure/bip39': 1.4.0
+      abitype: 1.0.6(typescript@5.6.2)(zod@3.23.8)
+      isows: 1.0.6(ws@8.18.0)
+      webauthn-p256: 0.0.10
+      ws: 8.18.0
+    optionalDependencies:
+      typescript: 5.6.2
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
+
   wcwidth@1.0.1:
     dependencies:
       defaults: 1.0.4
     optional: true
+
+  webauthn-p256@0.0.10:
+    dependencies:
+      '@noble/curves': 1.6.0
+      '@noble/hashes': 1.5.0
 
   webidl-conversions@3.0.1: {}
 
@@ -2009,6 +2112,8 @@ snapshots:
       isexe: 2.0.0
 
   wrappy@1.0.2: {}
+
+  ws@8.18.0: {}
 
   yallist@2.1.2: {}
 

@@ -1,15 +1,6 @@
-import type { CastId } from '../CastId/types.js'
 import type { Meta } from '../Meta/types.js'
-
-export type ReactionType = 'like' | 'recast'
-export type ReactionTarget =
-  | ({
-      type: 'cast'
-    } & CastId)
-  | {
-      type: 'url'
-      url: string
-    }
+import type { ReactionTarget } from '../ReactionTarget//types.js'
+import type { ReactionType } from '../ReactionType//types.js'
 
 export type Reaction = {
   meta: Meta

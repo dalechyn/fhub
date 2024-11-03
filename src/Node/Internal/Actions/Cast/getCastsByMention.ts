@@ -1,8 +1,8 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Cast_fromMessage } from '../../Cast/fromMessage.js'
 import type { Cast } from '../../Cast/types.js'
+import { CastAdd_fromMessageProtobuf } from '../../CastAdd/fromMessageProtobuf.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
@@ -15,7 +15,7 @@ export declare namespace Actions_Cast_getCastsByMention {
     casts: Cast[]
     nextPageToken: NextPageToken
   }
-  type ErrorType = Cast_fromMessage.ErrorType | GlobalErrorType
+  type ErrorType = CastAdd_fromMessageProtobuf.ErrorType | GlobalErrorType
 }
 export async function Actions_Cast_getCastsByMention(
   client: Client,
@@ -31,7 +31,9 @@ export async function Actions_Cast_getCastsByMention(
   )
 
   return {
-    casts: message.messages.map((message) => Cast_fromMessage(message)),
+    casts: message.messages.map((message) =>
+      CastAdd_fromMessageProtobuf(message),
+    ),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }

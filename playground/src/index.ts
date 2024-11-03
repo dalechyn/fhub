@@ -1,4 +1,8 @@
 import { Actions, Client, Transport } from 'fhub'
+// import { CastAdd_toMessageDataProtobuf } from '../../src/Node/Internal/CastAdd/toMessageDataProtobuf'
+// import { CastAdd_toMessageProtobuf } from '../../src/Node/Internal/CastAdd/toMessageProtobuf'
+// import { Message_fromProtobuf } from '../../src/Node/Internal/Message/fromProtobuf'
+import { CastAdd_toHex } from '../../src/Node/Internal/CastAdd/toHex'
 // import { Actions as NodeActions } from 'fhub/Node'
 // import {
 //   file_hub_event,
@@ -42,7 +46,47 @@ const client = Client.create(
 // console.log('recasts', castWithReactions.recasts.length)
 
 // events subscriptions
-for await (const cast of Actions.Watch.watchCasts(client)) {
-  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  console.log(`${cast.fid} casted at ${cast.timestamp}: ${cast.text.value}`)
-}
+// for await (const cast of Actions.Watch.watchCasts(client)) {
+//   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+//   console.log(`${cast.fid} casted at ${cast.timestamp}: ${cast.text.value}`)
+// }
+//
+
+const cast = await Actions.Cast.getCast(client, {
+  fid: 11517n,
+  hash: '0x388ec5079a518ca133ec87aac23e1c4743bcc860',
+})
+
+console.dir(cast.meta, { depth: Number.POSITIVE_INFINITY })
+console.dir(
+  CastAdd_toHex(cast),
+
+  { depth: Number.POSITIVE_INFINITY },
+)
+// console.dir(
+//   Message_fromProtobuf(
+//     CastAdd_toMessageProtobuf({
+//       cast,
+//       privateKey:
+//         '0x0000000000000000000000000000000000000000000000000000000000000000',
+//     }),
+//   ),
+//   { depth: Infinity },
+// )
+
+// cast creation
+// const message = await Actions.Cast.create(client, {
+//   cast: {
+//     text: {
+//       value: 'I sent this cast from my fhub package',
+//     },
+//     isLong: false,
+//   },
+//   account: {
+//     fid: 11517n,
+//     privateKey:
+//       '0x0000000000000000000000000000000000000000000000000000000000000000',
+//   },
+// })
+
+// console.log(message)

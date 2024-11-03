@@ -1,7 +1,7 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Link_fromMessage } from '../../Link/fromMessage.js'
+import { Link_fromMessageProtobuf } from '../../Link/fromMessageProtobuf.js'
 import type { Link } from '../../Link/types.js'
 
 export declare namespace Actions_Link_getLink {
@@ -11,7 +11,7 @@ export declare namespace Actions_Link_getLink {
     type: string
   }
   type ReturnType = Link
-  type ErrorType = Link_fromMessage.ErrorType | GlobalErrorType
+  type ErrorType = Link_fromMessageProtobuf.ErrorType | GlobalErrorType
 }
 export async function Actions_Link_getLink(
   client: Client,
@@ -29,7 +29,7 @@ export async function Actions_Link_getLink(
     },
     options,
   )
-  return Link_fromMessage(message)
+  return Link_fromMessageProtobuf(message)
 }
 
 Actions_Link_getLink.parseError = (error: unknown) =>

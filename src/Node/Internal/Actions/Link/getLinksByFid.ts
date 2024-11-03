@@ -1,7 +1,7 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Link_fromMessage } from '../../Link/fromMessage.js'
+import { Link_fromMessageProtobuf } from '../../Link/fromMessageProtobuf.js'
 import type { Link } from '../../Link/types.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
@@ -30,7 +30,7 @@ export async function Actions_Link_getLinksByFid(
     options,
   )
   return {
-    links: message.messages.map(Link_fromMessage),
+    links: message.messages.map(Link_fromMessageProtobuf),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }

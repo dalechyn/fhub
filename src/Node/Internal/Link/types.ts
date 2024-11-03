@@ -4,5 +4,6 @@ export type Link = {
   meta: Meta
   type: string
   displayTimestamp: number | undefined
+  timestamp: number
   fid: bigint
 }

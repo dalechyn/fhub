@@ -1,5 +1,5 @@
-import type { Types } from 'ox'
 import type { Cast } from '../Cast/types.js'
+import type { CastRemove } from '../CastRemove/types.js'
 import type { FrameActionBody } from '../FrameActionBody/types.js'
 import type { Link } from '../Link/types.js'
 import type { LinkCompactState } from '../LinkCompactState/types.js'
@@ -7,54 +7,46 @@ import type { Reaction } from '../Reaction/types.js'
 import type { UserData } from '../UserData/types.js'
 import type { UsernameProof } from '../UsernameProof/types.js'
 import type { Verification } from '../Verification/types.js'
-import type { VerificationRemoval } from '../VerificationRemoval/types.js'
+import type { VerificationRemove } from '../VerificationRemoval/types.js'
 
 export type Message =
   | {
       type: 'castAdd'
-      cast: Cast
+      data: Cast
     }
   | {
       type: 'castRemove'
-      hash: Types.Hex
+      data: CastRemove
     }
   | {
       type: 'reactionAdd' | 'reactionRemove'
-      reaction: Reaction
+      data: Reaction
     }
   | {
-      type: 'userData'
+      type: 'userDataAdd'
       data: UserData
     }
   | {
-      type: 'userDataRemove'
-      data: UserData
-    }
-  | {
-      type: 'linkAdd'
-      link: Link
-    }
-  | {
-      type: 'linkRemove'
-      link: Link
+      type: 'linkAdd' | 'linkRemove'
+      data: Link
     }
   | {
       type: 'verificationAdd'
-      verification: Verification
+      data: Verification
     }
   | {
       type: 'verificationRemove'
-      verification: VerificationRemoval
+      data: VerificationRemove
     }
   | {
       type: 'usernameProof'
-      proof: UsernameProof
+      data: UsernameProof
     }
   | {
       type: 'frameAction'
-      action: FrameActionBody
+      data: FrameActionBody
     }
   | {
       type: 'linkCompactState'
-      state: LinkCompactState
+      data: LinkCompactState
     }

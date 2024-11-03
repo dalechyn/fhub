@@ -4,8 +4,9 @@ import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
-import { Reaction_fromMessage } from '../../Reaction/fromMessage.js'
-import type { Reaction, ReactionType } from '../../Reaction/types.js'
+import { Reaction_fromMessageProtobuf } from '../../Reaction/fromMessageProtobuf.js'
+import type { Reaction } from '../../Reaction/types.js'
+import type { ReactionType } from '../../ReactionType/types.js'
 
 export declare namespace Actions_Reaction_getReactionsByFid {
   type ParametersType = {
@@ -33,7 +34,7 @@ export async function Actions_Reaction_getReactionsByFid(
   )
 
   return {
-    messages: message.messages.map(Reaction_fromMessage),
+    messages: message.messages.map(Reaction_fromMessageProtobuf),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }

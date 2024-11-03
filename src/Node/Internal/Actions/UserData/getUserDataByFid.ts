@@ -7,7 +7,7 @@ import type {
   PaginationWithTimestamps,
 } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
-import { UserData_fromMessage } from '../../UserData/fromMessage.js'
+import { UserData_fromProtobuf } from '../../UserData/fromProtobuf.js'
 import type { UserData } from '../../UserData/types.js'
 
 export declare namespace Actions_UserData_getUserDataByFid {
@@ -15,7 +15,7 @@ export declare namespace Actions_UserData_getUserDataByFid {
     fid: bigint
   } & PaginationWithTimestamps
   type ReturnType = { datas: UserData[]; nextPageToken: NextPageToken }
-  type ErrorType = UserData_fromMessage.ErrorType | GlobalErrorType
+  type ErrorType = UserData_fromProtobuf.ErrorType | GlobalErrorType
 }
 export async function Actions_UserData_getUserDataByFid(
   client: Client,
@@ -30,7 +30,7 @@ export async function Actions_UserData_getUserDataByFid(
     options,
   )
   return {
-    datas: message.messages.map(UserData_fromMessage),
+    datas: message.messages.map(UserData_fromProtobuf),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }

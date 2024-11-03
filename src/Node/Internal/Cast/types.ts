@@ -6,11 +6,11 @@ export type Cast = {
   meta: Meta
   fid: bigint
   timestamp: number
-  parent: Parent | undefined
+  parent?: Parent | undefined
   text: {
     value: string
-    embeds: Embed[] | undefined
-    mentions:
+    embeds?: Embed[] | undefined
+    mentions?:
       | {
           fid: bigint
           position: number

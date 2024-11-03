@@ -4,4 +4,6 @@ export type LinkCompactState = {
   meta: Meta
   type: string
   fids: bigint[]
+  fid: bigint
+  timestamp: number
 }

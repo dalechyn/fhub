@@ -4,9 +4,10 @@ import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
-import { Reaction_fromMessage } from '../../Reaction/fromMessage.js'
-import { ReactionTarget_toMessage } from '../../Reaction/toMessage.js'
-import type { Reaction, ReactionTarget } from '../../Reaction/types.js'
+import { Reaction_fromMessageProtobuf } from '../../Reaction/fromMessageProtobuf.js'
+import type { Reaction } from '../../Reaction/types.js'
+import { ReactionTarget_toProtobuf } from '../../ReactionTarget/toProtobuf.js'
+import type { ReactionTarget } from '../../ReactionTarget/types.js'
 
 export declare namespace Actions_Reaction_getReactionsByTarget {
   type ReturnType = {
@@ -23,13 +24,13 @@ export async function Actions_Reaction_getReactionsByTarget(
 ): Promise<Actions_Reaction_getReactionsByTarget.ReturnType> {
   const message = await client.connectRpcClient.getReactionsByTarget(
     {
-      ...ReactionTarget_toMessage(parameters),
+      ...ReactionTarget_toProtobuf(parameters),
       ...Pagination_unwrap(parameters),
     },
     options,
   )
   return {
-    messages: message.messages.map(Reaction_fromMessage),
+    messages: message.messages.map(Reaction_fromMessageProtobuf),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }

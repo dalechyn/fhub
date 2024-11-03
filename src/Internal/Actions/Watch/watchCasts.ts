@@ -23,7 +23,7 @@ export async function* Actions_Watch_watchCasts(
   )) {
     if (event.message === undefined || event.message.type !== 'castAdd')
       continue
-    yield event.message.cast
+    yield event.message.data
   }
 }
 

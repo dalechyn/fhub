@@ -1,7 +1,7 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { HubEvent_fromMessage } from '../../HubEvent/fromMessage.js'
+import { HubEvent_fromProtobuf } from '../../HubEvent/fromProtobuf.js'
 import type { HubEvent } from '../../HubEvent/types.js'
 
 export declare namespace Actions_Event_subscribe {
@@ -40,7 +40,7 @@ export async function* Actions_Event_subscribe(
     },
     options,
   )) {
-    yield HubEvent_fromMessage(message)
+    yield HubEvent_fromProtobuf(message)
   }
 }
 

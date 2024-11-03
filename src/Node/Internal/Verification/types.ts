@@ -9,4 +9,6 @@ export type Verification = {
   type: 'eoa' | 'contract'
   chainId: number
   protocol: 'ethereum' | 'solana'
+  fid: bigint
+  timestamp: number
 }

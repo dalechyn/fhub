@@ -1,12 +1,12 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { Client } from '../../../../Internal/Client/types.js'
 import type { GlobalErrorType } from '../../../../Internal/Errors/error.js'
-import { Cast_fromMessage } from '../../Cast/fromMessage.js'
 import type { Cast } from '../../Cast/types.js'
+import { CastAdd_fromMessageProtobuf } from '../../CastAdd/fromMessageProtobuf.js'
 import { Pagination_getPageToken } from '../../Pagination/getPageToken.js'
 import type { NextPageToken, Pagination } from '../../Pagination/types.js'
 import { Pagination_unwrap } from '../../Pagination/unwrap.js'
-import { Parent_toMessage } from '../../Parent/toMessage.js'
+import { Parent_toProtobuf } from '../../Parent/toProtobuf.js'
 import type { Parent } from '../../Parent/types.js'
 
 export declare namespace Actions_Cast_getCastsByParent {
@@ -18,8 +18,8 @@ export declare namespace Actions_Cast_getCastsByParent {
     nextPageToken: NextPageToken
   }
   type ErrorType =
-    | Cast_fromMessage.ErrorType
-    | Parent_toMessage.ErrorType
+    | CastAdd_fromMessageProtobuf.ErrorType
+    | Parent_toProtobuf.ErrorType
     | GlobalErrorType
 }
 export async function Actions_Cast_getCastsByParent(
@@ -29,13 +29,15 @@ export async function Actions_Cast_getCastsByParent(
 ): Promise<Actions_Cast_getCastsByParent.ReturnType> {
   const message = await client.connectRpcClient.getCastsByParent(
     {
-      parent: Parent_toMessage(parameters.parent),
+      parent: Parent_toProtobuf(parameters.parent),
       ...Pagination_unwrap(parameters),
     },
     options,
   )
   return {
-    casts: message.messages.map((message) => Cast_fromMessage(message)),
+    casts: message.messages.map((message) =>
+      CastAdd_fromMessageProtobuf(message),
+    ),
     nextPageToken: Pagination_getPageToken(message.nextPageToken),
   }
 }
