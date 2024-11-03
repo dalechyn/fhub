@@ -11,7 +11,7 @@ export function Link_toProtobuf(
     ...(link.displayTimestamp
       ? { displayTimestamp: link.displayTimestamp }
       : {}),
-    target: { case: 'targetFid', value: link.fid },
+    target: { case: 'targetFid', value: link.targetFid },
   })
 }
 

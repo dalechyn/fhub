@@ -6,6 +6,7 @@ import {
 } from '../../../Node/index.js'
 import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
+import { Actions_Cast_toString } from './toString.js'
 
 export declare namespace Actions_Cast_getCast {
   type ParametersType = NodeActions.Cast.getCast.ParametersType
@@ -13,7 +14,7 @@ export declare namespace Actions_Cast_getCast {
     recasts: NodeTypes.Reaction[]
     likes: NodeTypes.Reaction[]
     text: {
-      formatted: string
+      unwrapped: string
     }
   }
   type ErrorType = NodeActions.Cast.getCast.ErrorType | GlobalErrorType
@@ -43,24 +44,11 @@ export async function Actions_Cast_getCast(
   const likes = reactions.filter((reaction) => reaction.type === 'like')
   const recasts = reactions.filter((reaction) => reaction.type === 'recast')
 
-  const formattedText = await (async () => {
-    let text = cast.text.value
-    if (!cast.text.mentions) return text
-    for (const mention of cast.text.mentions.reverse()) {
-      const mentionUsername = await NodeActions.UserData.getUserDataUsername(
-        client,
-        { fid: mention.fid },
-      )
-      text = `${text.slice(0, mention.position)}@${mentionUsername}${text.slice(mention.position)}`
-    }
-    return text
-  })()
-
   return {
     ...cast,
     text: {
       ...cast.text,
-      formatted: formattedText,
+      unwrapped: await Actions_Cast_toString(client, cast),
     },
     likes,
     recasts,

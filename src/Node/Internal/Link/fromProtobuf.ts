@@ -14,7 +14,8 @@ export function Link_fromProtobuf(
     meta: parameters.meta,
     type: parameters.body.type,
     displayTimestamp: parameters.body.displayTimestamp,
-    fid: parameters.body.target.value,
+    targetFid: parameters.body.target.value,
+    fid: parameters.fid,
     timestamp: parameters.timestamp,
   }
 }
