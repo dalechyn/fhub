@@ -7,7 +7,7 @@ import type { Meta } from './types.js'
 export function Meta_create(
   parameters: Meta_create.ParametersType,
 ): Meta_create.ReturnType {
-  const hash = blake3(parameters.dataBytes, { dkLen: 20 })
+  const hash = blake3(Hex.toBytes(parameters.dataBytes), { dkLen: 20 })
   const signature = ed.sign(hash, parameters.privateKey.slice(2))
   return {
     hash: Hex.fromBytes(hash),

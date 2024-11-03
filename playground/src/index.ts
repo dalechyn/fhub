@@ -1,17 +1,20 @@
 import { Actions, Client, Transport } from 'fhub'
-// import { CastAdd_toMessageDataProtobuf } from '../../src/Node/Internal/CastAdd/toMessageDataProtobuf'
-// import { CastAdd_toMessageProtobuf } from '../../src/Node/Internal/CastAdd/toMessageProtobuf'
-// import { Message_fromProtobuf } from '../../src/Node/Internal/Message/fromProtobuf'
-import { CastAdd_toHex } from '../../src/Node/Internal/CastAdd/toHex'
 // import { Actions as NodeActions } from 'fhub/Node'
-// import {
-//   file_hub_event,
-//   HubEventType,
-// } from '../../src/Node/Internal/Protobufs/hub_event_pb'
+
+const RPC_URL = process.env.RPC_URL ?? 'https://hub-grpc.pinata.cloud'
+const FID = (() => {
+  if (!process.env.FID) throw new Error('Specify your FID in env')
+  return BigInt(process.env.FID)
+})()
+const PRIVATE_KEY = (() => {
+  if (!process.env.PRIVATE_KEY)
+    throw new Error('Specify your PRIVATE_KEY in env')
+  return process.env.PRIVATE_KEY as `0x${string}`
+})()
 
 const client = Client.create(
   Transport.grpcNode({
-    baseUrl: 'https://nemes.farcaster.xyz:2283',
+    baseUrl: RPC_URL,
     httpVersion: '2',
   }),
 )
@@ -52,41 +55,24 @@ const client = Client.create(
 // }
 //
 
-const cast = await Actions.Cast.getCast(client, {
-  fid: 11517n,
-  hash: '0x388ec5079a518ca133ec87aac23e1c4743bcc860',
-})
-
-console.dir(cast.meta, { depth: Number.POSITIVE_INFINITY })
-console.dir(
-  CastAdd_toHex(cast),
-
-  { depth: Number.POSITIVE_INFINITY },
-)
-// console.dir(
-//   Message_fromProtobuf(
-//     CastAdd_toMessageProtobuf({
-//       cast,
-//       privateKey:
-//         '0x0000000000000000000000000000000000000000000000000000000000000000',
-//     }),
-//   ),
-//   { depth: Infinity },
-// )
-
-// cast creation
-// const message = await Actions.Cast.create(client, {
-//   cast: {
-//     text: {
-//       value: 'I sent this cast from my fhub package',
-//     },
-//     isLong: false,
-//   },
-//   account: {
-//     fid: 11517n,
-//     privateKey:
-//       '0x0000000000000000000000000000000000000000000000000000000000000000',
-//   },
+// const cast = await Actions.Cast.getCast(client, {
+//   fid: FID,
+//   hash: '0x388ec5079a518ca133ec87aac23e1c4743bcc860',
 // })
 
-// console.log(message)
+//cast creation
+const message = await Actions.Cast.create(client, {
+  cast: {
+    text: {
+      value: 'I sent this cast from my fhub package',
+    },
+    isLong: false,
+  },
+  account: {
+    fid: FID,
+    privateKey: PRIVATE_KEY,
+  },
+})
+
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+console.log(message)
