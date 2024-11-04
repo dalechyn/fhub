@@ -112,7 +112,8 @@ const client = Client.create(
 
 // console.dir(message)
 
-for await (const cast of Actions.Watch.watchCastsMentioningUsername(client, {
-  username: 'bleu.eth',
-}))
-  console.dir(cast)
+// for await (const cast of Actions.Watch.watchCastsMentioningUsername(client, {
+//   username: 'bleu.eth',
+// }))
+//   console.dir(cast)
+console.dir(await Actions.User.get(client, { fid: 11517n }))

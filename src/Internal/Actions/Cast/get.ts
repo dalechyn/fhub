@@ -8,7 +8,7 @@ import type { Client } from '../../Client/types.js'
 import type { GlobalErrorType } from '../../Errors/error.js'
 import { Actions_Cast_toString } from './toString.js'
 
-export declare namespace Actions_Cast_getCast {
+export declare namespace Actions_Cast_get {
   type ParametersType = NodeActions.Cast.getCast.ParametersType
   type ReturnType = NodeTypes.Cast & {
     recasts: NodeTypes.Reaction[]
@@ -19,11 +19,11 @@ export declare namespace Actions_Cast_getCast {
   }
   type ErrorType = NodeActions.Cast.getCast.ErrorType | GlobalErrorType
 }
-export async function Actions_Cast_getCast(
+export async function Actions_Cast_get(
   client: Client,
-  parameters: Actions_Cast_getCast.ParametersType,
+  parameters: Actions_Cast_get.ParametersType,
   options?: CallOptions,
-): Promise<Actions_Cast_getCast.ReturnType> {
+): Promise<Actions_Cast_get.ReturnType> {
   const cast = await NodeActions.Cast.getCast(client, parameters, options)
 
   const reactions = await (async () => {
@@ -55,5 +55,5 @@ export async function Actions_Cast_getCast(
   }
 }
 
-Actions_Cast_getCast.parseError = (error: unknown) =>
-  error as Actions_Cast_getCast.ErrorType
+Actions_Cast_get.parseError = (error: unknown) =>
+  error as Actions_Cast_get.ErrorType
