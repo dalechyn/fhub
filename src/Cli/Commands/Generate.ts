@@ -109,7 +109,7 @@ export async function generate(options: Generate = {}) {
             // Creating action.ts file
             const actionFileContent = await format(dedent`
               'use server'
-              import { fhubClient } from '../client.${isTypeScript ? 'ts' : 'js'}'
+              import { fhubClient } from '../client'
               import { Actions } from 'fhub'
 
               export function action(parameters${isTypeScript ? `: Actions.${namespaceName}.${functionName}.ParametersType` : ''}): ${isTypeScript ? `Promise<Actions.${namespaceName}.${functionName}.ReturnType>` : ''} {
@@ -129,7 +129,7 @@ export async function generate(options: Generate = {}) {
             const hookContents = await (async () => {
               if (hookType === 'Mutation') {
                 return await format(dedent`
-                  import { action } from './action.${isTypeScript ? 'ts' : 'js'}'
+                  import { action } from './action'
                   ${
                     isTypeScript
                       ? dedent`
@@ -152,7 +152,7 @@ export async function generate(options: Generate = {}) {
               }
 
               return format(dedent`
-                import { action } from './action.${isTypeScript ? 'ts' : 'js'}'
+                import { action } from './action'
                 ${
                   isTypeScript
                     ? dedent`
