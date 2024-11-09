@@ -112,7 +112,7 @@ export async function generate(options: Generate = {}) {
               import { fhubClient } from '../client'
               import { Actions } from 'fhub'
 
-              export function action(parameters${isTypeScript ? `: Actions.${namespaceName}.${functionName}.ParametersType` : ''}): ${isTypeScript ? `Promise<Actions.${namespaceName}.${functionName}.ReturnType>` : ''} {
+              export async function action(parameters${isTypeScript ? `: Actions.${namespaceName}.${functionName}.ParametersType` : ''}): ${isTypeScript ? `Promise<Actions.${namespaceName}.${functionName}.ReturnType>` : ''} {
                 return Actions.${namespaceName}.${functionName}(fhubClient, parameters)
               }
             `)
