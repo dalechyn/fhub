@@ -134,7 +134,7 @@ export async function generate(options: Generate = {}) {
                     isTypeScript
                       ? dedent`
                     import type { Actions } from 'fhub'
-                    import { useMutation, type MutationOptions } from '@tanstack/react-query'
+                    import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
                   `
                       : "import { useMutation } from '@tanstack/react-query'"
                   }
@@ -142,7 +142,7 @@ export async function generate(options: Generate = {}) {
                   export function ${outputHook}({mutation = {}}${
                     isTypeScript
                       ? `: {
-                    mutation?: MutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
+                    mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
                   }`
                       : ''
                   }) {
@@ -157,7 +157,7 @@ export async function generate(options: Generate = {}) {
                   isTypeScript
                     ? dedent`
                   import type { Actions } from 'fhub'
-                  import { useQuery, type QueryOptions } from '@tanstack/react-query'
+                  import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
                 `
                     : "import { useQuery } from '@tanstack/react-query'"
                 }
@@ -171,13 +171,21 @@ export async function generate(options: Generate = {}) {
                 export function ${outputHook}({query = {}, args}${
                   isTypeScript
                     ? `: {
-                  query?: QueryOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ReturnType, QueryKey> | undefined
+                  query?: Omit<UseQueryOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ReturnType, QueryKey>, 'queryKey'> | undefined
                   args?: Actions.${namespaceName}.${functionName}.ParametersType | undefined
                 }`
                     : ''
                 }) {
                   const enabled = Boolean(args && (query.enabled ?? true))
-                  return useQuery({ ...query, queryKey: queryKey(args), queryFn: ({queryKey:[_, args]})=> action(args), enabled })
+                  return useQuery({
+                    ...query,
+                    queryKey: queryKey(args),
+                    queryFn: ({queryKey:[_, args]}) => {
+                      if (args === undefined) throw new Error('Missing args')
+                      return action(args)
+                    },
+                    enabled 
+                  })
                 }
               `)
             })()
