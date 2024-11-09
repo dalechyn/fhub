@@ -21,7 +21,6 @@
       "generated.ts",
       "vectors/*.json",
       "vectors/**/*.test.ts",
-      "wagmi",
       "site/dist"
     ]
   },

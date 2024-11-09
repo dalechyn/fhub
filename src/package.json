@@ -3,22 +3,26 @@
   "description": "TypeScript Interface for Farcaster Hubs",
   "version": "0.0.0",
   "type": "module",
-  "main": "./_cjs/index.js",
   "module": "./_esm/index.js",
   "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts",
   "sideEffects": false,
   "files": ["*", "!**/*.tsbuildinfo", "!tsconfig.build.json", "!jsr.json"],
+  "bin": {
+    "fhub": "./_esm/Cli/Bin.js"
+  },
   "exports": {
     ".": {
       "types": "./_types/index.d.ts",
-      "import": "./_esm/index.js",
-      "default": "./_cjs/index.js"
+      "import": "./_esm/index.js"
     },
     "./Node": {
       "types": "./_types/Node/index.d.ts",
-      "import": "./_esm/Node/index.js",
-      "default": "./_cjs/Node/index.js"
+      "import": "./_esm/Node/index.js"
+    },
+    "./Cli": {
+      "types": "./_types/Cli/index.d.ts",
+      "import": "./_esm/Cli/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -38,9 +42,22 @@
     "@farcaster/core": "^0.15.6",
     "@noble/ed25519": "^2.1.0",
     "@noble/hashes": "^1.5.0",
-    "ox": "0.0.0-canary-20241006052626"
+    "bundle-require": "^5.0.0",
+    "cac": "^6.7.14",
+    "dedent": "^1.5.3",
+    "find-up": "^7.0.0",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.1.1",
+    "ox": "0.0.0-canary-20241006052626",
+    "pathe": "^1.1.2",
+    "picocolors": "^1.1.1",
+    "prettier": "^3.3.3",
+    "zod": "^3.23.8"
   },
   "license": "MIT",
   "repository": "dalechyn/fhub",
-  "authors": ["dalechyn.eth"]
+  "authors": ["dalechyn.eth"],
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  }
 }

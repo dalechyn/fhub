@@ -93,6 +93,7 @@ export type Or<T extends readonly unknown[]> = T extends readonly [
 export type IsUndefined<T> = [undefined] extends [T] ? true : false
 
 export type MaybePromise<T> = T | Promise<T>
+export type MaybeArray<T> = T | T[]
 
 /**
  * @description Makes attributes on the type T required if required is true.
