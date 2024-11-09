@@ -139,7 +139,7 @@ export async function generate(options: Generate = {}) {
                       : "import { useMutation } from '@tanstack/react-query'"
                   }
 
-                  export function ${outputHook}${hookType}({mutation = {}}${
+                  export function ${outputHook}({mutation = {}}${
                     isTypeScript
                       ? `: {
                     mutation?: MutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
@@ -168,7 +168,7 @@ export async function generate(options: Generate = {}) {
                   return ['${namespaceName}.${functionName}', parameters] as const
                 }
                 
-                export function ${outputHook}${hookType}({query = {}, args}${
+                export function ${outputHook}({query = {}, args}${
                   isTypeScript
                     ? `: {
                   query?: QueryOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ReturnType, QueryKey> | undefined
