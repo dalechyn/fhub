@@ -1,6 +1,0 @@
-{
-  "type": "module",
-  "types": "../_types/Actions.d.ts",
-  "module": "../_esm/Actions.js",
-  "main": "../_cjs/Actions.js"
-}

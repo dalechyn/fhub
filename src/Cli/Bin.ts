@@ -2,9 +2,9 @@
 import { cac } from 'cac'
 
 import { version } from '../version.js'
-import { type Generate, generate } from './Commands/Generate.js'
-import { type Init, init } from './Commands/Init.js'
 import * as Logger from './Logger.js'
+import { type Generate, generate } from './commands/Generate.js'
+import { type Init, init } from './commands/Init.js'
 
 const cli = cac('fhub')
 

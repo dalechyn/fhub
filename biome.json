@@ -52,6 +52,7 @@
         "useShorthandArrayType": "error"
       },
       "suspicious": {
+        "noShadowRestrictedNames": "off",
         "noArrayIndexKey": "off",
         "noAssignInExpressions": "off",
         "noConfusingVoidType": "off",

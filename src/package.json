@@ -3,26 +3,26 @@
   "description": "TypeScript Interface for Farcaster Hubs",
   "version": "0.0.0",
   "type": "module",
-  "module": "./_esm/index.js",
-  "types": "./_types/index.d.ts",
-  "typings": "./_types/index.d.ts",
+  "module": "./_esm/fhub/index.js",
+  "types": "./_types/fhub/index.d.ts",
+  "typings": "./_types/fhub/index.d.ts",
   "sideEffects": false,
   "files": ["*", "!**/*.tsbuildinfo", "!tsconfig.build.json", "!jsr.json"],
   "bin": {
-    "fhub": "./_esm/Cli/Bin.js"
+    "fhub": "./_esm/cli/Bin.js"
   },
   "exports": {
     ".": {
-      "types": "./_types/index.d.ts",
-      "import": "./_esm/index.js"
+      "types": "./_types/fhub/index.d.ts",
+      "import": "./_esm/fhub/index.js"
     },
-    "./Node": {
-      "types": "./_types/Node/index.d.ts",
-      "import": "./_esm/Node/index.js"
+    "./core": {
+      "types": "./_types/core/index.d.ts",
+      "import": "./_esm/core/index.js"
     },
-    "./Cli": {
-      "types": "./_types/Cli/index.d.ts",
-      "import": "./_esm/Cli/index.js"
+    "./cli": {
+      "types": "./_types/cli/index.d.ts",
+      "import": "./_esm/cli/index.js"
     },
     "./package.json": "./package.json"
   },

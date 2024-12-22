@@ -7,9 +7,9 @@ import { z } from 'zod'
 import { type Config, defaultConfig } from '../Config.js'
 import { fromZodError } from '../Errors.js'
 import * as logger from '../Logger.js'
-import { findConfig } from '../Utils/findConfig.js'
-import { format } from '../Utils/format.js'
-import { getIsUsingTypeScript } from '../Utils/getIsUsingTypeScript.js'
+import { findConfig } from '../utils/findConfig.js'
+import { format } from '../utils/format.js'
+import { getIsUsingTypeScript } from '../utils/getIsUsingTypeScript.js'
 
 export type Init = {
   /** Path to config file */

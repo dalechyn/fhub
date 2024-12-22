@@ -7,10 +7,10 @@ import { z } from 'zod'
 import { fileURLToPath } from 'node:url'
 import { fromZodError } from '../Errors.js'
 import * as logger from '../Logger.js'
-import { findConfig } from '../Utils/findConfig.js'
-import { format } from '../Utils/format.js'
-import { getIsUsingTypeScript } from '../Utils/getIsUsingTypeScript.js'
-import { resolveConfig } from '../Utils/resolveConfig.js'
+import { findConfig } from '../utils/findConfig.js'
+import { format } from '../utils/format.js'
+import { getIsUsingTypeScript } from '../utils/getIsUsingTypeScript.js'
+import { resolveConfig } from '../utils/resolveConfig.js'
 
 const Generate = z.object({
   /** Path to config file */
@@ -67,8 +67,10 @@ export async function generate(options: Generate = {}) {
     spinner.start('Generating fhub Action Hooks')
     const actionsPath = resolve(
       dirname(fileURLToPath(import.meta.url)),
-      '../..',
-      'Actions',
+      '..',
+      '..',
+      'fhub',
+      'actions',
     )
     const files = await fs.readdir(actionsPath)
 
@@ -88,7 +90,9 @@ export async function generate(options: Generate = {}) {
 
         const functionNames = (() => {
           const matches = [
-            ...fileContents.matchAll(/as (?<functionName>.*) }/gm),
+            ...fileContents.matchAll(
+              /export async function (?<functionName>.*)\(/gm,
+            ),
           ]
           return matches.map((match) => {
             const functionName = match.groups?.functionName
