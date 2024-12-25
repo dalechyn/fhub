@@ -21,7 +21,7 @@ export async function get(
   options?: CallOptions,
 ): Promise<get.ReturnType> {
   const message = await client.connectRpcClient.getUserData(parameters, options)
-  return UserData.fromProtobuf(message)
+  return UserData.fromMessageProtobuf(message)
 }
 
 get.parseError = (error: unknown) => error as get.ErrorType
@@ -35,7 +35,7 @@ export declare namespace getAllUserDataMessagesByFid {
     nextPageToken: Pagination.NextPageToken
   }
   // @TODO: proper error handling
-  type ErrorType = UserData.fromProtobuf.ErrorType | GlobalErrorType
+  type ErrorType = UserData.fromMessageProtobuf.ErrorType | GlobalErrorType
 }
 export async function getAllUserDataMessagesByFid(
   client: Client.Client,
@@ -50,7 +50,7 @@ export async function getAllUserDataMessagesByFid(
     options,
   )
   return {
-    datas: message.messages.map(UserData.fromProtobuf),
+    datas: message.messages.map(UserData.fromMessageProtobuf),
     nextPageToken: Pagination.getPageToken(message.nextPageToken),
   }
 }
@@ -91,7 +91,7 @@ export declare namespace getByFid {
     datas: UserData.UserData[]
     nextPageToken: Pagination.NextPageToken
   }
-  type ErrorType = UserData.fromProtobuf.ErrorType | GlobalErrorType
+  type ErrorType = UserData.fromMessageProtobuf.ErrorType | GlobalErrorType
 }
 export async function getByFid(
   client: Client.Client,
@@ -106,7 +106,7 @@ export async function getByFid(
     options,
   )
   return {
-    datas: message.messages.map(UserData.fromProtobuf),
+    datas: message.messages.map(UserData.fromMessageProtobuf),
     nextPageToken: Pagination.getPageToken(message.nextPageToken),
   }
 }

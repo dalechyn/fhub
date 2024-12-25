@@ -107,7 +107,7 @@ export function fromProtobuf(
   ///
   ///
   if (message.data.type === MessageProtobuf.MessageType.USER_DATA_ADD)
-    return { type: 'userDataAdd', data: UserData.fromProtobuf(message) }
+    return { type: 'userDataAdd', data: UserData.fromMessageProtobuf(message) }
   if (message.data.type === MessageProtobuf.MessageType.USERNAME_PROOF)
     return {
       type: 'usernameProof',
