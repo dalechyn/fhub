@@ -16,7 +16,6 @@ const RPC_URL = process.env.RPC_URL ?? 'https://hub-grpc.pinata.cloud'
 const client = Fhub.Client.create(
   Fhub.Transport.grpcNode({
     baseUrl: RPC_URL,
-    httpVersion: '2',
   }),
 )
 
