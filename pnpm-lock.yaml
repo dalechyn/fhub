@@ -16,7 +16,7 @@ importers:
         version: 1.48.0
       '@bufbuild/protoc-gen-es':
         specifier: ^2.2.0
-        version: 2.2.3
+        version: 2.2.3(@bufbuild/protobuf@2.2.3)
       '@changesets/changelog-github':
         specifier: ^0.5.0
         version: 0.5.0
@@ -79,14 +79,14 @@ importers:
         specifier: ^2.2.2
         version: 2.2.3
       '@connectrpc/connect':
-        specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.3)
+        specifier: ^2.0.0
+        version: 2.0.0(@bufbuild/protobuf@2.2.3)
       '@connectrpc/connect-node':
-        specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0-beta.2)
+        specifier: ^2.0.0
+        version: 2.0.0(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0(@bufbuild/protobuf@2.2.3))
       '@connectrpc/connect-web':
-        specifier: beta
-        version: 2.0.0-beta.2(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0-beta.2)
+        specifier: ^2.0.0
+        version: 2.0.0(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0(@bufbuild/protobuf@2.2.3))
       '@farcaster/core':
         specifier: ^0.15.6
         version: 0.15.6(typescript@5.7.2)(zod@3.24.1)
@@ -323,21 +323,21 @@ packages:
   '@changesets/write@0.3.2':
     resolution: {integrity: sha512-kDxDrPNpUgsjDbWBvUo27PzKX4gqeKOlhibaOXDJA6kuBisGqNHv/HwGJrAu8U/dSf8ZEFIeHIPtvSlZI1kULw==}
 
-  '@connectrpc/connect-node@2.0.0-beta.2':
-    resolution: {integrity: sha512-FYiPjkEA8mHvXW9z+tQjY3Q8KAq612yWWQRU9XJQiIJ5SdJWGpCJyOAe3ygopSxV+0jRJmwIwurJd9YftZ8dOQ==}
+  '@connectrpc/connect-node@2.0.0':
+    resolution: {integrity: sha512-DoI5T+SUvlS/8QBsxt2iDoUg15dSxqhckegrgZpWOtADtmGohBIVbx1UjtWmjLBrP4RdD0FeBw+XyRUSbpKnJQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       '@bufbuild/protobuf': ^2.2.0
-      '@connectrpc/connect': 2.0.0-beta.2
+      '@connectrpc/connect': 2.0.0
 
-  '@connectrpc/connect-web@2.0.0-beta.2':
-    resolution: {integrity: sha512-d3xs/u95FRqQ2WsrOpMCiDQ3CbvRsI3kU4armnZ0WLS5k7vcHqVNY7N1pU5HRR4p1c1Hs/oSeM25hw6gGepVWg==}
+  '@connectrpc/connect-web@2.0.0':
+    resolution: {integrity: sha512-oeCxqHXLXlWJdmcvp9L3scgAuK+FjNSn+twyhUxc8yvDbTumnt5Io+LnBzSYxAdUdYqTw5yHfTSCJ4hj0QID0g==}
     peerDependencies:
       '@bufbuild/protobuf': ^2.2.0
-      '@connectrpc/connect': 2.0.0-beta.2
+      '@connectrpc/connect': 2.0.0
 
-  '@connectrpc/connect@2.0.0-beta.2':
-    resolution: {integrity: sha512-7Ok40XsVfFqeIXM2++hvDTQNqBJP8dv9mfj9YrAU3Z37vWQONmImImU6suIjy22x+qqyAZ9Y/zjbT+92DcwxYg==}
+  '@connectrpc/connect@2.0.0':
+    resolution: {integrity: sha512-Usm8jgaaULANJU8vVnhWssSA6nrZ4DJEAbkNtXSoZay2YD5fDyMukCxu8NEhCvFzfHvrhxhcjttvgpyhOM7xAQ==}
     peerDependencies:
       '@bufbuild/protobuf': ^2.2.0
 
@@ -1726,9 +1726,11 @@ snapshots:
 
   '@bufbuild/protobuf@2.2.3': {}
 
-  '@bufbuild/protoc-gen-es@2.2.3':
+  '@bufbuild/protoc-gen-es@2.2.3(@bufbuild/protobuf@2.2.3)':
     dependencies:
       '@bufbuild/protoplugin': 2.2.3
+    optionalDependencies:
+      '@bufbuild/protobuf': 2.2.3
     transitivePeerDependencies:
       - supports-color
 
@@ -1897,17 +1899,17 @@ snapshots:
       human-id: 1.0.2
       prettier: 2.8.8
 
-  '@connectrpc/connect-node@2.0.0-beta.2(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0-beta.2)':
+  '@connectrpc/connect-node@2.0.0(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0(@bufbuild/protobuf@2.2.3))':
     dependencies:
       '@bufbuild/protobuf': 2.2.3
-      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.3)
+      '@connectrpc/connect': 2.0.0(@bufbuild/protobuf@2.2.3)
 
-  '@connectrpc/connect-web@2.0.0-beta.2(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0-beta.2)':
+  '@connectrpc/connect-web@2.0.0(@bufbuild/protobuf@2.2.3)(@connectrpc/connect@2.0.0(@bufbuild/protobuf@2.2.3))':
     dependencies:
       '@bufbuild/protobuf': 2.2.3
-      '@connectrpc/connect': 2.0.0-beta.2(@bufbuild/protobuf@2.2.3)
+      '@connectrpc/connect': 2.0.0(@bufbuild/protobuf@2.2.3)
 
-  '@connectrpc/connect@2.0.0-beta.2(@bufbuild/protobuf@2.2.3)':
+  '@connectrpc/connect@2.0.0(@bufbuild/protobuf@2.2.3)':
     dependencies:
       '@bufbuild/protobuf': 2.2.3
 
@@ -2149,7 +2151,6 @@ snapshots:
 
   '@rushstack/node-core-library@5.10.1(@types/node@22.10.2)':
     dependencies:
-      '@types/node': 22.10.2
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
       ajv-formats: 3.0.1(ajv@8.13.0)
@@ -2158,6 +2159,8 @@ snapshots:
       jju: 1.4.0
       resolve: 1.22.10
       semver: 7.5.4
+    optionalDependencies:
+      '@types/node': 22.10.2
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
@@ -2167,8 +2170,9 @@ snapshots:
   '@rushstack/terminal@0.14.4(@types/node@22.10.2)':
     dependencies:
       '@rushstack/node-core-library': 5.10.1(@types/node@22.10.2)
-      '@types/node': 22.10.2
       supports-color: 8.1.1
+    optionalDependencies:
+      '@types/node': 22.10.2
 
   '@rushstack/ts-command-line@4.23.2(@types/node@22.10.2)':
     dependencies:
@@ -2235,12 +2239,12 @@ snapshots:
       - supports-color
 
   abitype@1.0.7(typescript@5.7.2)(zod@3.24.1):
-    dependencies:
+    optionalDependencies:
       typescript: 5.7.2
       zod: 3.24.1
 
   abitype@1.0.8(typescript@5.7.2)(zod@3.24.1):
-    dependencies:
+    optionalDependencies:
       typescript: 5.7.2
       zod: 3.24.1
 
@@ -2250,11 +2254,11 @@ snapshots:
       indent-string: 4.0.0
 
   ajv-draft-04@1.0.0(ajv@8.13.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.13.0
 
   ajv-formats@3.0.1(ajv@8.13.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.13.0
 
   ajv@8.12.0:
@@ -2743,6 +2747,7 @@ snapshots:
       '@scure/bip39': 1.5.0
       abitype: 1.0.8(typescript@5.7.2)(zod@3.24.1)
       eventemitter3: 5.0.1
+    optionalDependencies:
       typescript: 5.7.2
     transitivePeerDependencies:
       - zod
@@ -2756,6 +2761,7 @@ snapshots:
       '@scure/bip39': 1.5.0
       abitype: 1.0.7(typescript@5.7.2)(zod@3.24.1)
       eventemitter3: 5.0.1
+    optionalDependencies:
       typescript: 5.7.2
     transitivePeerDependencies:
       - zod
@@ -3006,9 +3012,10 @@ snapshots:
       abitype: 1.0.7(typescript@5.7.2)(zod@3.24.1)
       isows: 1.0.6(ws@8.18.0)
       ox: 0.1.2(typescript@5.7.2)(zod@3.24.1)
-      typescript: 5.7.2
       webauthn-p256: 0.0.10
       ws: 8.18.0
+    optionalDependencies:
+      typescript: 5.7.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
