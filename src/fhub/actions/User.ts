@@ -1,6 +1,7 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { GlobalErrorType } from '../../core/Error.js'
 import * as Core from '../../core/index.js'
+import type * as Account from '../Account.js'
 import type * as Client from '../Client.js'
 
 export declare namespace get {
@@ -46,3 +47,30 @@ export async function get(
 }
 
 get.parseError = (error: unknown) => error as get.ErrorType
+
+export declare namespace update {
+  type ParametersType = {
+    data: Omit<Core.UserData.UserData, 'meta' | 'fid' | 'timestamp'>
+  } & {
+    account: Account.Account
+  }
+  type ReturnType = Core.Message.Message
+  type ErrorType = GlobalErrorType
+}
+export async function update(
+  client: Client.Client,
+  parameters: update.ParametersType,
+  options?: CallOptions,
+): Promise<update.ReturnType> {
+  const message = Core.UserData.toMessageProtobuf({
+    data: {
+      ...parameters.data,
+      fid: parameters.account.fid,
+      timestamp: Math.floor(Date.now() / 1000),
+    },
+    privateKey: parameters.account.privateKey,
+  })
+  return Core.Actions.Submit.submitMessage(client, message, options)
+}
+
+update.parseError = (error: unknown) => error as update.ErrorType
