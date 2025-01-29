@@ -230,7 +230,7 @@ async function writeClientFile({
   const formatted = await format(dedent`
     import { Client, Transport } from "fhub";
 
-    export const fhubClient = Client.create(Transport.grpcNode({ baseUrl: '${rpcUrl}', httpVersion: '2' }))
+    export const fhubClient = Client.create(Transport.grpcNode({ baseUrl: '${rpcUrl}' }))
   `)
   await fs.writeFile(outPath, formatted)
 }

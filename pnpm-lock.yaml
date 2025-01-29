@@ -37,7 +37,7 @@ importers:
         version: 0.17.1
       '@types/bun':
         specifier: latest
-        version: 1.1.14
+        version: 1.2.1
       '@types/node':
         specifier: ^22.7.4
         version: 22.10.2
@@ -105,6 +105,9 @@ importers:
       dedent:
         specifier: ^1.5.3
         version: 1.5.3
+      esbuild:
+        specifier: ^0.24.2
+        version: 0.24.2
       find-up:
         specifier: ^7.0.0
         version: 7.0.0
@@ -727,8 +730,8 @@ packages:
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
 
-  '@types/bun@1.1.14':
-    resolution: {integrity: sha512-opVYiFGtO2af0dnWBdZWlioLBoxSdDO5qokaazLhq8XQtGZbY4pY3/JxY8Zdf/hEwGubbp7ErZXoN1+h2yesxA==}
+  '@types/bun@1.2.1':
+    resolution: {integrity: sha512-iiCeMAKMkft8EPQJxSbpVRD0DKqrh91w40zunNajce3nMNNFd/LnAquVisSZC+UpTMjDwtcdyzbWct08IvEqRA==}
 
   '@types/fs-extra@11.0.4':
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
@@ -738,9 +741,6 @@ packages:
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
-
-  '@types/node@20.12.14':
-    resolution: {integrity: sha512-scnD59RpYD91xngrQQLGkE+6UrHUPzeKZWhhjBSa3HSkwjbQc38+q3RoIVEwxQGRw3M+j5hpNAM+lgV3cVormg==}
 
   '@types/node@22.10.2':
     resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
@@ -849,8 +849,8 @@ packages:
   buf@0.1.1:
     resolution: {integrity: sha512-mhZY7GswAAd9ZJpBCsf2WaH2WMZwvxgsXD6rozflWgerE6gz2bCT/FvAfzcBXw55R18Jf8Fjzte7bw5xhwVhFg==}
 
-  bun-types@1.1.37:
-    resolution: {integrity: sha512-C65lv6eBr3LPJWFZ2gswyrGZ82ljnH8flVE03xeXxKhi2ZGtFiO4isRKTKnitbSqtRAcaqYSR6djt1whI66AbA==}
+  bun-types@1.2.1:
+    resolution: {integrity: sha512-p7bmXUWmrPWxhcbFVk7oUXM5jAGt94URaoa3qf4mz43MEhNAo/ot1urzBqctgvuq7y9YxkuN51u+/qm4BiIsHw==}
 
   bundle-require@5.1.0:
     resolution: {integrity: sha512-3WrrOuZiyaaZPWiEt4G3+IffISVC9HYlWueJEBWED4ZH4aIAC2PnkdnuRrR94M+w6yGWn4AglWtJtBI8YqvgoA==}
@@ -1573,9 +1573,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
@@ -2204,9 +2201,9 @@ snapshots:
 
   '@types/argparse@1.0.38': {}
 
-  '@types/bun@1.1.14':
+  '@types/bun@1.2.1':
     dependencies:
-      bun-types: 1.1.37
+      bun-types: 1.2.1
 
   '@types/fs-extra@11.0.4':
     dependencies:
@@ -2218,10 +2215,6 @@ snapshots:
       '@types/node': 22.10.2
 
   '@types/node@12.20.55': {}
-
-  '@types/node@20.12.14':
-    dependencies:
-      undici-types: 5.26.5
 
   '@types/node@22.10.2':
     dependencies:
@@ -2316,9 +2309,9 @@ snapshots:
 
   buf@0.1.1: {}
 
-  bun-types@1.1.37:
+  bun-types@1.2.1:
     dependencies:
-      '@types/node': 20.12.14
+      '@types/node': 22.10.2
       '@types/ws': 8.5.13
 
   bundle-require@5.1.0(esbuild@0.24.2):
@@ -2988,8 +2981,6 @@ snapshots:
   typescript@5.4.5: {}
 
   typescript@5.7.2: {}
-
-  undici-types@5.26.5: {}
 
   undici-types@6.20.0: {}
 
