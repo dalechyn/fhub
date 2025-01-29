@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-  "mainEntryPointFilePath": "../../src/_types/index.d.ts",
+  "mainEntryPointFilePath": "../../src/_types/fhub/index.d.ts",
   "bundledPackages": [],
   "newlineKind": "lf",
   "enumMemberOrder": "preserve",
 
   "compiler": {
     "tsconfigFilePath": "<projectFolder>/tsconfig.json",
-    "overrideTsconfig": {},
     "skipLibCheck": true
   },
 
@@ -24,6 +23,10 @@
 
   "dtsRollup": {
     "enabled": false
+  },
+
+  "tsdocMetadata": {
+    "tsdocMetadataFilePath": "<projectFolder>/tsdoc.json"
   },
 
   "messages": {
