@@ -106,7 +106,9 @@ export async function generate(options: Generate = {}) {
 
         await Promise.all(
           functionNames.map(async (functionName) => {
-            const hookType = functionName === 'create' ? 'Mutation' : 'Query'
+            const hookType = ['create', 'update'].includes(functionName)
+              ? 'Mutation'
+              : 'Query'
             const outputHook = `use${namespaceName}${functionName.slice(0, 1).toUpperCase()}${functionName.slice(1)}${hookType}`
             await fs.ensureDir(resolve(config.out, outputHook))
 
