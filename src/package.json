@@ -16,6 +16,10 @@
       "types": "./_types/fhub/index.d.ts",
       "import": "./_esm/fhub/index.js"
     },
+    "./Account": {
+      "types": "./_types/fhub/Account.d.ts",
+      "import": "./_esm/fhub/Account.js"
+    },
     "./core": {
       "types": "./_types/core/index.d.ts",
       "import": "./_esm/core/index.js"
