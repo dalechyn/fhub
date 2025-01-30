@@ -1,13 +1,46 @@
 import * as ed from '@noble/ed25519'
 import { Hex } from 'ox'
 import type { GlobalErrorType } from '../core/Error.js'
-import type { Signer } from './Signer.js'
 
 export type Account = {
   getSigner(): Promise<Hex.Hex>
   signHash(hash: Hex.Hex): Promise<Hex.Hex>
   fid: bigint
 }
+
+export function fromEd25519Signer(
+  parameters: fromEd25519Signer.ParametersType,
+): fromEd25519Signer.ReturnType {
+  return {
+    fid: parameters.fid,
+    async getSigner() {
+      const signerKeyBytes = await parameters.signer.getSignerKey()
+      return Hex.fromBytes(signerKeyBytes)
+    },
+    async signHash(hash) {
+      const signature = await parameters.signer.signMessageHash(
+        Hex.toBytes(hash),
+      )
+
+      return Hex.fromBytes(signature)
+    },
+  } as const
+}
+
+export declare namespace fromEd25519Signer {
+  type ParametersType = {
+    signer: {
+      getSignerKey(): Promise<Uint8Array>
+      signMessageHash(hash: Uint8Array): Promise<Uint8Array>
+    }
+    fid: bigint
+  }
+  type ReturnType = Account
+  type ErrorType = Hex.InvalidHexValueError | GlobalErrorType
+}
+
+fromEd25519Signer.parseError = (error: unknown) =>
+  error as fromEd25519Signer.ErrorType
 
 export function fromFarcasterEd25519Signer(
   parameters: fromFarcasterEd25519Signer.ParametersType,
@@ -47,6 +80,9 @@ export declare namespace fromFarcasterEd25519Signer {
   type ReturnType = Account
   type ErrorType = Hex.InvalidHexValueError | GlobalErrorType
 }
+
+fromFarcasterEd25519Signer.parseError = (error: unknown) =>
+  error as fromFarcasterEd25519Signer.ErrorType
 
 export function fromString(
   value: fromString.ParametersType,
@@ -93,4 +129,4 @@ export declare namespace fromPrivateKeyAndFid {
 }
 
 fromPrivateKeyAndFid.parseError = (error: unknown) =>
-  error as fromString.ErrorType
+  error as fromPrivateKeyAndFid.ErrorType
