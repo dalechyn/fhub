@@ -149,7 +149,7 @@ export async function generate(options: Generate = {}) {
                     isTypeScript
                       ? `: {
                     mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
-                  }`
+                  } = {}`
                       : ''
                   }) {
                     return useMutation({ ...mutation, mutationKey: ['${namespaceName}.${functionName}'], mutationFn: (args)=> action(args) })
