@@ -3,6 +3,7 @@ import * as MessageProtobuf from './protobufs/message_pb.js'
 
 import { create, toBinary } from '@bufbuild/protobuf'
 import { Hex, type Types } from 'ox'
+import type { Account } from '../fhub/Account.js'
 import type { GlobalErrorType } from './Error.js'
 import * as Meta from './Meta.js'
 
@@ -82,26 +83,29 @@ export declare namespace toMessageDataProtobuf {
 toMessageDataProtobuf.parseError = (error: unknown) =>
   error as toMessageDataProtobuf.ErrorType
 
-export function toMessageProtobuf(
+export async function toMessageProtobuf(
   parameters: toMessageProtobuf.ParametersType,
 ): toMessageProtobuf.ReturnType {
   return create(MessageProtobuf.MessageSchema, {
     ...Meta.toProtobuf(
-      Meta.create({
-        dataBytes: toHex(parameters.link),
-        privateKey: parameters.privateKey,
+      await Meta.create({
+        dataBytes: toHex({ fid: parameters.account.fid, ...parameters.link }),
+        ...parameters.account,
       }),
     ),
-    data: toMessageDataProtobuf(parameters.link),
+    data: toMessageDataProtobuf({
+      fid: parameters.account.fid,
+      ...parameters.link,
+    }),
   })
 }
 
 export declare namespace toMessageProtobuf {
   type ParametersType = {
-    link: Omit<LinkCompactState, 'meta'>
-    privateKey: Types.Hex
+    link: Omit<LinkCompactState, 'meta' | 'fid'>
+    account: Account
   }
-  type ReturnType = MessageProtobuf.Message
+  type ReturnType = Promise<MessageProtobuf.Message>
 
   // @TODO: errors
   type ErrorType = GlobalErrorType

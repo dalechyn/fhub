@@ -62,13 +62,12 @@ export async function update(
   parameters: update.ParametersType,
   options?: CallOptions,
 ): Promise<update.ReturnType> {
-  const message = Core.UserData.toMessageProtobuf({
+  const message = await Core.UserData.toMessageProtobuf({
     data: {
       ...parameters.data,
-      fid: parameters.account.fid,
       timestamp: Math.floor(Date.now() / 1000),
     },
-    privateKey: parameters.account.privateKey,
+    account: parameters.account,
   })
   return Core.Actions.Submit.submitMessage(client, message, options)
 }

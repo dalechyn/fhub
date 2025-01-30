@@ -1,4 +1,5 @@
 import * as Fhub from 'fhub'
+
 // import * as FhubCore from 'fhub/core'
 // import { NextPageToken } from 'fhub/_types/Node/Types'
 
@@ -12,6 +13,11 @@ const PRIVATE_KEY = (() => {
     throw new Error('Specify your PRIVATE_KEY in env')
   return process.env.PRIVATE_KEY as `0x${string}`
 })()
+
+const account = Fhub.Account.fromPrivateKeyAndFid({
+  privateKey: PRIVATE_KEY,
+  fid: FID,
+})
 
 const client = Fhub.Client.create(
   Fhub.Transport.grpcNode({
@@ -34,7 +40,7 @@ const client = Fhub.Client.create(
 
 console.dir(
   await Fhub.Actions.User.update(client, {
-    account: { fid: FID, privateKey: PRIVATE_KEY },
+    account,
     data: { type: 'bio', value: '29JAN0305' },
   }),
 )

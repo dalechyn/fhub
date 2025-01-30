@@ -17,14 +17,13 @@ export async function create(
   parameters: create.ParametersType,
   options?: CallOptions,
 ): Promise<create.ReturnType> {
-  const message = Core.LinkAdd.toMessageProtobuf({
+  const message = await Core.LinkAdd.toMessageProtobuf({
     link: {
       type: 'follow',
       ...parameters.follow,
-      fid: parameters.account.fid,
       timestamp: Math.floor(Date.now() / 1000),
     },
-    privateKey: parameters.account.privateKey,
+    account: parameters.account,
   })
   return Core.Actions.Submit.submitMessage(client, message, options)
 }

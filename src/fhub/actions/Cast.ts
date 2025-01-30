@@ -27,13 +27,12 @@ export async function create(
 
     return getRoot(client, parameters, options)
   })()
-  const message = Core.CastAdd.toMessageProtobuf({
+  const message = await Core.CastAdd.toMessageProtobuf({
     cast: {
       ...cast,
-      fid: parameters.account.fid,
       timestamp: Math.floor(Date.now() / 1000),
     },
-    privateKey: parameters.account.privateKey,
+    account: parameters.account,
   })
   return Core.Actions.Submit.submitMessage(client, message, options)
 }

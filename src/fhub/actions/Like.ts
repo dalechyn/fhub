@@ -21,17 +21,16 @@ export async function create(
   options?: CallOptions,
 ): Promise<create.ReturnType> {
   parameters.like
-  const message = Core.ReactionAdd.toMessageProtobuf({
+  const message = await Core.ReactionAdd.toMessageProtobuf({
     reaction: {
       type: 'like',
       target: {
         type: 'cast',
         ...parameters.like,
       },
-      fid: parameters.account.fid,
       timestamp: Math.floor(Date.now() / 1000),
     },
-    privateKey: parameters.account.privateKey,
+    account: parameters.account,
   })
   return Core.Actions.Submit.submitMessage(client, message, options)
 }

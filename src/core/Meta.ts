@@ -3,6 +3,7 @@ import { blake3 } from '@noble/hashes/blake3'
 import * as sha from '@noble/hashes/sha512'
 import { Hex, type Types } from 'ox'
 import { BaseError } from 'ox/Errors'
+import type { Account } from '../fhub/Account.js'
 import type { GlobalErrorType } from './Error.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
 
@@ -46,15 +47,18 @@ export type Meta = {
   dataBytes: Types.Hex | undefined
 }
 
-export function create(parameters: create.ParametersType): create.ReturnType {
-  const hash = blake3(Hex.toBytes(parameters.dataBytes), { dkLen: 20 })
-  const signature = ed.sign(hash, parameters.privateKey.slice(2))
+export async function create(
+  parameters: create.ParametersType,
+): create.ReturnType {
+  const hash = Hex.fromBytes(
+    blake3(Hex.toBytes(parameters.dataBytes), { dkLen: 20 }),
+  )
   return {
-    hash: Hex.fromBytes(hash),
+    hash,
     hashScheme: 'blake3',
-    signature: Hex.fromBytes(signature),
+    signature: await parameters.signHash(hash),
     signatureScheme: 'ed25519',
-    signer: Hex.fromBytes(ed.getPublicKey(parameters.privateKey.slice(2))),
+    signer: await parameters.getSigner(),
     dataBytes: parameters.dataBytes,
   } as const
 }
@@ -62,9 +66,8 @@ export function create(parameters: create.ParametersType): create.ReturnType {
 export declare namespace create {
   type ParametersType = {
     dataBytes: Types.Hex
-    privateKey: Types.Hex
-  }
-  type ReturnType = Meta
+  } & Omit<Account, 'fid'>
+  type ReturnType = Promise<Meta>
 
   type ErrorType = GlobalErrorType
 }
