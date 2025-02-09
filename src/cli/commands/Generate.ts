@@ -106,7 +106,9 @@ export async function generate(options: Generate = {}) {
 
         await Promise.all(
           functionNames.map(async (functionName) => {
-            const hookType = ['create', 'update'].includes(functionName)
+            const hookType = ['create', 'update'].some(
+              (triggerFnName) => triggerFnName === functionName,
+            )
               ? 'Mutation'
               : 'Query'
             const outputHook = `use${namespaceName}${functionName.slice(0, 1).toUpperCase()}${functionName.slice(1)}${hookType}`
