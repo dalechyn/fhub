@@ -100,7 +100,7 @@ export async function generate(options: Generate = {}) {
               throw new Error('Unexpected – cant retrieve function name')
             return functionName
           })
-        })()
+        })().filter((name) => name.includes('Preconstruct'))
 
         // Creating sub directories with server actions
 
@@ -160,7 +160,7 @@ export async function generate(options: Generate = {}) {
                       ...mutation,
                       mutationKey: ['${namespaceName}.${functionName}'],
                       mutationFn: async (args)=> {
-                        const message = Actions.${namespaceName}.${functionName}Preconstruct(args)
+                        const message = await Actions.${namespaceName}.${functionName}Preconstruct(args)
                         return action({ message })
                       } 
                     })
