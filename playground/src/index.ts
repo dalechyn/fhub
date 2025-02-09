@@ -44,3 +44,10 @@ console.dir(
     data: { type: 'bio', value: '29JAN0305' },
   }),
 )
+
+// await Fhub.Actions.Cast.create(client, {
+//   cast: await Fhub.Actions.Cast.fromString(client, {text: `I'm sending this cast from fhub. It contains mentions of @farcaster, @dalechyn.eth, @vladyslav.
+// It also contains a cast embed (https://warpcast.com/dalechyn.eth/0x9c0a228b). I sent it using just a string. It also contains a cool cat pic at the end\nhttps://wrpcd.net/cdn-cgi/imagedelivery/BXluQx4ige9GuW0Ia56BHw/0cf0da74-9bf1-4d4a-4b96-2cb950801400/original`}),
+//
+//   account,
+// })

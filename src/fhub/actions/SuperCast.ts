@@ -2,20 +2,43 @@ import type { CallOptions } from '@connectrpc/connect'
 import type { Types } from 'ox'
 import type { GlobalErrorType } from '../../core/Error.js'
 import * as Core from '../../core/index.js'
+import type * as MessageProtobuf from '../../core/protobufs/message_pb.js'
 import type * as Account from '../Account.js'
 import type * as Client from '../Client.js'
 import type * as SuperCast from '../SuperCast.js'
 import * as Cast from './Cast.js'
 
-export declare namespace create {
-  type ParametersType = (
-    | {
-        cast: Omit<Core.Cast.Cast, 'meta' | 'fid' | 'timestamp'>
-      }
-    | Cast.getRoot.ParametersType
-  ) & {
+export declare namespace createPreconstruct {
+  type ParametersType = {
+    cast: Omit<Core.Cast.Cast, 'meta' | 'fid' | 'timestamp'>
     account: Account.Account
   }
+  type ReturnType = MessageProtobuf.Message
+  type ErrorType = GlobalErrorType
+}
+export async function createPreconstruct(
+  parameters: createPreconstruct.ParametersType,
+): Promise<createPreconstruct.ReturnType> {
+  const message = await Core.CastAdd.toMessageProtobuf({
+    cast: {
+      ...parameters.cast,
+      timestamp: Math.floor(Date.now() / 1000),
+    },
+    account: parameters.account,
+  })
+  return message
+}
+
+createPreconstruct.parseError = (error: unknown) =>
+  error as createPreconstruct.ErrorType
+
+export declare namespace create {
+  type ParametersType =
+    | {
+        cast: Omit<Core.Cast.Cast, 'meta' | 'fid' | 'timestamp'>
+        account: Account.Account
+      }
+    | { message: createPreconstruct.ReturnType }
   type ReturnType = Core.Message.Message
   type ErrorType = GlobalErrorType
 }
@@ -24,18 +47,16 @@ export async function create(
   parameters: create.ParametersType,
   options?: CallOptions,
 ): Promise<create.ReturnType> {
-  const cast = await (async () => {
-    if ('cast' in parameters) return parameters.cast
-
-    return Cast.getRoot(client, parameters, options)
-  })()
-  const message = await Core.CastAdd.toMessageProtobuf({
-    cast: {
-      ...cast,
-      timestamp: Math.floor(Date.now() / 1000),
-    },
-    account: parameters.account,
-  })
+  const message =
+    'message' in parameters
+      ? parameters.message
+      : await Core.CastAdd.toMessageProtobuf({
+          cast: {
+            ...parameters.cast,
+            timestamp: Math.floor(Date.now() / 1000),
+          },
+          account: parameters.account,
+        })
   return Core.Actions.Submit.submitMessage(client, message, options)
 }
 
@@ -144,18 +165,18 @@ export async function getByFid(
 
 getByFid.parseError = (error: unknown) => error as getByFid.ErrorType
 
-export declare namespace Actions_SuperCast_getByParent {
+export declare namespace getByParent {
   type ParametersType = Core.Actions.Cast.getByParent.ParametersType
   type ReturnType = SuperCast.SuperCast[]
   type ErrorType = Core.Actions.Cast.get.ErrorType | GlobalErrorType
 }
-export async function Actions_SuperCast_getByParent(
+export async function getByParent(
   client: Client.Client,
-  parameters: Actions_SuperCast_getByParent.ParametersType,
+  parameters: getByParent.ParametersType,
   options?: CallOptions,
-): Promise<Actions_SuperCast_getByParent.ReturnType> {
+): Promise<getByParent.ReturnType> {
   let castsPageToken: Types.Hex | null = null
-  const casts: Actions_SuperCast_getByParent.ReturnType = []
+  const casts: getByParent.ReturnType = []
   do {
     const getCastsByParentResult: Core.Actions.Cast.getByParent.ReturnType =
       await Core.Actions.Cast.getByParent(
@@ -209,5 +230,4 @@ export async function Actions_SuperCast_getByParent(
   return casts
 }
 
-Actions_SuperCast_getByParent.parseError = (error: unknown) =>
-  error as Actions_SuperCast_getByParent.ErrorType
+getByParent.parseError = (error: unknown) => error as getByParent.ErrorType

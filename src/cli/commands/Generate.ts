@@ -139,20 +139,29 @@ export async function generate(options: Generate = {}) {
                   ${
                     isTypeScript
                       ? dedent`
-                    import type { Actions } from 'fhub'
-                    import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
-                  `
-                      : "import { useMutation } from '@tanstack/react-query'"
+                          import { Actions } from 'fhub'
+                          import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
+                        `
+                      : dedent`
+                          import { useMutation } from '@tanstack/react-query'
+                        `
                   }
 
                   export function ${outputHook}({mutation = {}}${
                     isTypeScript
                       ? `: {
-                    mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
+                    mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Exclude<Actions.${namespaceName}.${functionName}.ParametersType, { message: unknown }>> | undefined
                   } = {}`
                       : ''
                   }) {
-                    return useMutation({ ...mutation, mutationKey: ['${namespaceName}.${functionName}'], mutationFn: (args)=> action(args) })
+                    return useMutation({
+                      ...mutation,
+                      mutationKey: ['${namespaceName}.${functionName}'],
+                      mutationFn: async (args)=> {
+                        const message = Actions.${namespaceName}.${functionName}Preconstruct(args)
+                        return action({ message })
+                      } 
+                    })
                   }
                 `)
               }
