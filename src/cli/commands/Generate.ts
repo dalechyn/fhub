@@ -100,7 +100,7 @@ export async function generate(options: Generate = {}) {
               throw new Error('Unexpected – cant retrieve function name')
             return functionName
           })
-        })().filter((name) => name.includes('Preconstruct'))
+        })().filter((name) => !name.includes('Preconstruct'))
 
         // Creating sub directories with server actions
 
