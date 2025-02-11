@@ -28,6 +28,38 @@
       "types": "./_types/fhub/Account.d.ts",
       "import": "./_esm/fhub/Account.js"
     },
+    "./Actions": {
+      "types": "./_types/fhub/Actions.d.ts",
+      "import": "./_esm/fhub/Actions.js"
+    },
+    "./Client": {
+      "types": "./_types/fhub/Client.d.ts",
+      "import": "./_esm/fhub/Client.js"
+    },
+    "./Conversation": {
+      "types": "./_types/fhub/Conversation.d.ts",
+      "import": "./_esm/fhub/Conversation.js"
+    },
+    "./ConversationTree": {
+      "types": "./_types/fhub/ConversationTree.d.ts",
+      "import": "./_esm/fhub/ConversationTree.js"
+    },
+    "./SuperCast": {
+      "types": "./_types/fhub/SuperCast.d.ts",
+      "import": "./_esm/fhub/SuperCast.js"
+    },
+    "./Types": {
+      "types": "./_types/fhub/Types.d.ts",
+      "import": "./_esm/fhub/Types.js"
+    },
+    "./Transport": {
+      "types": "./_types/fhub/Transport.d.ts",
+      "import": "./_esm/fhub/Transport.js"
+    },
+    "./Utils": {
+      "types": "./_types/fhub/Utils.d.ts",
+      "import": "./_esm/fhub/Utils.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
