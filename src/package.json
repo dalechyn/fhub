@@ -24,6 +24,10 @@
       "types": "./_types/cli/index.d.ts",
       "import": "./_esm/cli/index.js"
     },
+    "./Account": {
+      "types": "./_types/fhub/Account/index.d.ts",
+      "import": "./_esm/fhub/Account/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
