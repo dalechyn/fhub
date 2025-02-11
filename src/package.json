@@ -25,8 +25,8 @@
       "import": "./_esm/cli/index.js"
     },
     "./Account": {
-      "types": "./_types/fhub/Account/index.d.ts",
-      "import": "./_esm/fhub/Account/index.js"
+      "types": "./_types/fhub/Account.d.ts",
+      "import": "./_esm/fhub/Account.js"
     },
     "./package.json": "./package.json"
   },
