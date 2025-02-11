@@ -118,7 +118,7 @@ export async function generate(options: Generate = {}) {
             const actionFileContent = await format(dedent`
               'use server'
               import { fhubClient } from '../client'
-              import { Actions } from 'fhub'
+              import * as Actions from 'fhub/Actions'
 
               export async function action(parameters${isTypeScript ? `: Actions.${namespaceName}.${functionName}.ParametersType` : ''}): ${isTypeScript ? `Promise<Actions.${namespaceName}.${functionName}.ReturnType>` : ''} {
                 return Actions.${namespaceName}.${functionName}(fhubClient, parameters)
@@ -141,7 +141,7 @@ export async function generate(options: Generate = {}) {
                   ${
                     isTypeScript
                       ? dedent`
-                          import { Actions } from 'fhub'
+                          import * as Actions from 'fhub/Actions'
                           import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
                         `
                       : dedent`
@@ -173,7 +173,7 @@ export async function generate(options: Generate = {}) {
                 ${
                   isTypeScript
                     ? dedent`
-                  import type { Actions } from 'fhub'
+                  import type * as Actions from 'fhub/Actions'
                   import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
                 `
                     : "import { useQuery } from '@tanstack/react-query'"
@@ -239,7 +239,8 @@ async function writeClientFile({
   const outPath = resolve(cwd, out, `client.${isTypeScript ? 'ts' : 'js'}`)
   await fs.ensureDir(dirname(outPath))
   const formatted = await format(dedent`
-    import { Client, Transport } from "fhub";
+    import * as Client from "fhub/Client";
+    import * as Transport from "fhub/Transport";
 
     export const fhubClient = Client.create(Transport.grpcNode({ baseUrl: '${rpcUrl}' }))
   `)
