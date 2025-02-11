@@ -1,7 +1,7 @@
 {
   "name": "fhub",
   "description": "TypeScript Interface for Farcaster Hubs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "module": "./_esm/fhub/index.js",
   "types": "./_types/fhub/index.d.ts",
