@@ -1,4 +1,5 @@
 import { BaseError } from 'ox/Errors'
+import type { Account } from '../fhub/Account.js'
 
 import { create, toBinary } from '@bufbuild/protobuf'
 import { Hex, type Types } from 'ox'
@@ -88,26 +89,29 @@ export declare namespace toMessageDataProtobuf {
 toMessageDataProtobuf.parseError = (error: unknown) =>
   error as toMessageDataProtobuf.ErrorType
 
-export function toMessageProtobuf(
+export async function toMessageProtobuf(
   parameters: toMessageProtobuf.ParametersType,
 ): toMessageProtobuf.ReturnType {
   return create(MessageProtobuf.MessageSchema, {
     ...Meta.toProtobuf(
-      Meta.create({
-        dataBytes: toHex(parameters.cast),
-        privateKey: parameters.privateKey,
+      await Meta.create({
+        dataBytes: toHex({ fid: parameters.account.fid, ...parameters.cast }),
+        ...parameters.account,
       }),
     ),
-    data: toMessageDataProtobuf(parameters.cast),
+    data: toMessageDataProtobuf({
+      fid: parameters.account.fid,
+      ...parameters.cast,
+    }),
   })
 }
 
 export declare namespace toMessageProtobuf {
   type ParametersType = {
-    cast: Omit<Cast.Cast, 'meta'>
-    privateKey: Types.Hex
+    cast: Omit<Cast.Cast, 'meta' | 'fid'>
+    account: Account
   }
-  type ReturnType = MessageProtobuf.Message
+  type ReturnType = Promise<MessageProtobuf.Message>
 
   // @TODO: errors
   type ErrorType = GlobalErrorType

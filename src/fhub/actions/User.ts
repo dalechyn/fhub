@@ -1,6 +1,8 @@
 import type { CallOptions } from '@connectrpc/connect'
 import type { GlobalErrorType } from '../../core/Error.js'
 import * as Core from '../../core/index.js'
+import type * as MessageProtobuf from '../../core/protobufs/message_pb.js'
+import type * as Account from '../Account.js'
 import type * as Client from '../Client.js'
 
 export declare namespace get {
@@ -46,3 +48,57 @@ export async function get(
 }
 
 get.parseError = (error: unknown) => error as get.ErrorType
+
+export declare namespace updatePreconstruct {
+  type ParametersType = {
+    data: Omit<Core.UserData.UserData, 'meta' | 'fid' | 'timestamp'>
+    account: Account.Account
+  }
+  type ReturnType = MessageProtobuf.Message
+  type ErrorType = GlobalErrorType
+}
+export async function updatePreconstruct(
+  parameters: updatePreconstruct.ParametersType,
+): Promise<updatePreconstruct.ReturnType> {
+  const message = await Core.UserData.toMessageProtobuf({
+    data: {
+      ...parameters.data,
+      timestamp: Math.floor(Date.now() / 1000),
+    },
+    account: parameters.account,
+  })
+  return message
+}
+
+updatePreconstruct.parseError = (error: unknown) =>
+  error as updatePreconstruct.ErrorType
+
+export declare namespace update {
+  type ParametersType =
+    | {
+        data: Omit<Core.UserData.UserData, 'meta' | 'fid' | 'timestamp'>
+        account: Account.Account
+      }
+    | { message: updatePreconstruct.ReturnType }
+  type ReturnType = Core.Message.Message
+  type ErrorType = GlobalErrorType
+}
+export async function update(
+  client: Client.Client,
+  parameters: update.ParametersType,
+  options?: CallOptions,
+): Promise<update.ReturnType> {
+  const message =
+    'message' in parameters
+      ? parameters.message
+      : await Core.UserData.toMessageProtobuf({
+          data: {
+            ...parameters.data,
+            timestamp: Math.floor(Date.now() / 1000),
+          },
+          account: parameters.account,
+        })
+  return Core.Actions.Submit.submitMessage(client, message, options)
+}
+
+update.parseError = (error: unknown) => error as update.ErrorType

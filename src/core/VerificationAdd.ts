@@ -6,6 +6,7 @@ import * as MessageProtobuf from './protobufs/message_pb.js'
 
 import { create, toBinary } from '@bufbuild/protobuf'
 import { BaseError } from 'ox/Errors'
+import type { Account } from '../fhub/Account.js'
 import { FARCASTER_EPOCH_TIMESTAMP } from './Constants.js'
 
 // @TODO: replace by our own BaseError
@@ -48,22 +49,19 @@ export declare namespace fromMessageProtobuf {
 fromMessageProtobuf.parseError = (error: unknown) =>
   error as fromMessageProtobuf.ErrorType
 
-export function VerificationAdd_toHex(
-  cast: VerificationAdd_toHex.ParametersType,
-): VerificationAdd_toHex.ReturnType {
+export function toHex(cast: toHex.ParametersType): toHex.ReturnType {
   return Hex.fromBytes(
     toBinary(MessageProtobuf.MessageDataSchema, toMessageDataProtobuf(cast)),
   )
 }
 
-export declare namespace VerificationAdd_toHex {
+export declare namespace toHex {
   type ParametersType = Omit<Verification.Verification, 'meta'>
   type ReturnType = Types.Hex
   type ErrorType = GlobalErrorType
 }
 
-VerificationAdd_toHex.parseError = (error: unknown) =>
-  error as VerificationAdd_toHex.ErrorType
+toHex.parseError = (error: unknown) => error as toHex.ErrorType
 
 export function toMessageDataProtobuf(
   verification: toMessageDataProtobuf.ParametersType,
@@ -90,26 +88,32 @@ export declare namespace toMessageDataProtobuf {
 toMessageDataProtobuf.parseError = (error: unknown) =>
   error as toMessageDataProtobuf.ErrorType
 
-export function toMessageProtobuf(
+export async function toMessageProtobuf(
   parameters: toMessageProtobuf.ParametersType,
 ): toMessageProtobuf.ReturnType {
   return create(MessageProtobuf.MessageSchema, {
     ...Meta.toProtobuf(
-      Meta.create({
-        dataBytes: VerificationAdd_toHex(parameters.verification),
-        privateKey: parameters.privateKey,
+      await Meta.create({
+        dataBytes: toHex({
+          fid: parameters.account.fid,
+          ...parameters.verification,
+        }),
+        ...parameters.account,
       }),
     ),
-    data: toMessageDataProtobuf(parameters.verification),
+    data: toMessageDataProtobuf({
+      fid: parameters.account.fid,
+      ...parameters.verification,
+    }),
   })
 }
 
 export declare namespace toMessageProtobuf {
   type ParametersType = {
-    verification: Omit<Verification.Verification, 'meta'>
-    privateKey: Types.Hex
+    verification: Omit<Verification.Verification, 'meta' | 'fid'>
+    account: Account
   }
-  type ReturnType = MessageProtobuf.Message
+  type ReturnType = Promise<MessageProtobuf.Message>
 
   // @TODO: errors
   type ErrorType = GlobalErrorType

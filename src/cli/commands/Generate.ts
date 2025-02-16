@@ -100,13 +100,17 @@ export async function generate(options: Generate = {}) {
               throw new Error('Unexpected – cant retrieve function name')
             return functionName
           })
-        })()
+        })().filter((name) => !name.includes('Preconstruct'))
 
         // Creating sub directories with server actions
 
         await Promise.all(
           functionNames.map(async (functionName) => {
-            const hookType = functionName === 'create' ? 'Mutation' : 'Query'
+            const hookType = ['create', 'update'].some(
+              (triggerFnName) => triggerFnName === functionName,
+            )
+              ? 'Mutation'
+              : 'Query'
             const outputHook = `use${namespaceName}${functionName.slice(0, 1).toUpperCase()}${functionName.slice(1)}${hookType}`
             await fs.ensureDir(resolve(config.out, outputHook))
 
@@ -114,7 +118,7 @@ export async function generate(options: Generate = {}) {
             const actionFileContent = await format(dedent`
               'use server'
               import { fhubClient } from '../client'
-              import { Actions } from 'fhub'
+              import * as Actions from 'fhub/Actions'
 
               export async function action(parameters${isTypeScript ? `: Actions.${namespaceName}.${functionName}.ParametersType` : ''}): ${isTypeScript ? `Promise<Actions.${namespaceName}.${functionName}.ReturnType>` : ''} {
                 return Actions.${namespaceName}.${functionName}(fhubClient, parameters)
@@ -137,20 +141,29 @@ export async function generate(options: Generate = {}) {
                   ${
                     isTypeScript
                       ? dedent`
-                    import type { Actions } from 'fhub'
-                    import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
-                  `
-                      : "import { useMutation } from '@tanstack/react-query'"
+                          import * as Actions from 'fhub/Actions'
+                          import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
+                        `
+                      : dedent`
+                          import { useMutation } from '@tanstack/react-query'
+                        `
                   }
 
                   export function ${outputHook}({mutation = {}}${
                     isTypeScript
                       ? `: {
-                    mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Actions.${namespaceName}.${functionName}.ParametersType> | undefined
-                  }`
+                    mutation?: UseMutationOptions<Actions.${namespaceName}.${functionName}.ReturnType, Actions.${namespaceName}.${functionName}.ErrorType, Exclude<Actions.${namespaceName}.${functionName}.ParametersType, { message: unknown }>> | undefined
+                  } = {}`
                       : ''
                   }) {
-                    return useMutation({ ...mutation, mutationKey: ['${namespaceName}.${functionName}'], mutationFn: (args)=> action(args) })
+                    return useMutation({
+                      ...mutation,
+                      mutationKey: ['${namespaceName}.${functionName}'],
+                      mutationFn: async (args)=> {
+                        const message = await Actions.${namespaceName}.${functionName}Preconstruct(args)
+                        return action({ message })
+                      } 
+                    })
                   }
                 `)
               }
@@ -160,7 +173,7 @@ export async function generate(options: Generate = {}) {
                 ${
                   isTypeScript
                     ? dedent`
-                  import type { Actions } from 'fhub'
+                  import type * as Actions from 'fhub/Actions'
                   import { useQuery, type UseQueryOptions } from '@tanstack/react-query'
                 `
                     : "import { useQuery } from '@tanstack/react-query'"
@@ -226,9 +239,10 @@ async function writeClientFile({
   const outPath = resolve(cwd, out, `client.${isTypeScript ? 'ts' : 'js'}`)
   await fs.ensureDir(dirname(outPath))
   const formatted = await format(dedent`
-    import { Client, Transport } from "fhub";
+    import * as Client from "fhub/Client";
+    import * as Transport from "fhub/Transport";
 
-    export const fhubClient = Client.create(Transport.grpcNode({ baseUrl: '${rpcUrl}', httpVersion: '2' }))
+    export const fhubClient = Client.create(Transport.grpcNode({ baseUrl: '${rpcUrl}' }))
   `)
   await fs.writeFile(outPath, formatted)
 }
