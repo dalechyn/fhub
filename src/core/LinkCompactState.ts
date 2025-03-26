@@ -2,8 +2,8 @@ import { FARCASTER_EPOCH_TIMESTAMP } from './Constants.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
 
 import { create, toBinary } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
-import type { Account } from '../fhub/Account.js'
+import { Hex } from 'ox'
+import type { Account } from './Account.js'
 import type { GlobalErrorType } from './Error.js'
 import * as Meta from './Meta.js'
 
@@ -49,7 +49,7 @@ export function toHex(link: toHex.ParametersType): toHex.ReturnType {
 
 export declare namespace toHex {
   type ParametersType = Omit<LinkCompactState, 'meta'>
-  type ReturnType = Types.Hex
+  type ReturnType = Hex.Hex
   type ErrorType = GlobalErrorType
 }
 

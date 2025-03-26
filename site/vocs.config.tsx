@@ -1,8 +1,15 @@
+import { ModuleKind, ModuleResolutionKind } from 'typescript'
 import { defineConfig } from 'vocs'
 import pkg from '../src/package.json'
-import { sidebar } from './sidebar-generated'
+import { sidebar, topNav } from './config-generated'
 
 export default defineConfig({
+  twoslash: {
+    compilerOptions: {
+      moduleResolution: ModuleResolutionKind.NodeNext,
+      module: ModuleKind.NodeNext,
+    },
+  },
   baseUrl:
     process.env.VERCEL_ENV === 'production'
       ? 'https://fhub.sh'
@@ -41,7 +48,7 @@ export default defineConfig({
         items: [],
       },
     ],
-    '/api': { backLink: true, items: sidebar },
+    ...sidebar,
   },
   socials: [
     {
@@ -60,10 +67,7 @@ export default defineConfig({
     },
   },
   topNav: [
-    {
-      text: 'API Reference',
-      link: '/api',
-    },
+    ...topNav,
     {
       text: pkg.version,
       items: [

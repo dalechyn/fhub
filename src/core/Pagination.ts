@@ -1,9 +1,9 @@
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import type { GlobalErrorType } from './Error.js'
 
 export type Pagination = {
   pageSize?: number | undefined
-  pageToken?: Types.Hex | undefined
+  pageToken?: Hex.Hex | undefined
   reverse?: boolean | undefined
 }
 
@@ -12,7 +12,7 @@ export type PaginationWithTimestamps = Pagination & {
   stopTimestamp?: bigint | undefined
 }
 
-export type NextPageToken = Types.Hex | null
+export type NextPageToken = Hex.Hex | null
 
 export function getPageToken(
   pageToken: Pagination_getPageToken.ParametersType,

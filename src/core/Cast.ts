@@ -44,8 +44,8 @@ export function fromProtobuf(
     const mentions = []
     for (let i = 0; i < parameters.body.mentions.length; i++) {
       mentions.push({
-        fid: parameters.body.mentions[i],
-        position: parameters.body.mentionsPositions[i],
+        fid: parameters.body.mentions[i]!,
+        position: parameters.body.mentionsPositions[i]!,
       })
     }
     return mentions

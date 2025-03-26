@@ -1,4 +1,4 @@
-import type { MaybeArray, MaybePromise } from '../fhub/internal/types.js'
+import type { MaybeArray, MaybePromise } from '../core/internal/types.js'
 
 export type Config = {
   /** Hub RPC url */

@@ -1,4 +1,4 @@
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import type { GlobalErrorType } from './Error.js'
 import * as Meta from './Meta.js'
 import type * as MessageProtobuf from './protobufs/message_pb.js'
@@ -9,7 +9,7 @@ export type UsernameProof = {
   timestamp: bigint
   name: string
   owner: string
-  signature: Types.Hex
+  signature: Hex.Hex
   fid: bigint
   type: 'fname' | 'ensL1'
 }

@@ -1,8 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
-
   "extends": ["@microsoft/api-extractor/extends/tsdoc-base.json"],
-
   "tagDefinitions": [
     {
       "tagName": "@alias",
@@ -33,15 +31,20 @@
       "tagName": "@docGroup",
       "syntaxKind": "block",
       "allowMultiple": false
+    },
+    {
+      "tagName": "@generated",
+      "syntaxKind": "block",
+      "allowMultiple": false
     }
   ],
-
   "supportForTags": {
     "@alias": true,
     "@category": true,
     "@default": true,
     "@entrypointCategory": true,
     "@since": true,
-    "@docGroup": true
+    "@docGroup": true,
+    "@generated": true
   }
 }

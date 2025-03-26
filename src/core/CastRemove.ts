@@ -1,5 +1,5 @@
-import { Hex, type Types } from 'ox'
-import type { Account } from '../fhub/Account.js'
+import { Hex } from 'ox'
+import type { Account } from './Account.js'
 import * as Meta from './Meta.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
 
@@ -9,7 +9,7 @@ import type { GlobalErrorType } from './Error.js'
 
 export type CastRemove = {
   meta: Meta.Meta
-  hash: Types.Hex
+  hash: Hex.Hex
   fid: bigint
   timestamp: number
 }
@@ -49,7 +49,7 @@ export function toHex(cast: toHex.ParametersType): toHex.ReturnType {
 
 export declare namespace toHex {
   type ParametersType = Omit<CastRemove, 'meta'>
-  type ReturnType = Types.Hex
+  type ReturnType = Hex.Hex
   type ErrorType = GlobalErrorType
 }
 

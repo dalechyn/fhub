@@ -1,27 +1,29 @@
 # Installation
 
-Install Ox via your package manager, a `<script>` tag, or build from source.
+Install fhub via your package manager, a `<script>` tag, or build from source.
 
 ## Package Manager
 
 Install the required packages.
 
 :::code-group
+
 ```bash [pnpm]
-pnpm install ox
+pnpm install fhub
 ```
 
 ```bash [npm]
-npm install ox
+npm install fhub
 ```
 
 ```bash [yarn]
-yarn add ox
+yarn add fhub
 ```
 
 ```bash [bun]
-bun install ox
+bun install fhub
 ```
+
 :::
 
 ## CDN
@@ -30,43 +32,45 @@ If you're not using a package manager, you can also use Viem via an ESM-compatib
 
 ```html
 <script type="module">
-  import { Abi } from 'https://esm.sh/ox'
+  import { Abi } from "https://esm.sh/fhub";
 </script>
 ```
 
 ## Using Unreleased Commits
 
-If you can't wait for a new release to test the latest features, you can either install from the `canary` tag (tracks the [`main`](https://github.com/wevm/viem/tree/main) branch).
+If you can't wait for a new release to test the latest features, you can either install from the `canary` tag (tracks the [`main`](https://github.com/dalechyn/fhub/tree/main) branch).
 
 :::code-group
+
 ```bash [pnpm]
-pnpm add ox@canary
+pnpm add fhub@canary
 ```
 
 ```bash [npm]
-npm install ox@canary
+npm install fhub@canary
 ```
 
 ```bash [yarn]
-yarn add ox@canary
+yarn add fhub@canary
 ```
 
 ```bash [bun]
-bun add ox@canary
+bun add fhub@canary
 ```
+
 :::
 
-Or clone the [Ox repo](https://github.com/wevm/ox) to your local machine, build, and link it yourself.
+Or clone the [fhub repo](https://github.com/dalechyn/fhub) to your local machine, build, and link it yourself.
 
 ```bash
-gh repo clone wevm/ox
-cd ox
+gh repo clone dalechyn/fhub
+cd fhub
 pnpm install
 pnpm build
 pnpm link --global
 ```
 
-Then go to the project where you are using Ox and run `pnpm link --global ox` (or the package manager that you used to link Ox globally).
+Then go to the project where you are using fhub and run `pnpm link --global fhub` (or the package manager that you used to link fhub globally).
 
 ## Security
 

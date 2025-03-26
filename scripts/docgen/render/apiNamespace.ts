@@ -158,9 +158,9 @@ export function renderNamespaceGlossary(options: {
   const description = (() => {
     switch (type) {
       case 'Errors':
-        return 'Glossary of Errors in Fhub.'
+        return 'Glossary of Errors in fhub.'
       case 'Types':
-        return 'Glossary of Types in Fhub.'
+        return 'Glossary of Types in fhub.'
       default:
         return undefined
     }

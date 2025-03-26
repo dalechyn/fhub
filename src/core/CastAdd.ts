@@ -1,8 +1,8 @@
 import { BaseError } from 'ox/Errors'
-import type { Account } from '../fhub/Account.js'
+import type { Account } from './Account.js'
 
 import { create, toBinary } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import * as Cast from './Cast.js'
 import { FARCASTER_EPOCH_TIMESTAMP } from './Constants.js'
 import type { GlobalErrorType } from './Error.js'
@@ -58,7 +58,7 @@ export function toHex(cast: toHex.ParametersType): toHex.ReturnType {
 
 export declare namespace toHex {
   type ParametersType = Omit<Cast.Cast, 'meta'>
-  type ReturnType = Types.Hex
+  type ReturnType = Hex.Hex
   type ErrorType = GlobalErrorType
 }
 

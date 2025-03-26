@@ -1,6 +1,6 @@
 import { bundleRequire } from 'bundle-require'
 
-import type { MaybeArray } from '../../fhub/internal/types.js'
+import type { MaybeArray } from '../../core/internal/types.js'
 import type { Config } from '../Config.js'
 
 type ResolveConfigParameters = {

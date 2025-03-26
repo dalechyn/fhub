@@ -1,13 +1,22 @@
 import { toBinary } from '@bufbuild/protobuf'
 import { create } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import { BaseError } from 'ox/Errors'
-import type { Omit } from 'ox/Internal'
-import type { Account } from '../fhub/Account.js'
+import type { Account } from './Account.js'
 import { FARCASTER_EPOCH_TIMESTAMP } from './Constants.js'
 import type { GlobalErrorType } from './Error.js'
 import * as Meta from './Meta.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
+
+export const EnumMapping = {
+  none: MessageProtobuf.UserDataType.NONE,
+  pfp: MessageProtobuf.UserDataType.PFP,
+  display: MessageProtobuf.UserDataType.DISPLAY,
+  bio: MessageProtobuf.UserDataType.BIO,
+  url: MessageProtobuf.UserDataType.URL,
+  username: MessageProtobuf.UserDataType.USERNAME,
+  location: MessageProtobuf.UserDataType.LOCATION,
+}
 
 export type UserData = {
   meta: Meta.Meta
@@ -138,7 +147,7 @@ export function toHex(body: toHex.ParametersType): toHex.ReturnType {
 
 export declare namespace toHex {
   type ParametersType = Omit<UserData, 'meta'>
-  type ReturnType = Types.Hex
+  type ReturnType = Hex.Hex
   type ErrorType = GlobalErrorType
 }
 

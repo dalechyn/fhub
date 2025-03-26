@@ -1,6 +1,6 @@
 import { create, toBinary } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
-import type { Account } from '../fhub/Account.js'
+import { Hex } from 'ox'
+import type { Account } from './Account.js'
 import { FARCASTER_EPOCH_TIMESTAMP } from './Constants.js'
 import type { GlobalErrorType } from './Error.js'
 import * as Meta from './Meta.js'
@@ -15,7 +15,7 @@ export function toHex(cast: toHex.ParametersType): toHex.ReturnType {
 
 export declare namespace toHex {
   type ParametersType = Omit<Reaction.Reaction, 'meta'>
-  type ReturnType = Types.Hex
+  type ReturnType = Hex.Hex
   type ErrorType = GlobalErrorType
 }
 

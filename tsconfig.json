@@ -1,6 +1,19 @@
 {
   // This configuration is used for local development and type checking.
   "extends": "./tsconfig.base.json",
-  "include": ["src", "test/src"],
-  "exclude": []
+  "include": [
+    "scripts",
+    "src"
+  ],
+  "exclude": [
+    "src/_types"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "fhub": [
+        "src/index.ts"
+      ]
+    }
+  }
 }

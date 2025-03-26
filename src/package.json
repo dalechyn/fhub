@@ -3,9 +3,9 @@
   "description": "TypeScript Interface for Farcaster Hubs",
   "version": "0.0.0",
   "type": "module",
-  "module": "./_esm/fhub/index.js",
-  "types": "./_types/fhub/index.d.ts",
-  "typings": "./_types/fhub/index.d.ts",
+  "module": "./_esm/core/index.js",
+  "types": "./_types/core/index.d.ts",
+  "typings": "./_types/core/index.d.ts",
   "sideEffects": false,
   "files": ["*", "!**/*.tsbuildinfo", "!tsconfig.build.json", "!jsr.json"],
   "bin": {
@@ -13,10 +13,6 @@
   },
   "exports": {
     ".": {
-      "types": "./_types/fhub/index.d.ts",
-      "import": "./_esm/fhub/index.js"
-    },
-    "./core": {
       "types": "./_types/core/index.d.ts",
       "import": "./_esm/core/index.js"
     },
@@ -28,9 +24,9 @@
       "types": "./_types/fhub/Account.d.ts",
       "import": "./_esm/fhub/Account.js"
     },
-    "./Actions": {
-      "types": "./_types/fhub/Actions.d.ts",
-      "import": "./_esm/fhub/Actions.js"
+    "./actions": {
+      "types": "./_types/actions/index.d.ts",
+      "import": "./_esm/actions/index.js"
     },
     "./Client": {
       "types": "./_types/fhub/Client.d.ts",
@@ -85,7 +81,7 @@
     "find-up": "^7.0.0",
     "fs-extra": "^11.2.0",
     "ora": "^8.1.1",
-    "ox": "0.0.0-canary-20241006052626",
+    "ox": "0.6.9",
     "pathe": "^1.1.2",
     "picocolors": "^1.1.1",
     "prettier": "^3.3.3",

@@ -1,11 +1,11 @@
 import { create } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import type { GlobalErrorType } from './Error.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
 
 export type CastId = {
   fid: bigint
-  hash: Types.Hex
+  hash: Hex.Hex
 }
 
 export function fromProtobuf(

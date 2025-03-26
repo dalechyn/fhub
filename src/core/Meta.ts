@@ -1,9 +1,9 @@
 import * as ed from '@noble/ed25519'
 import { blake3 } from '@noble/hashes/blake3'
 import * as sha from '@noble/hashes/sha512'
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import { BaseError } from 'ox/Errors'
-import type { Account } from '../fhub/Account.js'
+import type { Account } from './Account.js'
 import type { GlobalErrorType } from './Error.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
 
@@ -39,12 +39,12 @@ export class InvalidSignatureError extends BaseError {
 }
 
 export type Meta = {
-  hash: Types.Hex
-  signer: Types.Hex
-  signature: Types.Hex
+  hash: Hex.Hex
+  signer: Hex.Hex
+  signature: Hex.Hex
   hashScheme: 'blake3'
   signatureScheme: 'ed25519' | 'eip712'
-  dataBytes: Types.Hex | undefined
+  dataBytes: Hex.Hex | undefined
 }
 
 export async function create(
@@ -65,7 +65,7 @@ export async function create(
 
 export declare namespace create {
   type ParametersType = {
-    dataBytes: Types.Hex
+    dataBytes: Hex.Hex
   } & Omit<Account, 'fid'>
   type ReturnType = Promise<Meta>
 

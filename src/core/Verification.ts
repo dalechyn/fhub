@@ -1,5 +1,5 @@
 import { create } from '@bufbuild/protobuf'
-import { Hex, type Types } from 'ox'
+import { Hex } from 'ox'
 import type { GlobalErrorType } from './Error.js'
 import type * as Meta from './Meta.js'
 import * as MessageProtobuf from './protobufs/message_pb.js'
@@ -7,8 +7,8 @@ import * as MessageProtobuf from './protobufs/message_pb.js'
 export type Verification = {
   meta: Meta.Meta
   address: string
-  claimSignature: Types.Hex
-  blockHash: Types.Hex
+  claimSignature: Hex.Hex
+  blockHash: Hex.Hex
   type: 'eoa' | 'contract'
   chainId: number
   protocol: 'ethereum' | 'solana'
